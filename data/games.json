@@ -1,1 +1,442 @@
-[]
+[
+  {
+    "id": "jKMtR4ROY9i9y3qbZfT3",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Carolina Panthers",
+    "home": "Arizona Cardinals",
+    "kickoff": "Fri, 8/7, 12:00 AM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-112"
+    },
+    "moneyline": {
+      "home": "+105",
+      "away": "-125"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-112",
+      "underOdds": "-108"
+    }
+  },
+  {
+    "id": "huHosq6FPhApdfc5q6pQ",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Los Angeles Chargers",
+    "home": "Houston Texans",
+    "kickoff": "Fri, 8/14, 12:00 AM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "o7eY2rvMLMv8WuP7adpy",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Tampa Bay Buccaneers",
+    "home": "New York Jets",
+    "kickoff": "Fri, 8/14, 11:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "bPk3shiJ9sZ60eX0EssT",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Minnesota Vikings",
+    "home": "New York Giants",
+    "kickoff": "Sat, 8/15, 5:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "8vvOd0tVkIJtDVxhxpsE",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Los Angeles Rams",
+    "home": "Kansas City Chiefs",
+    "kickoff": "Sat, 8/15, 8:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "z95b2JMJVRm8HrjOKHFS",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "New England Patriots",
+    "home": "Seattle Seahawks",
+    "kickoff": "Thu, 9/10, 12:20 AM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "-198",
+      "away": "+164"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "gwEhZ84eQ2kK6Qo2UkXa",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "San Francisco 49ers",
+    "home": "Los Angeles Rams",
+    "kickoff": "Fri, 9/11, 12:35 AM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-105"
+    },
+    "moneyline": {
+      "home": "-180",
+      "away": "+150"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "0xRBT9Dxwxwnptx7dnV4",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "New York Jets",
+    "home": "Tennessee Titans",
+    "kickoff": "Sun, 9/13, 5:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "-155",
+      "away": "+130"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "4jBCq3tGzUeKRcFsw69g",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Cleveland Browns",
+    "home": "Jacksonville Jaguars",
+    "kickoff": "Sun, 9/13, 5:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "-380",
+      "away": "+300"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "7F4W7zoMbAb1WG3Yc0aO",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Tampa Bay Buccaneers",
+    "home": "Cincinnati Bengals",
+    "kickoff": "Sun, 9/13, 5:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "-192",
+      "away": "+160"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "q2Sm8u4f8eKOgLKeY1m9",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "North Carolina",
+    "home": "TCU",
+    "kickoff": "Sat, 8/29, 4:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-115"
+    },
+    "moneyline": {
+      "home": "-265",
+      "away": "+215"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-115",
+      "underOdds": "-105"
+    }
+  },
+  {
+    "id": "djp3nmDjGDvoFC2jyllO",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "San José State",
+    "home": "USC",
+    "kickoff": "Sat, 8/29, 7:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-105"
+    },
+    "moneyline": {
+      "home": "-25000",
+      "away": "+5500"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "0AfOFu3Y3jrU8Z2wTd2A",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "NC State",
+    "home": "Virginia",
+    "kickoff": "Sat, 8/29, 7:30 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-114"
+    },
+    "moneyline": {
+      "home": "-220",
+      "away": "+180"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "mizoRBpOw5LCzrDg0sl1",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Jacksonville State",
+    "home": "North Dakota State",
+    "kickoff": "Sat, 8/29, 9:30 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-115"
+    },
+    "moneyline": {
+      "home": "-320",
+      "away": "+255"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "xbCOjReBdyGPLVxh74Gh",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Sacramento State",
+    "home": "Eastern Michigan",
+    "kickoff": "Sat, 8/29, 10:30 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "-345",
+      "away": "+270"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "krkdz1iBG7AWaaq1Jyqz",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "New Mexico State",
+    "home": "Florida State",
+    "kickoff": "Sat, 8/29, 11:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-118"
+    },
+    "moneyline": {
+      "home": "-10000",
+      "away": "+2800"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "ubS25mURM5WPDHV73jCJ",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Hawai'i",
+    "home": "Stanford",
+    "kickoff": "Sat, 8/29, 11:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-115"
+    },
+    "moneyline": {
+      "home": "-196",
+      "away": "+162"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "VTgTcNSLLTwRNGD4Opib",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Memphis",
+    "home": "UNLV",
+    "kickoff": "Sun, 8/30, 2:00 AM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-120"
+    },
+    "moneyline": {
+      "home": "-230",
+      "away": "+188"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "znRjCUMuw52Bx8RpEBh2",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "UMass",
+    "home": "Rutgers",
+    "kickoff": "Thu, 9/3, 10:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-115"
+    },
+    "moneyline": {
+      "home": "-10000",
+      "away": "+2800"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "Bv0MBaHETfZPdzFbrBf2",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Merrimack",
+    "home": "Delaware",
+    "kickoff": "Thu, 9/3, 11:00 PM UTC",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-115"
+    },
+    "moneyline": {
+      "home": "-10000",
+      "away": "+2400"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  }
+]
