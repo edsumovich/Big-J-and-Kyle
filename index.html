@@ -36,8 +36,8 @@ const { useState, useMemo, useEffect } = React;
    mode — nobody can sign in, and nothing tries to hit a
    database that doesn't exist yet.
    ============================================================ */
-const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL"; // e.g. "https://xxxxxxxx.supabase.co"
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://lafhnksqtfzpcjzhgbos.supabase.co"
+const SUPABASE_ANON_KEY = "sb_publishable_tIV28b3Ef2w81_H30-MjKw_Z4v7NOeR";
 const SUPABASE_CONFIGURED = SUPABASE_URL.startsWith("http") && SUPABASE_ANON_KEY.length > 20;
 const sb = SUPABASE_CONFIGURED ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
