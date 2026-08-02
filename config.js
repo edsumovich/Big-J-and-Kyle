@@ -7,5 +7,5 @@
 // real keys directly. As long as you don't overwrite THIS file, your site
 // stays configured across every future update to index.html.
 
-window.SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL"; // e.g. "https://xxxxxxxx.supabase.co"
-window.SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY"; // the Publishable key (safe to expose client-side)
+window.SUPABASE_URL = "https://lafhnksqtfzpcjzhgbos.supabase.co"; // e.g. "https://xxxxxxxx.supabase.co"
+window.SUPABASE_ANON_KEY = "sb_publishable_tIV28b3Ef2w81_H30-MjKw_Z4v7NOeR"; // the Publishable key (safe to expose client-side)
