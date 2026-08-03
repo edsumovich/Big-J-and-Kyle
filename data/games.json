@@ -6,6 +6,7 @@
     "away": "Carolina Panthers",
     "home": "Arizona Cardinals",
     "kickoff": "Fri, 8/7, 12:00 AM UTC",
+    "startsAt": "2026-08-07T00:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -28,6 +29,7 @@
     "away": "Los Angeles Chargers",
     "home": "Houston Texans",
     "kickoff": "Fri, 8/14, 12:00 AM UTC",
+    "startsAt": "2026-08-14T00:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -50,6 +52,7 @@
     "away": "Tampa Bay Buccaneers",
     "home": "New York Jets",
     "kickoff": "Fri, 8/14, 11:00 PM UTC",
+    "startsAt": "2026-08-14T23:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -72,6 +75,7 @@
     "away": "Minnesota Vikings",
     "home": "New York Giants",
     "kickoff": "Sat, 8/15, 5:00 PM UTC",
+    "startsAt": "2026-08-15T17:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -94,6 +98,7 @@
     "away": "Los Angeles Rams",
     "home": "Kansas City Chiefs",
     "kickoff": "Sat, 8/15, 8:00 PM UTC",
+    "startsAt": "2026-08-15T20:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -116,6 +121,7 @@
     "away": "New England Patriots",
     "home": "Seattle Seahawks",
     "kickoff": "Thu, 9/10, 12:20 AM UTC",
+    "startsAt": "2026-09-10T00:20:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -138,14 +144,15 @@
     "away": "San Francisco 49ers",
     "home": "Los Angeles Rams",
     "kickoff": "Fri, 9/11, 12:35 AM UTC",
+    "startsAt": "2026-09-11T00:35:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
       "odds": "-105"
     },
     "moneyline": {
-      "home": "-185",
-      "away": "+154"
+      "home": "-180",
+      "away": "+150"
     },
     "total": {
       "line": 44.5,
@@ -160,6 +167,7 @@
     "away": "New York Jets",
     "home": "Tennessee Titans",
     "kickoff": "Sun, 9/13, 5:00 PM UTC",
+    "startsAt": "2026-09-13T17:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -182,6 +190,7 @@
     "away": "Cleveland Browns",
     "home": "Jacksonville Jaguars",
     "kickoff": "Sun, 9/13, 5:00 PM UTC",
+    "startsAt": "2026-09-13T17:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -204,6 +213,7 @@
     "away": "Tampa Bay Buccaneers",
     "home": "Cincinnati Bengals",
     "kickoff": "Sun, 9/13, 5:00 PM UTC",
+    "startsAt": "2026-09-13T17:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -226,6 +236,7 @@
     "away": "North Carolina",
     "home": "TCU",
     "kickoff": "Sat, 8/29, 4:00 PM UTC",
+    "startsAt": "2026-08-29T16:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -248,6 +259,7 @@
     "away": "San José State",
     "home": "USC",
     "kickoff": "Sat, 8/29, 7:00 PM UTC",
+    "startsAt": "2026-08-29T19:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -270,6 +282,7 @@
     "away": "NC State",
     "home": "Virginia",
     "kickoff": "Sat, 8/29, 7:30 PM UTC",
+    "startsAt": "2026-08-29T19:30:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -292,6 +305,7 @@
     "away": "Jacksonville State",
     "home": "North Dakota State",
     "kickoff": "Sat, 8/29, 9:30 PM UTC",
+    "startsAt": "2026-08-29T21:30:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -314,6 +328,7 @@
     "away": "Sacramento State",
     "home": "Eastern Michigan",
     "kickoff": "Sat, 8/29, 10:30 PM UTC",
+    "startsAt": "2026-08-29T22:30:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -336,6 +351,7 @@
     "away": "New Mexico State",
     "home": "Florida State",
     "kickoff": "Sat, 8/29, 11:00 PM UTC",
+    "startsAt": "2026-08-29T23:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -358,6 +374,7 @@
     "away": "Hawai'i",
     "home": "Stanford",
     "kickoff": "Sat, 8/29, 11:00 PM UTC",
+    "startsAt": "2026-08-29T23:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -380,6 +397,7 @@
     "away": "Memphis",
     "home": "UNLV",
     "kickoff": "Sun, 8/30, 2:00 AM UTC",
+    "startsAt": "2026-08-30T02:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -402,6 +420,7 @@
     "away": "UMass",
     "home": "Rutgers",
     "kickoff": "Thu, 9/3, 10:00 PM UTC",
+    "startsAt": "2026-09-03T22:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -424,6 +443,7 @@
     "away": "Merrimack",
     "home": "Delaware",
     "kickoff": "Thu, 9/3, 11:00 PM UTC",
+    "startsAt": "2026-09-03T23:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
