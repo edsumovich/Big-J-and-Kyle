@@ -1,0 +1,2835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>Big J &amp; Kyle</title>
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0E1811; color-scheme: dark; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  button, input, textarea, select { font-family: inherit; }
+  input[type=range] { accent-color: #D9A441; }
+  ::selection { background: #D9A441; color: #14171E; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React + ReactDOM (UMD builds) + Babel standalone for in-browser JSX.
+     No build step needed — this file can be served as-is from GitHub Pages. -->
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.4/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useMemo, useEffect } = React;
+
+/* ============================================================
+   SUPABASE — your keys live in config.js, not here, on purpose.
+   Every time this index.html file gets regenerated, it goes back
+   to placeholder values (nothing in this chat stores your real
+   keys). Keep config.js separate and it'll never get overwritten.
+   Fill it in once — see config.js.
+   The anon/publishable key is safe to expose client-side; Row
+   Level Security is what actually protects the data (see the SQL
+   setup script). Until config.js has real values, the app runs
+   in browse-only demo mode — nobody can sign in, and nothing
+   tries to hit a database that doesn't exist yet.
+   ============================================================ */
+const SUPABASE_URL = window.SUPABASE_URL || "YOUR_SUPABASE_PROJECT_URL";
+const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_CONFIGURED = SUPABASE_URL.startsWith("http") && SUPABASE_ANON_KEY.length > 20;
+const sb = SUPABASE_CONFIGURED
+  ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      auth: { detectSessionInUrl: false, persistSession: true, autoRefreshToken: true },
+    })
+  : null;
+// detectSessionInUrl is off on purpose — we exchange the magic-link code
+// ourselves in App() below so a failed/expired/wrong-browser link shows a
+// real error message instead of silently leaving you logged out.
+
+/* ============================================================
+   SLATE — a friend-group pick tracker
+   Everything below is mock/demo data. Swap the DATA section
+   for real odds-API + database calls when those are connected.
+   No external UI/chart libraries — icons and charts are plain
+   SVG/CSS so this file has zero build step and zero dependency
+   risk when hosted on GitHub Pages.
+   ============================================================ */
+
+const COLORS = {
+  bg: "#0E1811",
+  surface: "#16241C",
+  surface2: "#1C2E23",
+  surface3: "#24392C",
+  paper: "#ECE7D9",
+  gold: "#D9A441",
+  green: "#4C9A6A",
+  red: "#C24B3F",
+  blue: "#3E7CD6",
+  muted: "#8FA396",
+  line: "rgba(255,255,255,0.09)",
+};
+
+const FONT_DISPLAY = "'Arial Narrow', 'Helvetica Neue', Arial, sans-serif";
+const FONT_MONO = "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace";
+const NOTE_MAX = 256;
+
+/* ---------------- tiny icon set (no icon library needed) ---------------- */
+function Icon({ children, size, color }) {
+  const s = size || 16;
+  return (
+    <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={color || "currentColor"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {children}
+    </svg>
+  );
+}
+const ClockIcon = (p) => <Icon {...p}><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></Icon>;
+const TrophyIcon = (p) => <Icon {...p}><path d="M8 4h8v4a4 4 0 0 1-8 0z" /><path d="M6 5H4a2 2 0 0 0 2 4" /><path d="M18 5h2a2 2 0 0 1-2 4" /><path d="M10 14v3M14 14v3" /><path d="M8 20h8" /><path d="M9 17h6l1 3H8z" /></Icon>;
+const ChevronDownIcon = (p) => <Icon {...p}><path d="M6 9l6 6 6-6" /></Icon>;
+const ChevronUpIcon = (p) => <Icon {...p}><path d="M6 15l6-6 6 6" /></Icon>;
+const LockIcon = (p) => <Icon {...p}><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></Icon>;
+const CheckIcon = (p) => <Icon {...p}><path d="M5 12l5 5L19 7" /></Icon>;
+const PencilIcon = (p) => <Icon {...p}><path d="M4 20l4-1 11-11-3-3L5 16z" /><path d="M14 5l3 3" /></Icon>;
+const MessageIcon = (p) => <Icon {...p}><path d="M4 4h16v12H8l-4 4z" /></Icon>;
+const XIcon = (p) => <Icon {...p}><path d="M6 6l12 12M18 6L6 18" /></Icon>;
+const CopyIcon = (p) => <Icon {...p}><rect x="4" y="4" width="12" height="12" rx="2" /><path d="M9 16v2a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-2" /></Icon>;
+const ShuffleIcon = (p) => <Icon {...p}><path d="M3 6h3l7 12h5" /><path d="M14 6h4v0l-3-3M14 6l-3 3" /><path d="M3 18h3l3-5" /><path d="M14 18h4v0l-3 3M14 18l-3-3" /></Icon>;
+const PlusIcon = (p) => <Icon {...p}><path d="M12 5v14M5 12h14" /></Icon>;
+const SearchIcon = (p) => <Icon {...p}><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></Icon>;
+const RadarIcon = (p) => <Icon {...p}><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5.5" /><circle cx="12" cy="12" r="2" /><path d="M12 12L18 7" /></Icon>;
+
+const USERS = [
+  { id: "jordan", name: "Jordan", color: "#D9A441" },
+  { id: "casey", name: "Casey", color: "#4C9A6A" },
+  { id: "priya", name: "Priya", color: "#7C93C9" },
+  { id: "marcus", name: "Marcus", color: "#C24B3F" },
+  { id: "devon", name: "Devon", color: "#B586C7" },
+  { id: "alicia", name: "Alicia", color: "#5FB0B0" },
+  { id: "sam", name: "Sam", color: "#E08A5E" },
+  { id: "nate", name: "Nate", color: "#8FA85C" },
+  { id: "reyna", name: "Reyna", color: "#D97BA0" },
+  { id: "theo", name: "Theo", color: "#7A8FE0" },
+];
+// ME is reassigned once someone signs in (see the auth useEffect in App()
+// below) — until then it defaults to the first demo user so the mock feed
+// still reads sensibly while browsing logged-out.
+let ME = USERS[0];
+let PROFILES = {}; // live profiles fetched from Supabase, keyed by user id
+let BADGES = {}; // hot/cold streak badges, keyed by user id — see computeBadges()
+
+// Resolves an author for a pick/tail/fade: checks the demo USERS roster
+// first (for the seeded mock content), then real fetched profiles, then
+// falls back to a generic placeholder so nothing ever crashes on a
+// not-yet-loaded profile.
+function getUser(id) {
+  return USERS.find((u) => u.id === id) || PROFILES[id] || { id, name: "Someone", color: COLORS.muted };
+}
+
+// Hot/cold streak badges: fire if a user is 70%+ over their last 10 settled
+// picks, ice if they're under 35% over their last 10. Needs a full 10 to
+// qualify either way, and recomputes from scratch every time (so a badge
+// disappears the moment the user's recent form drops out of range).
+// Single source of truth for a user's hot/cold/heating status, shared by
+// the avatar badges and the "Who's Hot?" tab so the criteria always match
+// exactly. Sorts most-recent-first (smallest daysAgo) before evaluating.
+function classifyHotStatus(rows) {
+  const sorted = rows.slice().sort((a, b) => a.daysAgo - b.daysAgo);
+  function pctOfFirst(n) {
+    if (sorted.length < n) return null;
+    return aggregate(sorted.slice(0, n)).winPct;
+  }
+  const pct10 = pctOfFirst(10);
+  if (pct10 !== null && pct10 >= 70) return "fire";
+  if (pct10 !== null && pct10 < 35) return "ice";
+  const heating =
+    [5, 6].some((n) => { const p = pctOfFirst(n); return p !== null && p >= 80; }) ||
+    [7, 8, 9].some((n) => { const p = pctOfFirst(n); return p !== null && p >= 70; });
+  return heating ? "heating" : null;
+}
+
+function computeBadges(rows) {
+  const byUser = {};
+  rows.forEach((r) => {
+    if (!byUser[r.user]) byUser[r.user] = [];
+    byUser[r.user].push(r);
+  });
+  const badges = {};
+  Object.keys(byUser).forEach((userId) => {
+    const status = classifyHotStatus(byUser[userId]);
+    if (status === "fire" || status === "ice") badges[userId] = status;
+  });
+  return badges;
+}
+
+// Mock Week 1 schedule — used until data/games.json (populated by the
+// GitHub Action that polls SportsGameOdds 3x/day, see scripts/fetch-odds.js)
+// is fetched successfully at runtime. See the useEffect in App() below.
+let GAMES = [
+  // ---- NFL Week 1, 2026 (all 16 games) ----
+  {
+    id: "nfl1", sport: "NFL", conf: "NFC West", away: "Patriots", home: "Seahawks", kickoff: "Wed 9/9 \u00b7 8:20 PM ET",
+    spread: { favorite: "home", line: 3, odds: -110 },
+    moneyline: { home: -155, away: 135 },
+    total: { line: 44.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl2", sport: "NFL", conf: "NFC West", away: "49ers", home: "Rams", kickoff: "Thu 9/10 \u00b7 8:35 PM ET (Melbourne)",
+    spread: { favorite: "home", line: 2.5, odds: -110 },
+    moneyline: { home: -145, away: 125 },
+    total: { line: 46.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl3", sport: "NFL", conf: "NFC South", away: "Bears", home: "Panthers", kickoff: "Sun 9/13 \u00b7 1:00 PM ET",
+    spread: { favorite: "away", line: 2.5, odds: -110 },
+    moneyline: { home: 120, away: -140 },
+    total: { line: 43.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl4", sport: "NFL", conf: "AFC North", away: "Buccaneers", home: "Bengals", kickoff: "Sun 9/13 \u00b7 1:00 PM ET",
+    spread: { favorite: "home", line: 3.5, odds: -110 },
+    moneyline: { home: -175, away: 150 },
+    total: { line: 48.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl5", sport: "NFL", conf: "NFC North", away: "Saints", home: "Lions", kickoff: "Sun 9/13 \u00b7 1:00 PM ET",
+    spread: { favorite: "home", line: 9.5, odds: -110 },
+    moneyline: { home: -450, away: 360 },
+    total: { line: 47.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl6", sport: "NFL", conf: "AFC South", away: "Bills", home: "Texans", kickoff: "Sun 9/13 \u00b7 1:00 PM ET",
+    spread: { favorite: "away", line: 2.5, odds: -110 },
+    moneyline: { home: 120, away: -140 },
+    total: { line: 45.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl7", sport: "NFL", conf: "AFC South", away: "Ravens", home: "Colts", kickoff: "Sun 9/13 \u00b7 1:00 PM ET",
+    spread: { favorite: "away", line: 6.5, odds: -110 },
+    moneyline: { home: 230, away: -280 },
+    total: { line: 47.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl8", sport: "NFL", conf: "AFC South", away: "Browns", home: "Jaguars", kickoff: "Sun 9/13 \u00b7 1:00 PM ET",
+    spread: { favorite: "home", line: 3, odds: -110 },
+    moneyline: { home: -155, away: 135 },
+    total: { line: 41.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl9", sport: "NFL", conf: "AFC North", away: "Falcons", home: "Steelers", kickoff: "Sun 9/13 \u00b7 1:00 PM ET",
+    spread: { favorite: "home", line: 2.5, odds: -110 },
+    moneyline: { home: -140, away: 120 },
+    total: { line: 42.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl10", sport: "NFL", conf: "AFC South", away: "Jets", home: "Titans", kickoff: "Sun 9/13 \u00b7 1:00 PM ET",
+    spread: { favorite: "away", line: 1.5, odds: -110 },
+    moneyline: { home: 105, away: -125 },
+    total: { line: 40.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl11", sport: "NFL", conf: "AFC West", away: "Cardinals", home: "Chargers", kickoff: "Sun 9/13 \u00b7 4:25 PM ET",
+    spread: { favorite: "home", line: 3.5, odds: -110 },
+    moneyline: { home: -175, away: 150 },
+    total: { line: 45.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl12", sport: "NFL", conf: "AFC West", away: "Dolphins", home: "Raiders", kickoff: "Sun 9/13 \u00b7 4:25 PM ET",
+    spread: { favorite: "away", line: 3, odds: -110 },
+    moneyline: { home: 135, away: -155 },
+    total: { line: 44.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl13", sport: "NFL", conf: "NFC North", away: "Packers", home: "Vikings", kickoff: "Sun 9/13 \u00b7 4:25 PM ET",
+    spread: { favorite: "away", line: 2.5, odds: -110 },
+    moneyline: { home: 120, away: -140 },
+    total: { line: 45.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl14", sport: "NFL", conf: "NFC East", away: "Commanders", home: "Eagles", kickoff: "Sun 9/13 \u00b7 4:25 PM ET",
+    spread: { favorite: "home", line: 3.5, odds: -110 },
+    moneyline: { home: -175, away: 150 },
+    total: { line: 47.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl15", sport: "NFL", conf: "NFC East", away: "Cowboys", home: "Giants", kickoff: "Sun 9/13 \u00b7 8:20 PM ET",
+    spread: { favorite: "away", line: 3, odds: -110 },
+    moneyline: { home: 135, away: -155 },
+    total: { line: 46.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "nfl16", sport: "NFL", conf: "AFC West", away: "Broncos", home: "Chiefs", kickoff: "Mon 9/14 \u00b7 8:15 PM ET",
+    spread: { favorite: "home", line: 6.5, odds: -110 },
+    moneyline: { home: -270, away: 225 },
+    total: { line: 45.5, overOdds: -110, underOdds: -110 },
+  },
+
+  // ---- NCAAFB Week 1, 2026 (all 32 games) ----
+  {
+    id: "fbs1", sport: "NCAAFB", conf: "Big Ten", away: "UMass", home: "Rutgers", kickoff: "Thu 9/3 \u00b7 6:00 PM ET",
+    spread: { favorite: "home", line: 20.5, odds: -110 },
+    moneyline: { home: -1200, away: 700 },
+    total: { line: 51.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs2", sport: "NCAAFB", conf: "ACC", away: "Akron", home: "Wake Forest", kickoff: "Thu 9/3 \u00b7 7:00 PM ET",
+    spread: { favorite: "home", line: 17.5, odds: -110 },
+    moneyline: { home: -900, away: 550 },
+    total: { line: 54.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs3", sport: "NCAAFB", conf: "Big 12", away: "Bethune-Cookman", home: "UCF", kickoff: "Thu 9/3 \u00b7 7:00 PM ET",
+    spread: { favorite: "home", line: 33.5, odds: -110 },
+    moneyline: { home: -5000, away: 1500 },
+    total: { line: 58.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs4", sport: "NCAAFB", conf: "SEC", away: "Arkansas-Pine Bluff", home: "Missouri", kickoff: "Thu 9/3 \u00b7 8:00 PM ET",
+    spread: { favorite: "home", line: 34.5, odds: -110 },
+    moneyline: { home: -6000, away: 1600 },
+    total: { line: 55.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs5", sport: "NCAAFB", conf: "ACC vs Big 12", away: "Colorado", home: "Georgia Tech", kickoff: "Thu 9/3 \u00b7 8:00 PM ET",
+    spread: { favorite: "home", line: 3, odds: -110 },
+    moneyline: { home: -155, away: 135 },
+    total: { line: 52.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs6", sport: "NCAAFB", conf: "Big Ten", away: "Eastern Illinois", home: "Minnesota", kickoff: "Thu 9/3 \u00b7 8:00 PM ET",
+    spread: { favorite: "home", line: 27.5, odds: -110 },
+    moneyline: { home: -3000, away: 1000 },
+    total: { line: 53.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs7", sport: "NCAAFB", conf: "Big 12", away: "Idaho", home: "Utah", kickoff: "Thu 9/3 \u00b7 9:00 PM ET",
+    spread: { favorite: "home", line: 24.5, odds: -110 },
+    moneyline: { home: -2500, away: 900 },
+    total: { line: 49.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs8", sport: "NCAAFB", conf: "Big Ten", away: "UAB", home: "Illinois", kickoff: "Thu 9/3 \u00b7 9:00 PM ET",
+    spread: { favorite: "home", line: 13.5, odds: -110 },
+    moneyline: { home: -650, away: 480 },
+    total: { line: 50.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs9", sport: "NCAAFB", conf: "Big Ten", away: "Indiana State", home: "Purdue", kickoff: "Fri 9/4 \u00b7 7:00 PM ET",
+    spread: { favorite: "home", line: 20.5, odds: -110 },
+    moneyline: { home: -1500, away: 750 },
+    total: { line: 48.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs10", sport: "NCAAFB", conf: "Big 12", away: "LIU", home: "Kansas", kickoff: "Fri 9/4 \u00b7 8:00 PM ET",
+    spread: { favorite: "home", line: 30.5, odds: -110 },
+    moneyline: { home: -4000, away: 1200 },
+    total: { line: 56.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs11", sport: "NCAAFB", conf: "Big Ten", away: "Toledo", home: "Michigan State", kickoff: "Fri 9/4 \u00b7 8:00 PM ET",
+    spread: { favorite: "home", line: 6.5, odds: -110 },
+    moneyline: { home: -240, away: 200 },
+    total: { line: 47.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs12", sport: "NCAAFB", conf: "Big Ten", away: "Fresno State", home: "USC", kickoff: "Fri 9/4 \u00b7 9:00 PM ET",
+    spread: { favorite: "home", line: 16.5, odds: -110 },
+    moneyline: { home: -800, away: 550 },
+    total: { line: 58.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs13", sport: "NCAAFB", conf: "ACC", away: "Miami", home: "Stanford", kickoff: "Fri 9/4 \u00b7 9:00 PM ET",
+    spread: { favorite: "away", line: 13.5, odds: -110 },
+    moneyline: { home: 480, away: -650 },
+    total: { line: 53.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs14", sport: "NCAAFB", conf: "Big Ten", away: "North Texas", home: "Indiana", kickoff: "Sat 9/5 \u00b7 12:00 PM ET",
+    spread: { favorite: "home", line: 10.5, odds: -110 },
+    moneyline: { home: -450, away: 360 },
+    total: { line: 55.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs15", sport: "NCAAFB", conf: "Sun Belt vs C-USA", away: "Liberty", home: "James Madison", kickoff: "Sat 9/5 \u00b7 12:00 PM ET",
+    spread: { favorite: "home", line: 6.5, odds: -110 },
+    moneyline: { home: -240, away: 200 },
+    total: { line: 51.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs16", sport: "NCAAFB", conf: "SEC", away: "East Carolina", home: "Alabama", kickoff: "Sat 9/5 \u00b7 12:00 PM ET",
+    spread: { favorite: "home", line: 27.5, odds: -110 },
+    moneyline: { home: -3500, away: 1100 },
+    total: { line: 54.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs17", sport: "NCAAFB", conf: "Big Ten", away: "Ball State", home: "Ohio State", kickoff: "Sat 9/5 \u00b7 12:30 PM ET",
+    spread: { favorite: "home", line: 38.5, odds: -110 },
+    moneyline: { home: -8000, away: 2000 },
+    total: { line: 59.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs18", sport: "NCAAFB", conf: "SEC", away: "Tennessee State", home: "Georgia", kickoff: "Sat 9/5 \u00b7 3:00 PM ET",
+    spread: { favorite: "home", line: 40.5, odds: -110 },
+    moneyline: { home: -10000, away: 2500 },
+    total: { line: 55.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs19", sport: "NCAAFB", conf: "SEC vs Big 12", away: "Baylor", home: "Auburn", kickoff: "Sat 9/5 \u00b7 3:30 PM ET (Atlanta)",
+    spread: { favorite: "home", line: 2.5, odds: -110 },
+    moneyline: { home: -135, away: 115 },
+    total: { line: 49.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs20", sport: "NCAAFB", conf: "Big Ten", away: "Boise State", home: "Oregon", kickoff: "Sat 9/5 \u00b7 3:30 PM ET",
+    spread: { favorite: "home", line: 9.5, odds: -110 },
+    moneyline: { home: -380, away: 310 },
+    total: { line: 55.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs21", sport: "NCAAFB", conf: "SEC", away: "Texas State", home: "Texas", kickoff: "Sat 9/5 \u00b7 3:30 PM ET",
+    spread: { favorite: "home", line: 27.5, odds: -110 },
+    moneyline: { home: -3000, away: 1000 },
+    total: { line: 52.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs22", sport: "NCAAFB", conf: "ACC", away: "Tulane", home: "Duke", kickoff: "Sat 9/5 \u00b7 3:30 PM ET",
+    spread: { favorite: "home", line: 3.5, odds: -110 },
+    moneyline: { home: -175, away: 150 },
+    total: { line: 53.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs23", sport: "NCAAFB", conf: "American vs Big 12", away: "Oklahoma State", home: "Tulsa", kickoff: "Sat 9/5 \u00b7 3:45 PM ET",
+    spread: { favorite: "away", line: 6.5, odds: -110 },
+    moneyline: { home: 210, away: -250 },
+    total: { line: 56.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs24", sport: "NCAAFB", conf: "American", away: "FIU", home: "South Florida", kickoff: "Sat 9/5 \u00b7 7:00 PM ET",
+    spread: { favorite: "home", line: 20.5, odds: -110 },
+    moneyline: { home: -1400, away: 750 },
+    total: { line: 57.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs25", sport: "NCAAFB", conf: "SEC vs ACC", away: "Clemson", home: "LSU", kickoff: "Sat 9/5 \u00b7 7:30 PM ET",
+    spread: { favorite: "home", line: 2.5, odds: -110 },
+    moneyline: { home: -135, away: 115 },
+    total: { line: 51.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs26", sport: "NCAAFB", conf: "Big Ten", away: "Western Michigan", home: "Michigan", kickoff: "Sat 9/5 \u00b7 7:30 PM ET",
+    spread: { favorite: "home", line: 24.5, odds: -110 },
+    moneyline: { home: -2200, away: 900 },
+    total: { line: 47.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs27", sport: "NCAAFB", conf: "SEC", away: "Florida Atlantic", home: "Florida", kickoff: "Sat 9/5 \u00b7 7:45 PM ET",
+    spread: { favorite: "home", line: 23.5, odds: -110 },
+    moneyline: { home: -2000, away: 850 },
+    total: { line: 56.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs28", sport: "NCAAFB", conf: "ACC vs Big Ten", away: "UCLA", home: "California", kickoff: "Sat 9/5 \u00b7 10:30 PM ET",
+    spread: { favorite: "home", line: 3.5, odds: -110 },
+    moneyline: { home: -175, away: 150 },
+    total: { line: 54.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs29", sport: "NCAAFB", conf: "Big Ten vs Pac-12", away: "Washington State", home: "Washington", kickoff: "Sun 9/6 \u00b7 4:00 PM ET",
+    spread: { favorite: "home", line: 13.5, odds: -110 },
+    moneyline: { home: -650, away: 480 },
+    total: { line: 50.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs30", sport: "NCAAFB", conf: "SEC vs ACC", away: "Louisville", home: "Ole Miss", kickoff: "Sun 9/6 \u00b7 7:30 PM ET (Nashville)",
+    spread: { favorite: "home", line: 3.5, odds: -110 },
+    moneyline: { home: -175, away: 150 },
+    total: { line: 58.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs31", sport: "NCAAFB", conf: "Independent vs Big Ten", away: "Wisconsin", home: "Notre Dame", kickoff: "Sun 9/6 \u00b7 7:30 PM ET (Green Bay)",
+    spread: { favorite: "home", line: 6.5, odds: -110 },
+    moneyline: { home: -250, away: 210 },
+    total: { line: 46.5, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "fbs32", sport: "NCAAFB", conf: "ACC", away: "SMU", home: "Florida State", kickoff: "Mon 9/7 \u00b7 7:30 PM ET",
+    spread: { favorite: "away", line: 2.5, odds: -110 },
+    moneyline: { home: 115, away: -135 },
+    total: { line: 55.5, overOdds: -110, underOdds: -110 },
+  },
+
+  // ---- EPL (mock) ----
+  {
+    id: "epl1", sport: "EPL", conf: "Premier League", away: "Manchester City", home: "Arsenal", kickoff: "Sun \u00b7 11:30 AM ET",
+    spread: { favorite: "away", line: 0.5, odds: -110 },
+    moneyline: { home: 240, away: -145, draw: 260 },
+    total: { line: 2.5, overOdds: -115, underOdds: -105 },
+  },
+  {
+    id: "epl2", sport: "EPL", conf: "Premier League", away: "Chelsea", home: "Liverpool", kickoff: "Sun \u00b7 9:00 AM ET",
+    spread: { favorite: "home", line: 0.5, odds: -110 },
+    moneyline: { home: -125, away: 320, draw: 250 },
+    total: { line: 2.75, overOdds: -120, underOdds: 100 },
+  },
+  {
+    id: "epl3", sport: "EPL", conf: "Premier League", away: "Tottenham", home: "Newcastle", kickoff: "Sat \u00b7 10:00 AM ET",
+    spread: { favorite: "home", line: 0.25, odds: -110 },
+    moneyline: { home: 105, away: 240, draw: 235 },
+    total: { line: 2.5, overOdds: -105, underOdds: -115 },
+  },
+
+  // ---- Serie A (mock) ----
+  {
+    id: "seriea1", sport: "SERIEA", conf: "Serie A", away: "Juventus", home: "Inter Milan", kickoff: "Sun \u00b7 2:45 PM ET",
+    spread: { favorite: "home", line: 0.5, odds: -110 },
+    moneyline: { home: -110, away: 290, draw: 260 },
+    total: { line: 2.25, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "seriea2", sport: "SERIEA", conf: "Serie A", away: "Napoli", home: "AC Milan", kickoff: "Sun \u00b7 12:00 PM ET",
+    spread: { favorite: "away", line: 0.25, odds: -110 },
+    moneyline: { home: 210, away: -120, draw: 250 },
+    total: { line: 2.5, overOdds: -110, underOdds: -110 },
+  },
+
+  // ---- Bundesliga (mock) ----
+  {
+    id: "bund1", sport: "BUNDESLIGA", conf: "Bundesliga", away: "Borussia Dortmund", home: "Bayern Munich", kickoff: "Sat \u00b7 9:30 AM ET",
+    spread: { favorite: "home", line: 1, odds: -110 },
+    moneyline: { home: -220, away: 550, draw: 380 },
+    total: { line: 3.25, overOdds: -110, underOdds: -110 },
+  },
+  {
+    id: "bund2", sport: "BUNDESLIGA", conf: "Bundesliga", away: "RB Leipzig", home: "Bayer Leverkusen", kickoff: "Sat \u00b7 12:30 PM ET",
+    spread: { favorite: "home", line: 0.5, odds: -110 },
+    moneyline: { home: -105, away: 260, draw: 250 },
+    total: { line: 2.75, overOdds: -110, underOdds: -110 },
+  },
+];
+
+
+function signed(n) {
+  return n > 0 ? "+" + n : String(n);
+}
+
+function sideOptions(game, market) {
+  if (market === "Spread") {
+    const awayLine = game.spread.favorite === "away" ? -game.spread.line : game.spread.line;
+    const homeLine = game.spread.favorite === "home" ? -game.spread.line : game.spread.line;
+    return [
+      { label: game.away + " " + signed(awayLine), odds: game.spread.odds },
+      { label: game.home + " " + signed(homeLine), odds: game.spread.odds },
+    ];
+  }
+  if (market === "Moneyline") {
+    const opts = [
+      { label: game.away + " ML", odds: game.moneyline.away },
+      { label: game.home + " ML", odds: game.moneyline.home },
+    ];
+    if (game.moneyline.draw != null) {
+      opts.splice(1, 0, { label: "Draw", odds: game.moneyline.draw });
+    }
+    return opts;
+  }
+  return [
+    { label: "Over " + game.total.line, odds: game.total.overOdds },
+    { label: "Under " + game.total.line, odds: game.total.underOdds },
+  ];
+}
+
+// Used by Fade. Historically accurate for Spread (our schema shares one
+// odds value across both sides, and the opposite line is fully determined
+// by the original pick's own number — so this stays correct even if the
+// live line has since moved). Total keeps the original line but can't
+// recover the flipped side's exact original odds (we only ever store the
+// side that was actually picked), so those odds fall back to whatever's
+// live now. Moneyline has no algebraic relationship between sides at all,
+// so it's live-odds best effort too.
+function oppositeSide(game, pick) {
+  if (pick.market === "Total") {
+    const isOver = pick.pick.slice(0, 4) === "Over";
+    const lineStr = pick.pick.replace(/^(Over|Under)\s*/, "");
+    return {
+      label: (isOver ? "Under " : "Over ") + lineStr,
+      odds: isOver ? game.total.underOdds : game.total.overOdds,
+    };
+  }
+  if (pick.market === "Moneyline") {
+    const isAway = pick.pick.indexOf(game.away) === 0;
+    const otherTeam = isAway ? game.home : game.away;
+    return { label: otherTeam + " ML", odds: isAway ? game.moneyline.home : game.moneyline.away };
+  }
+  // Spread
+  const match = pick.pick.match(/^(.*)\s([+-]\d+(?:\.\d+)?)$/);
+  if (match) {
+    const originalTeam = match[1];
+    const originalLine = parseFloat(match[2]);
+    const otherTeam = originalTeam === game.away ? game.home : game.away;
+    return { label: otherTeam + " " + signed(-originalLine), odds: pick.odds };
+  }
+  const opts = sideOptions(game, pick.market);
+  return opts.find((o) => o.label !== pick.pick) || opts[0];
+}
+
+function lineSummary(game) {
+  const favTeam = game.spread.favorite === "home" ? game.home : game.away;
+  return favTeam + " -" + game.spread.line + " \u00b7 O/U " + game.total.line;
+}
+
+// Seeded demo picks so the board never looks empty. Computed against the
+// CURRENT GAMES list (mock or live-odds) rather than hardcoded game ids,
+// since live odds replace GAMES with real API ids that won't match fixed
+// strings like "nfl1".
+function computeSeedFeed() {
+  const nfl = GAMES.filter((g) => g.sport === "NFL");
+  const ncaafb = GAMES.filter((g) => g.sport === "NCAAFB");
+  const rows = [];
+  let n = 0;
+
+  function add(game, market, sideIndex, user, stake, note) {
+    if (!game) return;
+    const opts = sideOptions(game, market);
+    const side = opts[sideIndex] || opts[0];
+    if (!side) return;
+    rows.push({ id: "seed" + n++, user, game: game.id, market, pick: side.label, odds: side.odds, stake, note: note || "" });
+  }
+
+  const nfl1 = nfl[0], nfl2 = nfl[1];
+  const fb1 = ncaafb[0], fb2 = ncaafb[1];
+  const epl1 = GAMES.find((g) => g.id === "epl1");
+  const epl2 = GAMES.find((g) => g.id === "epl2");
+  const seriea1 = GAMES.find((g) => g.id === "seriea1");
+  const bund1 = GAMES.find((g) => g.id === "bund1");
+
+  add(nfl1, "Spread", 1, "reyna", 2, "Backing the home side here, not loving the road trip on a short week.");
+  add(nfl1, "Total", 0, "theo", 1, "Both offenses look live in the opener, feels like it clears easy.");
+  add(fb1, "Moneyline", 1, "casey", 1, "Free square in a laugher.");
+  add(fb1, "Spread", 0, "theo", 1.5, "Backdoor cover potential once it's out of hand.");
+  add(nfl2, "Spread", 1, "sam", 1, "Home dog, always a live watch.");
+  add(nfl2, "Spread", 0, "nate", 2, "Not paying that many points on the road this early.");
+  add(fb2, "Spread", 0, "devon", 3, "Not fading this one on the road.");
+  add(fb2, "Spread", 1, "alicia", 2, "Backing the dog, feels like the number's too high.");
+  add(epl1, "Spread", 1, "casey", 2, "City's away form has looked shaky, happy to take the plus points at home.");
+  add(epl1, "Total", 0, "marcus", 1, "Neither back line has looked settled, over feels safe.");
+  add(epl2, "Moneyline", 1, "priya", 1.5, "Liverpool at Anfield in this form is close to automatic.");
+  add(seriea1, "Moneyline", 1, "devon", 1.5, "Inter at home with derby energy, hard to fade.");
+  add(bund1, "Spread", 1, "alicia", 2, "Bayern by more than a goal at home, book it.");
+
+  return rows;
+}
+
+// Demo-only analytics so logged-out visitors can see what Analytics looks
+// like before signing up. Built from the mock schedule's real teams/
+// conferences so it looks legitimate, but it's entirely synthetic — real,
+// logged-in users only ever see their actual graded picks (see dbGraded).
+function computeDemoAnalytics() {
+  const pool = GAMES;
+  if (!pool.length) return [];
+  const markets = ["Spread", "Moneyline", "Total"];
+  const results = ["win", "win", "loss", "loss", "push"];
+  const sources = ["own", "own", "own", "tail", "fade"];
+  let rows = [];
+  let id = 0;
+  USERS.forEach((u) => {
+    const n = 14 + (u.id.length % 5) * 3;
+    for (let i = 0; i < n; i++) {
+      const game = pool[(i * 3 + u.id.length) % pool.length];
+      const market = markets[(i + 1) % markets.length];
+      const result = results[(i * 7 + u.id.length * 3) % results.length];
+      const source = sources[(i * 11 + u.id.length * 5) % sources.length];
+      const stake = [1, 1, 1.5, 2, 2, 3][(i * 5 + u.id.length) % 6];
+      const daysAgo = (i * 17 + u.id.length * 11) % 90;
+      const pickedTeam = market === "Total" ? null : ((i + u.id.length) % 2 === 0 ? game.away : game.home);
+      const overUnder = market === "Total" ? ((i + u.id.length) % 2 === 0 ? "Over" : "Under") : null;
+      const created = new Date(Date.now() - daysAgo * 86400000);
+      rows.push({
+        id: "demo-hist" + id++, user: u.id, source,
+        sport: game.sport, conf: game.conf, market, result, stake,
+        teamA: game.away, teamB: game.home, pickedTeam, overUnder, daysAgo,
+        dateLabel: created.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+      });
+    }
+  });
+
+  // Guarantee a clear hot streak (fire badge) and cold streak (ice badge) in
+  // the demo data so both are visible in Demo Mode without depending on the
+  // pseudo-random generation above happening to produce one. Clears out any
+  // of these two users' rows from the last 10 days first so the injected
+  // results are unambiguously their "last 10 settled picks."
+  const hotUser = "sam";
+  const coldUser = "nate";
+  rows = rows.filter((r) => !((r.user === hotUser || r.user === coldUser) && r.daysAgo < 10));
+
+  function injectStreak(userId, wins) {
+    for (let i = 0; i < 10; i++) {
+      const game = pool[i % pool.length];
+      rows.push({
+        id: "demo-streak-" + userId + "-" + i, user: userId, source: "own",
+        sport: game.sport, conf: game.conf, market: "Spread", result: i < wins ? "win" : "loss", stake: 1.5,
+        teamA: game.away, teamB: game.home,
+        pickedTeam: i % 2 === 0 ? game.away : game.home, overUnder: null,
+        daysAgo: i,
+        dateLabel: new Date(Date.now() - i * 86400000).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+      });
+    }
+  }
+  injectStreak(hotUser, 8); // 8 of last 10 = 80% -> fire badge
+  injectStreak(coldUser, 2); // 2 of last 10 = 20% -> ice badge
+
+  // A third guaranteed example: hot over her last 5 (4-1, 80%) but her
+  // overall last 10 settles back to 50%, so she qualifies for "Heating Up"
+  // without also tripping the fire badge/On Fire criteria.
+  const heatingUser = "priya";
+  rows = rows.filter((r) => !(r.user === heatingUser && r.daysAgo < 10));
+  const heatingResults = ["win", "win", "win", "win", "loss", "loss", "loss", "loss", "win", "loss"];
+  for (let i = 0; i < 10; i++) {
+    const game = pool[(i + 1) % pool.length];
+    rows.push({
+      id: "demo-heat-" + i, user: heatingUser, source: "own",
+      sport: game.sport, conf: game.conf, market: "Spread", result: heatingResults[i], stake: 1.5,
+      teamA: game.away, teamB: game.home,
+      pickedTeam: i % 2 === 0 ? game.away : game.home, overUnder: null,
+      daysAgo: i,
+      dateLabel: new Date(Date.now() - i * 86400000).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+    });
+  }
+
+  return rows;
+}
+
+function payoutUnits(stake, result) {
+  if (result === "win") return stake * 0.91;
+  if (result === "loss") return -stake;
+  return 0;
+}
+
+function aggregate(rows) {
+  const wins = rows.filter((r) => r.result === "win").length;
+  const losses = rows.filter((r) => r.result === "loss").length;
+  const pushes = rows.filter((r) => r.result === "push").length;
+  const decided = wins + losses;
+  const winPct = decided ? Math.round((wins / decided) * 100) : 0;
+  const units = rows.reduce((s, r) => s + payoutUnits(r.stake, r.result), 0);
+  const avgClv = rows.length ? rows.reduce((s, r) => s + r.clv, 0) / rows.length : 0;
+  return {
+    wins, losses, pushes, winPct,
+    units: Math.round(units * 10) / 10,
+    avgClv: Math.round(avgClv * 10) / 10,
+    n: rows.length,
+  };
+}
+
+function groupBy(rows, key) {
+  const groups = {};
+  rows.forEach((r) => {
+    const k = r[key];
+    if (!groups[k]) groups[k] = [];
+    groups[k].push(r);
+  });
+  return groups;
+}
+
+function teamStats(rows) {
+  const teams = Array.from(new Set(rows.flatMap((r) => [r.teamA, r.teamB]))).sort();
+  return teams.map((team) => {
+    const involved = rows.filter((r) => r.teamA === team || r.teamB === team);
+    const forRows = involved.filter((r) => r.pickedTeam === team);
+    const againstRows = involved.filter((r) => r.pickedTeam && r.pickedTeam !== team);
+    const overRows = involved.filter((r) => r.overUnder === "Over");
+    const underRows = involved.filter((r) => r.overUnder === "Under");
+    return {
+      team,
+      sport: involved.length ? involved[0].sport : null,
+      for: aggregate(forRows),
+      against: aggregate(againstRows),
+      overs: aggregate(overRows),
+      unders: aggregate(underRows),
+      combined: aggregate(involved),
+    };
+  });
+}
+
+function pct(agg) {
+  return (agg.wins + agg.losses) > 0 ? agg.winPct + "%" : "\u2014";
+}
+
+function formatUpdatedAt(iso) {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return null;
+  const time = d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  const now = new Date();
+  const sameDay = d.toDateString() === now.toDateString();
+  if (sameDay) return "Updated " + time;
+  const date = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  return "Updated " + date + " \u00b7 " + time;
+}
+
+function App() {
+  const [tab, setTab] = useState("slate");
+  const [expanded, setExpanded] = useState({ NFL: false, NCAAFB: false, PROPS: false, EPL: false, SERIEA: false, BUNDESLIGA: false });
+  const [analyticsUser, setAnalyticsUser] = useState(ME.id);
+  const [overlay, setOverlay] = useState(null);
+  const [oddsStatus, setOddsStatus] = useState("loading"); // "loading" | "live" | "mock"
+  const [oddsUpdatedAt, setOddsUpdatedAt] = useState(null);
+  const [playerProps, setPlayerProps] = useState([]);
+
+  const [session, setSession] = useState(null);
+  const [authChecked, setAuthChecked] = useState(!sb); // true immediately if not configured
+  const [demoMode, setDemoMode] = useState(() => {
+    try { return localStorage.getItem("slate_demo_mode") === "1"; } catch (e) { return false; }
+  });
+  const [authOpen, setAuthOpen] = useState(false);
+  const [authEmail, setAuthEmail] = useState("");
+  const [authPassword, setAuthPassword] = useState("");
+  const [authMode, setAuthMode] = useState("login"); // "login" | "signup"
+  const [authStatus, setAuthStatus] = useState("idle"); // idle | sending | confirm | error
+  const [authErrorDetail, setAuthErrorDetail] = useState("");
+  const [accountOpen, setAccountOpen] = useState(false);
+  const [displayName, setDisplayName] = useState("");
+  const [nameStatus, setNameStatus] = useState("idle"); // idle | saving | saved | error
+  const [avatarStatus, setAvatarStatus] = useState("idle"); // idle | uploading | saved | error
+  const [loginError, setLoginError] = useState("");
+
+  const [dbFeed, setDbFeed] = useState([]);
+  const [dbRadar, setDbRadar] = useState([]);
+  const [dbTailsFades, setDbTailsFades] = useState([]);
+  const [dbGraded, setDbGraded] = useState([]); // real, self-reported win/loss/push results, for Analytics
+  const [dbRoster, setDbRoster] = useState([]); // real users who've actually made a graded pick, for the Analytics picker
+  // Local-only sandbox state for Demo Mode — never touches Supabase, never
+  // asks you to log in, just resets on reload.
+  const [demoFeed, setDemoFeed] = useState([]);
+  const [demoRadar, setDemoRadar] = useState([]);
+  const [demoTailsFades, setDemoTailsFades] = useState([]);
+  const [, bump] = useState(0); // forces a re-render after mutating the
+  // module-level ME / PROFILES bindings, same trick used for GAMES above.
+  const forceRerender = () => bump((n) => n + 1);
+
+  useEffect(() => {
+    // Demo Mode (logged out) always shows the static mock schedule — no live
+    // odds fetch at all, so it's a fully deterministic preview. Live odds
+    // only load in once you're actually signed in.
+    if (!session) {
+      setOddsStatus("mock");
+      return;
+    }
+    fetch("./data/games.json", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("no odds file yet"))))
+      .then((fetched) => {
+        if (Array.isArray(fetched) && fetched.length) {
+          GAMES = fetched;
+          setOddsStatus("live");
+        } else {
+          setOddsStatus("mock");
+        }
+      })
+      .catch(() => setOddsStatus("mock"));
+
+    fetch("./data/last-updated.json", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("no timestamp file yet"))))
+      .then((data) => {
+        if (data && data.updatedAt) setOddsUpdatedAt(data.updatedAt);
+      })
+      .catch(() => {});
+
+    fetch("./data/player-props.json", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("no props file yet"))))
+      .then((fetched) => setPlayerProps(Array.isArray(fetched) ? fetched : []))
+      .catch(() => setPlayerProps([]));
+  }, [session && session.user ? session.user.id : null]);
+
+  // --- auth: handle a magic-link redirect, restore session, keep it in sync ---
+  useEffect(() => {
+    if (!sb) { setAuthChecked(true); return; }
+
+    async function init() {
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+      const errorDesc = params.get("error_description") || params.get("error");
+      let codeWasProcessed = false;
+
+      // Some Supabase projects (older ones especially) still use the
+      // "implicit" auth flow, which puts tokens in the URL hash instead of
+      // a ?code= query param. Handle both so this works either way.
+      const hash = window.location.hash && window.location.hash.length > 1 ? window.location.hash.slice(1) : "";
+      const hashParams = new URLSearchParams(hash);
+      const hashAccessToken = hashParams.get("access_token");
+      const hashRefreshToken = hashParams.get("refresh_token");
+      const hashError = hashParams.get("error_description") || hashParams.get("error");
+
+      if (errorDesc) {
+        setLoginError(decodeURIComponent(errorDesc.replace(/\+/g, " ")));
+        window.history.replaceState({}, "", window.location.pathname);
+      } else if (hashError) {
+        setLoginError(decodeURIComponent(hashError.replace(/\+/g, " ")));
+        window.history.replaceState({}, "", window.location.pathname);
+      } else if (code) {
+        codeWasProcessed = true;
+        const { error } = await sb.auth.exchangeCodeForSession(window.location.href);
+        window.history.replaceState({}, "", window.location.pathname);
+        if (error) {
+          setLoginError(
+            "Sign-in link failed: \u201c" + error.message + "\u201d \u2014 it may have expired, already been used, or been opened in a different browser than the one you requested it from."
+          );
+        }
+      } else if (hashAccessToken && hashRefreshToken) {
+        codeWasProcessed = true;
+        const { error } = await sb.auth.setSession({ access_token: hashAccessToken, refresh_token: hashRefreshToken });
+        window.history.replaceState({}, "", window.location.pathname);
+        if (error) {
+          setLoginError("Sign-in link failed: \u201c" + error.message + "\u201d");
+        }
+      }
+
+      const { data } = await sb.auth.getSession();
+      if (codeWasProcessed && !data.session) {
+        setLoginError((prev) => prev || "The sign-in link redirected back here, but no session was created. Double-check your Supabase Redirect URLs match this exact address.");
+      }
+      applySession(data.session);
+      setAuthChecked(true);
+    }
+
+    init();
+    const { data: sub } = sb.auth.onAuthStateChange((_event, sess) => applySession(sess));
+    return () => sub.subscription.unsubscribe();
+  }, []);
+
+  function applySession(sess) {
+    setSession(sess);
+    if (sess) {
+      ME = { id: sess.user.id, name: sess.user.email.split("@")[0], color: COLORS.gold, avatarUrl: null };
+      sb.from("profiles").select("*").eq("id", sess.user.id).maybeSingle().then(({ data }) => {
+        if (data) {
+          ME = { id: data.id, name: data.name, color: data.color, avatarUrl: data.avatar_url || null };
+          forceRerender();
+        }
+      });
+      setAuthOpen(false);
+      setAuthStatus("idle");
+      setLoginError("");
+    } else {
+      ME = USERS[0];
+    }
+    forceRerender();
+  }
+
+  function enterDemoMode() {
+    setDemoMode(true);
+    try { localStorage.setItem("slate_demo_mode", "1"); } catch (e) {}
+  }
+
+  // --- board data: everyone's profiles, picks, radar picks, tails/fades ---
+  function refreshBoard() {
+    if (!sb || !session) {
+      // Not logged in: don't touch the real database at all. Logged-out
+      // visitors (including Demo Mode) only ever see the seeded demo picks.
+      setDbFeed([]);
+      setDbRadar([]);
+      setDbTailsFades([]);
+      setDbGraded([]);
+      setDbRoster([]);
+      return;
+    }
+    sb.from("profiles").select("*").then(({ data }) => {
+      if (data) {
+        const map = {};
+        data.forEach((p) => { map[p.id] = { id: p.id, name: p.name, color: p.color, avatarUrl: p.avatar_url || null }; });
+        PROFILES = map;
+        forceRerender();
+      }
+    });
+    sb.from("picks").select("*").then(({ data }) => setDbFeed(data ? data.map(rowToPickShape) : []));
+    sb.from("radar_picks").select("*").then(({ data }) => setDbRadar(data ? data.map(rowToPickShape) : []));
+    sb.from("tails_fades").select("*").then(({ data }) => setDbTailsFades(data ? data.map(rowToTailFadeShape) : []));
+
+    Promise.all([
+      sb.from("picks").select("*").not("result", "is", null),
+      sb.from("tails_fades").select("*").not("result", "is", null),
+    ]).then(([pickRes, tfRes]) => {
+      const gradedPicks = (pickRes.data || []).map((r) => gradedRowToAnalytics(r, "own"));
+      const gradedTf = (tfRes.data || []).map((r) => gradedRowToAnalytics(r, r.type));
+      const merged = [...gradedPicks, ...gradedTf];
+      setDbGraded(merged);
+      setDbRoster(Array.from(new Set(merged.map((r) => r.user))));
+    });
+  }
+
+  useEffect(() => { refreshBoard(); }, [session && session.user ? session.user.id : null]);
+
+  // Demo/seed picks always show so logged-out browsing feels populated;
+  // real rows from Supabase only ever load in once you're signed in.
+  // Recomputed whenever GAMES changes (oddsStatus flipping to "live" swaps
+  // GAMES to the real schedule with different game ids).
+  const feed = useMemo(
+    () => (session ? dbFeed : [...computeSeedFeed(), ...demoFeed]),
+    [dbFeed, demoFeed, session, oddsStatus]
+  );
+  const radar = session ? dbRadar : demoRadar;
+  const tailsFades = session ? dbTailsFades : demoTailsFades;
+  const analyticsRows = useMemo(
+    () => (session ? dbGraded : computeDemoAnalytics()),
+    [session, dbGraded, oddsStatus]
+  );
+  const analyticsRoster = useMemo(
+    () => (session ? dbRoster : USERS.map((u) => u.id)),
+    [session, dbRoster]
+  );
+  BADGES = computeBadges(analyticsRows);
+
+  async function addPick(gameId, pick) {
+    if (session && sb) {
+      const uid = session.user.id;
+      await sb.from("picks").upsert(
+        { user_id: uid, game_id: gameId, market: pick.market, pick: pick.pick, odds: pick.odds, stake: pick.stake, note: pick.note || "" },
+        { onConflict: "user_id,game_id,market" }
+      );
+      await sb.from("radar_picks").delete().match({ user_id: uid, game_id: gameId, market: pick.market, pick: pick.pick });
+      await sb.from("tails_fades").delete().match({ user_id: uid, game_id: gameId, market: pick.market, pick: pick.pick });
+      refreshBoard();
+      return;
+    }
+    // Demo mode: local-only sandbox, never touches Supabase, never asks you to log in.
+    setDemoFeed((prev) => [
+      ...prev.filter((p) => !(p.user === ME.id && p.game === gameId && p.market === pick.market)),
+      { id: "demo-p" + Date.now(), user: ME.id, game: gameId, ...pick },
+    ]);
+    setDemoRadar((prev) => prev.filter((r) => !(r.user === ME.id && r.game === gameId && r.market === pick.market && r.pick === pick.pick)));
+    setDemoTailsFades((prev) => prev.filter((t) => !(t.game === gameId && t.market === pick.market && t.pick === pick.pick)));
+  }
+
+  async function addRadar(gameId, pick) {
+    if (session && sb) {
+      await sb.from("radar_picks").upsert(
+        { user_id: session.user.id, game_id: gameId, market: pick.market, pick: pick.pick, odds: pick.odds, stake: pick.stake, note: pick.note || "" },
+        { onConflict: "user_id,game_id,market" }
+      );
+      refreshBoard();
+      return;
+    }
+    setDemoRadar((prev) => [
+      ...prev.filter((r) => !(r.user === ME.id && r.game === gameId && r.market === pick.market)),
+      { id: "demo-r" + Date.now(), user: ME.id, game: gameId, ...pick },
+    ]);
+  }
+
+  async function removeRadar(gameId, market, pick) {
+    if (session && sb) {
+      await sb.from("radar_picks").delete().match({ user_id: session.user.id, game_id: gameId, market, pick });
+      refreshBoard();
+      return;
+    }
+    setDemoRadar((prev) => prev.filter((r) => !(r.user === ME.id && r.game === gameId && r.market === market && r.pick === pick)));
+  }
+
+  function toggleSection(sport) {
+    setExpanded((prev) => ({ ...prev, [sport]: !prev[sport] }));
+  }
+
+  function openOverlay(pick, game) { setOverlay({ pick, game }); }
+  function closeOverlay() { setOverlay(null); }
+
+  async function addToSheet(stake) {
+    if (!overlay) return;
+    const { pick, game } = overlay;
+    await addPick(game.id, { market: pick.market, pick: pick.pick, odds: pick.odds, stake: stake != null ? stake : pick.stake, note: "" });
+    closeOverlay();
+  }
+
+  async function addTailFade(type) {
+    if (!overlay) return;
+    const { pick, game } = overlay;
+    const side = type === "tail" ? { label: pick.pick, odds: pick.odds } : oppositeSide(game, pick);
+    if (session && sb) {
+      await sb.from("tails_fades").upsert(
+        {
+          user_id: session.user.id, source_user_id: pick.user, game_id: game.id,
+          market: pick.market, pick: side.label, odds: side.odds, stake: pick.stake, type,
+        },
+        { onConflict: "user_id,game_id" }
+      );
+      refreshBoard();
+      closeOverlay();
+      return;
+    }
+    setDemoTailsFades((prev) => [
+      ...prev.filter((t) => t.game !== game.id),
+      { id: "demo-tf" + Date.now(), type, sourceUser: pick.user, game: game.id, market: pick.market, pick: side.label, odds: side.odds, stake: pick.stake },
+    ]);
+    closeOverlay();
+  }
+
+  async function signInWithPassword(email, password) {
+    if (!sb || !email || !password) return;
+    setAuthStatus("sending");
+    const { error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) {
+      setAuthErrorDetail(error.message || "Unknown error");
+      setAuthStatus("error");
+    } else {
+      setAuthErrorDetail("");
+      setAuthStatus("idle");
+    }
+  }
+
+  async function signUpWithPassword(email, password) {
+    if (!sb || !email || !password) return;
+    setAuthStatus("sending");
+    const { data, error } = await sb.auth.signUp({
+      email, password,
+      options: { emailRedirectTo: window.location.origin + window.location.pathname },
+    });
+    if (error) {
+      setAuthErrorDetail(error.message || "Unknown error");
+      setAuthStatus("error");
+      return;
+    }
+    if (data.session) {
+      // Email confirmation is off for this project — signed in right away.
+      setAuthErrorDetail("");
+      setAuthStatus("idle");
+    } else {
+      // Email confirmation is on — needs to click a link before they can sign in.
+      setAuthErrorDetail("");
+      setAuthStatus("confirm");
+    }
+  }
+
+  async function signOut() {
+    if (!sb) return;
+    await sb.auth.signOut();
+  }
+
+  function openAccount() {
+    setDisplayName(ME.name || "");
+    setNameStatus("idle");
+    setAccountOpen(true);
+  }
+
+  async function saveDisplayName(name) {
+    const trimmed = name.trim();
+    if (!sb || !session || !trimmed) return;
+    setNameStatus("saving");
+    const { error } = await sb.from("profiles").update({ name: trimmed }).eq("id", session.user.id);
+    if (error) {
+      setNameStatus("error");
+      return;
+    }
+    ME = { ...ME, name: trimmed };
+    PROFILES = { ...PROFILES, [session.user.id]: { ...(PROFILES[session.user.id] || {}), id: session.user.id, name: trimmed, color: ME.color } };
+    forceRerender();
+    setNameStatus("saved");
+  }
+
+  async function uploadAvatar(file) {
+    if (!sb || !session || !file) return;
+    if (!file.type || !file.type.startsWith("image/")) {
+      setAvatarStatus("error");
+      return;
+    }
+    setAvatarStatus("uploading");
+    const ext = (file.name.split(".").pop() || "png").toLowerCase();
+    const path = session.user.id + "/avatar." + ext;
+    const { error: uploadError } = await sb.storage.from("avatars").upload(path, file, {
+      upsert: true,
+      contentType: file.type,
+    });
+    if (uploadError) {
+      setAvatarStatus("error");
+      return;
+    }
+    const { data: urlData } = sb.storage.from("avatars").getPublicUrl(path);
+    const publicUrl = urlData.publicUrl + "?t=" + Date.now(); // cache-bust so the new image shows immediately
+    const { error: updateError } = await sb.from("profiles").update({ avatar_url: publicUrl }).eq("id", session.user.id);
+    if (updateError) {
+      setAvatarStatus("error");
+      return;
+    }
+    ME = { ...ME, avatarUrl: publicUrl };
+    PROFILES = { ...PROFILES, [session.user.id]: { ...(PROFILES[session.user.id] || {}), id: session.user.id, avatarUrl: publicUrl } };
+    forceRerender();
+    setAvatarStatus("saved");
+  }
+
+  const showGate = authChecked && !session && !demoMode;
+
+  if (!authChecked) {
+    return <div style={{ background: COLORS.bg, minHeight: "100vh" }} />;
+  }
+
+  if (showGate) {
+    return (
+      <React.Fragment>
+        <GateScreen onDemo={enterDemoMode} onLogin={() => setAuthOpen(true)} error={loginError} />
+        {authOpen && (
+          <AuthModal
+            email={authEmail}
+            setEmail={setAuthEmail}
+            password={authPassword}
+            setPassword={setAuthPassword}
+            mode={authMode}
+            setMode={setAuthMode}
+            status={authStatus}
+            errorDetail={authErrorDetail}
+            configured={SUPABASE_CONFIGURED}
+            onClose={() => { setAuthOpen(false); setAuthStatus("idle"); setAuthErrorDetail(""); }}
+            onSubmit={() => (authMode === "signup" ? signUpWithPassword(authEmail, authPassword) : signInWithPassword(authEmail, authPassword))}
+          />
+        )}
+      </React.Fragment>
+    );
+  }
+
+  return (
+    <div style={{ background: COLORS.bg, minHeight: "100vh", color: "#E7EAF0" }}>
+      <TopNav
+        tab={tab} setTab={setTab} sheetCount={tailsFades.length + radar.length}
+        session={session} configured={SUPABASE_CONFIGURED}
+        onSignIn={() => setAuthOpen(true)} onSignOut={signOut} onOpenAccount={openAccount}
+      />
+      <main style={{ maxWidth: 1040, margin: "0 auto", padding: "24px 20px 80px" }}>
+        {!session && (
+          <div style={{
+            display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap",
+            background: "rgba(217,164,65,0.12)", border: "1px solid rgba(217,164,65,0.4)", borderRadius: 10,
+            padding: "12px 14px", marginBottom: 16, fontSize: 13, color: COLORS.paper, lineHeight: 1.5,
+          }}>
+            <span>
+              <strong>You're in Demo Mode.</strong> Play around &mdash; lock in a pick, add one to your radar, check out other users' picks and comments, and browse Analytics. Nothing here is permanent until you log in.
+            </span>
+            <button
+              onClick={() => setAuthOpen(true)}
+              style={{ background: COLORS.gold, color: "#1A1305", border: "none", borderRadius: 8, padding: "7px 14px", fontSize: 12.5, fontWeight: 700, cursor: "pointer", flexShrink: 0, whiteSpace: "nowrap" }}
+            >
+              Log In
+            </button>
+          </div>
+        )}
+        {loginError && (
+          <div style={{
+            display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10,
+            background: "rgba(194,75,63,0.14)", border: "1px solid rgba(194,75,63,0.4)", borderRadius: 10,
+            padding: "12px 14px", marginBottom: 16, fontSize: 13, color: COLORS.paper, lineHeight: 1.5,
+          }}>
+            <span>{loginError}</span>
+            <button onClick={() => setLoginError("")} style={{ background: "none", border: "none", color: COLORS.muted, cursor: "pointer", flexShrink: 0 }}>
+              <XIcon size={16} />
+            </button>
+          </div>
+        )}
+        {tab === "slate" && (
+          <SlateTab feed={feed} radar={radar} tailsFades={tailsFades} playerProps={playerProps} addPick={addPick} addRadar={addRadar} removeRadar={removeRadar} expanded={expanded} toggleSection={toggleSection} onOpenOverlay={openOverlay} oddsUpdatedLabel={formatUpdatedAt(oddsUpdatedAt)} />
+        )}
+        {tab === "sheet" && <SheetTab feed={feed} tailsFades={tailsFades} radar={radar} dbGraded={analyticsRows} />}
+        {tab === "hot" && <WhosHotTab dbGraded={analyticsRows} dbRoster={analyticsRoster} />}
+        {tab === "analytics" && <AnalyticsTab analyticsUser={analyticsUser} setAnalyticsUser={setAnalyticsUser} dbGraded={analyticsRows} dbRoster={analyticsRoster} />}
+      </main>
+      {overlay && (
+        <PickOverlay
+          pick={overlay.pick}
+          game={overlay.game}
+          onClose={closeOverlay}
+          onAddToSheet={addToSheet}
+          onTail={() => addTailFade("tail")}
+          onFade={() => addTailFade("fade")}
+        />
+      )}
+      {authOpen && (
+        <AuthModal
+          email={authEmail}
+          setEmail={setAuthEmail}
+          password={authPassword}
+          setPassword={setAuthPassword}
+          mode={authMode}
+          setMode={setAuthMode}
+          status={authStatus}
+          errorDetail={authErrorDetail}
+          configured={SUPABASE_CONFIGURED}
+          onClose={() => { setAuthOpen(false); setAuthStatus("idle"); setAuthErrorDetail(""); }}
+          onSubmit={() => (authMode === "signup" ? signUpWithPassword(authEmail, authPassword) : signInWithPassword(authEmail, authPassword))}
+        />
+      )}
+      {accountOpen && (
+        <AccountModal
+          email={session ? session.user.email : ""}
+          name={displayName}
+          setName={setDisplayName}
+          status={nameStatus}
+          avatarStatus={avatarStatus}
+          onClose={() => setAccountOpen(false)}
+          onSave={() => saveDisplayName(displayName)}
+          onUploadAvatar={uploadAvatar}
+          onSignOut={signOut}
+        />
+      )}
+    </div>
+  );
+}
+
+function rowToPickShape(row) {
+  return { id: row.id, user: row.user_id, game: row.game_id, market: row.market, pick: row.pick, odds: row.odds, stake: Number(row.stake), note: row.note || "", result: row.result || null };
+}
+
+function rowToTailFadeShape(row) {
+  return { id: row.id, type: row.type, sourceUser: row.source_user_id, game: row.game_id, market: row.market, pick: row.pick, odds: row.odds, stake: Number(row.stake), result: row.result || null };
+}
+
+// Turns a graded (result set) row from `picks` or `tails_fades` into the
+// shape Analytics computes from — looks up the game it was made on to pull
+// sport/conference/teams, and parses the picked side out of the label.
+function gradedRowToAnalytics(row, source) {
+  const game = GAMES.find((g) => g.id === row.game_id);
+  const sport = game ? game.sport : "Unknown";
+  const conf = game ? game.conf : "Unknown";
+  const teamA = game ? game.away : null;
+  const teamB = game ? game.home : null;
+  let pickedTeam = null, overUnder = null;
+  if (row.market === "Total") {
+    overUnder = row.pick.indexOf("Over") === 0 ? "Over" : row.pick.indexOf("Under") === 0 ? "Under" : null;
+  } else {
+    pickedTeam = row.pick.replace(/\s+(?:[+-]\d+(\.\d+)?|ML)\s*$/, "").trim();
+  }
+  const created = row.created_at ? new Date(row.created_at) : new Date();
+  const daysAgo = Math.max(0, Math.floor((Date.now() - created.getTime()) / 86400000));
+  return {
+    id: row.id, user: row.user_id, source: source || "own",
+    sport, conf, market: row.market, result: row.result, stake: Number(row.stake),
+    teamA, teamB, pickedTeam, overUnder, daysAgo,
+    dateLabel: created.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+  };
+}
+
+function GateScreen({ onDemo, onLogin, error }) {
+  return (
+    <div style={{
+      background: COLORS.bg, minHeight: "100vh", display: "flex", flexDirection: "column",
+      alignItems: "center", justifyContent: "center", padding: 24, textAlign: "center",
+    }}>
+      <img src="assets/logo-full.png" alt="Big J and Kyle" style={{ width: 220, maxWidth: "70vw", height: "auto", marginBottom: 28 }} />
+      <div style={{ fontFamily: FONT_MONO, fontSize: 12.5, color: COLORS.muted, letterSpacing: 0.2, lineHeight: 1.5, maxWidth: 280, marginBottom: 32 }}>
+        A community of enablers for those who need little convincing.
+      </div>
+      {error && (
+        <div style={{
+          background: "rgba(194,75,63,0.14)", border: "1px solid rgba(194,75,63,0.4)", borderRadius: 10,
+          padding: "12px 14px", marginBottom: 20, maxWidth: 320, fontSize: 13, color: COLORS.paper, lineHeight: 1.5,
+        }}>
+          {error}
+        </div>
+      )}
+      <div style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%", maxWidth: 280 }}>
+        <button
+          onClick={onLogin}
+          style={{ background: COLORS.gold, color: "#1A1305", border: "none", borderRadius: 10, padding: "13px 0", fontSize: 15, fontWeight: 700, cursor: "pointer" }}
+        >
+          Login
+        </button>
+        <button
+          onClick={onDemo}
+          style={{ background: "none", color: COLORS.paper, border: "1px solid " + COLORS.line, borderRadius: 10, padding: "13px 0", fontSize: 15, fontWeight: 600, cursor: "pointer" }}
+        >
+          Demo Mode
+        </button>
+      </div>
+      <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted, marginTop: 24, maxWidth: 280, lineHeight: 1.5 }}>
+        Demo Mode lets you look around with sample data. Sign in to make picks that actually save.
+      </div>
+    </div>
+  );
+}
+
+function TopNav({ tab, setTab, sheetCount, session, configured, onSignIn, onSignOut, onOpenAccount }) {
+  const tabs = [
+    { id: "slate", label: "Slate" },
+    { id: "sheet", label: "My Sheet", badge: sheetCount },
+    { id: "hot", label: "Who's Hot?" },
+    { id: "analytics", label: "Analytics" },
+  ];
+  return (
+    <header style={{ borderBottom: "1px solid " + COLORS.line, position: "sticky", top: 0, zIndex: 20, background: "rgba(15,21,33,0.92)" }}>
+      <div style={{ maxWidth: 1040, margin: "0 auto", padding: "16px 20px 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <img src="assets/wordmark.png" alt="Big J and Kyle" style={{ height: 34, width: "auto", flexShrink: 0 }} />
+        </div>
+        {session ? (
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <button onClick={onOpenAccount} style={{ background: "none", border: "none", padding: 0, cursor: "pointer", display: "flex" }} title="My Account">
+              <Avatar user={ME} size={32} />
+            </button>
+            <button
+              onClick={onSignOut}
+              style={{
+                background: "none", color: COLORS.paper, border: "1px solid " + COLORS.line,
+                borderRadius: 8, padding: "7px 14px", fontSize: 13, fontWeight: 700, cursor: "pointer",
+              }}
+            >
+              Log Out
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={onSignIn}
+            title={configured ? "" : "Add your Supabase keys in config.js to enable sign-in"}
+            style={{
+              background: COLORS.gold, color: "#1A1305",
+              border: "none", borderRadius: 8, padding: "7px 14px", fontSize: 13, fontWeight: 700, cursor: "pointer",
+            }}
+          >
+            Login
+          </button>
+        )}
+      </div>
+      <nav style={{ display: "flex", gap: 22, marginTop: 16, paddingLeft: 20 }}>
+        {tabs.map((t) => (
+          <button
+            key={t.id}
+            onClick={() => setTab(t.id)}
+            style={{
+              background: "none", border: "none", cursor: "pointer",
+              paddingBottom: 12, fontSize: 14.5, fontWeight: 600, display: "flex", alignItems: "center", gap: 6,
+              color: tab === t.id ? COLORS.paper : COLORS.muted,
+              borderBottom: tab === t.id ? "2px solid " + COLORS.gold : "2px solid transparent",
+            }}
+          >
+            {t.label}
+            {!!t.badge && (
+              <span style={{ fontFamily: FONT_MONO, fontSize: 10.5, background: COLORS.gold, color: "#1A1305", borderRadius: 20, padding: "1px 6px" }}>
+                {t.badge}
+              </span>
+            )}
+          </button>
+        ))}
+      </nav>
+    </header>
+  );
+}
+
+function Avatar({ user, size }) {
+  const s = size || 28;
+  const initials = user.name.slice(0, 2).toUpperCase();
+  const badge = BADGES[user.id];
+  const badgeSize = Math.max(13, Math.round(s * 0.42));
+
+  const inner = user.avatarUrl ? (
+    <img
+      src={user.avatarUrl}
+      alt={user.name}
+      title={user.name}
+      style={{ width: s, height: s, borderRadius: "50%", objectFit: "cover", display: "block", background: user.color }}
+    />
+  ) : (
+    <div title={user.name} style={{
+      width: s, height: s, borderRadius: "50%", background: user.color,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      fontFamily: FONT_MONO, fontSize: s * 0.36, fontWeight: 600, color: "#14171E",
+    }}>
+      {initials}
+    </div>
+  );
+
+  return (
+    <div style={{ position: "relative", width: s, height: s, flexShrink: 0 }}>
+      {inner}
+      {badge && (
+        <span
+          title={badge === "fire" ? "70%+ over last 10 settled picks" : "Under 35% over last 10 settled picks"}
+          style={{
+            position: "absolute", bottom: -3, right: -3, width: badgeSize, height: badgeSize,
+            borderRadius: "50%", background: COLORS.bg, border: "1.5px solid " + COLORS.surface,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: badgeSize * 0.62, lineHeight: 1,
+          }}
+        >
+          {badge === "fire" ? "\ud83d\udd25" : "\ud83e\uddca"}
+        </span>
+      )}
+    </div>
+  );
+}
+
+function SlateTab({ feed, radar, tailsFades, playerProps, addPick, addRadar, removeRadar, expanded, toggleSection, onOpenOverlay, oddsUpdatedLabel }) {
+  const [search, setSearch] = useState("");
+  const term = search.trim().toLowerCase();
+  const matches = (g) => !term || g.away.toLowerCase().includes(term) || g.home.toLowerCase().includes(term);
+  const matchesProp = (p) => !term || p.player.toLowerCase().includes(term) || (p.team || "").toLowerCase().includes(term);
+  // Once a real event's kickoff has passed, it drops off the Slate. Mock/
+  // demo entries have no startsAt, so this never affects them.
+  const notStarted = (x) => !x.startsAt || new Date(x.startsAt).getTime() > Date.now();
+
+  const nflGames = GAMES.filter((g) => g.sport === "NFL" && matches(g) && notStarted(g));
+  const ncaafbGames = GAMES.filter((g) => g.sport === "NCAAFB" && matches(g) && notStarted(g));
+  const eplGames = GAMES.filter((g) => g.sport === "EPL" && matches(g) && notStarted(g));
+  const serieaGames = GAMES.filter((g) => g.sport === "SERIEA" && matches(g) && notStarted(g));
+  const bundGames = GAMES.filter((g) => g.sport === "BUNDESLIGA" && matches(g) && notStarted(g));
+  const filteredProps = playerProps.filter((p) => matchesProp(p) && notStarted(p));
+  const totalMatches = nflGames.length + ncaafbGames.length + (term ? filteredProps.length : 0);
+
+  return (
+    <div>
+      <SearchBox value={search} onChange={setSearch} placeholder="Search by team or player" />
+      {term && totalMatches === 0 && (
+        <div style={{ fontSize: 13, color: COLORS.muted, padding: "16px 4px" }}>No games match &ldquo;{search}&rdquo;.</div>
+      )}
+      <div style={{ display: "grid", gap: 16, marginTop: 4 }}>
+        {nflGames.length > 0 && (
+          <CollapsibleGroup label="NFL" count={nflGames.length} open={expanded.NFL} onToggle={() => toggleSection("NFL")} updatedLabel={oddsUpdatedLabel}>
+            <div style={{ display: "grid", gap: 12 }}>
+              {nflGames.map((g) => (
+                <GameTicket
+                  key={g.id}
+                  game={g}
+                  picks={feed.filter((p) => p.game === g.id)}
+                  radarPicks={radar.filter((r) => r.game === g.id)}
+                  tailFadePicks={tailsFades.filter((t) => t.game === g.id)}
+                  onAddPick={(pick) => addPick(g.id, pick)}
+                  onAddRadar={(pick) => addRadar(g.id, pick)}
+                  onRemoveRadar={(market, pick) => removeRadar(g.id, market, pick)}
+                  onOpenOverlay={onOpenOverlay}
+                />
+              ))}
+            </div>
+          </CollapsibleGroup>
+        )}
+
+        <CollapsibleGroup label="NFL Player Props" count={filteredProps.length} open={expanded.PROPS} onToggle={() => toggleSection("PROPS")} updatedLabel={oddsUpdatedLabel}>
+          {filteredProps.length === 0 ? (
+            <div style={{ fontSize: 13, color: COLORS.muted, padding: "4px 4px 8px" }}>
+              {term ? "No player props match \u201c" + search + "\u201d." : "No player props available yet."}
+            </div>
+          ) : (
+            <div style={{ display: "grid", gap: 12 }}>
+              {filteredProps.map((p) => (
+                <PropTicket
+                  key={p.id}
+                  prop={p}
+                  picks={feed.filter((x) => x.game === p.id)}
+                  radarPicks={radar.filter((x) => x.game === p.id)}
+                  onAddPick={(pick) => addPick(p.id, pick)}
+                  onAddRadar={(pick) => addRadar(p.id, pick)}
+                  onRemoveRadar={(market, pick) => removeRadar(p.id, market, pick)}
+                />
+              ))}
+            </div>
+          )}
+        </CollapsibleGroup>
+
+        {ncaafbGames.length > 0 && (
+          <CollapsibleGroup label="NCAAFB" count={ncaafbGames.length} open={expanded.NCAAFB} onToggle={() => toggleSection("NCAAFB")} updatedLabel={oddsUpdatedLabel}>
+            <div style={{ display: "grid", gap: 12 }}>
+              {ncaafbGames.map((g) => (
+                <GameTicket
+                  key={g.id}
+                  game={g}
+                  picks={feed.filter((p) => p.game === g.id)}
+                  radarPicks={radar.filter((r) => r.game === g.id)}
+                  tailFadePicks={tailsFades.filter((t) => t.game === g.id)}
+                  onAddPick={(pick) => addPick(g.id, pick)}
+                  onAddRadar={(pick) => addRadar(g.id, pick)}
+                  onRemoveRadar={(market, pick) => removeRadar(g.id, market, pick)}
+                  onOpenOverlay={onOpenOverlay}
+                />
+              ))}
+            </div>
+          </CollapsibleGroup>
+        )}
+
+        {eplGames.length > 0 && (
+          <CollapsibleGroup label="EPL" count={eplGames.length} open={expanded.EPL} onToggle={() => toggleSection("EPL")} updatedLabel={oddsUpdatedLabel}>
+            <div style={{ display: "grid", gap: 12 }}>
+              {eplGames.map((g) => (
+                <GameTicket
+                  key={g.id}
+                  game={g}
+                  picks={feed.filter((p) => p.game === g.id)}
+                  radarPicks={radar.filter((r) => r.game === g.id)}
+                  tailFadePicks={tailsFades.filter((t) => t.game === g.id)}
+                  onAddPick={(pick) => addPick(g.id, pick)}
+                  onAddRadar={(pick) => addRadar(g.id, pick)}
+                  onRemoveRadar={(market, pick) => removeRadar(g.id, market, pick)}
+                  onOpenOverlay={onOpenOverlay}
+                />
+              ))}
+            </div>
+          </CollapsibleGroup>
+        )}
+
+        {serieaGames.length > 0 && (
+          <CollapsibleGroup label="Serie A" count={serieaGames.length} open={expanded.SERIEA} onToggle={() => toggleSection("SERIEA")} updatedLabel={oddsUpdatedLabel}>
+            <div style={{ display: "grid", gap: 12 }}>
+              {serieaGames.map((g) => (
+                <GameTicket
+                  key={g.id}
+                  game={g}
+                  picks={feed.filter((p) => p.game === g.id)}
+                  radarPicks={radar.filter((r) => r.game === g.id)}
+                  tailFadePicks={tailsFades.filter((t) => t.game === g.id)}
+                  onAddPick={(pick) => addPick(g.id, pick)}
+                  onAddRadar={(pick) => addRadar(g.id, pick)}
+                  onRemoveRadar={(market, pick) => removeRadar(g.id, market, pick)}
+                  onOpenOverlay={onOpenOverlay}
+                />
+              ))}
+            </div>
+          </CollapsibleGroup>
+        )}
+
+        {bundGames.length > 0 && (
+          <CollapsibleGroup label="Bundesliga" count={bundGames.length} open={expanded.BUNDESLIGA} onToggle={() => toggleSection("BUNDESLIGA")} updatedLabel={oddsUpdatedLabel}>
+            <div style={{ display: "grid", gap: 12 }}>
+              {bundGames.map((g) => (
+                <GameTicket
+                  key={g.id}
+                  game={g}
+                  picks={feed.filter((p) => p.game === g.id)}
+                  radarPicks={radar.filter((r) => r.game === g.id)}
+                  tailFadePicks={tailsFades.filter((t) => t.game === g.id)}
+                  onAddPick={(pick) => addPick(g.id, pick)}
+                  onAddRadar={(pick) => addRadar(g.id, pick)}
+                  onRemoveRadar={(market, pick) => removeRadar(g.id, market, pick)}
+                  onOpenOverlay={onOpenOverlay}
+                />
+              ))}
+            </div>
+          </CollapsibleGroup>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function SectionLabel({ eyebrow, title }) {
+  return (
+    <div>
+      <div style={{ fontFamily: FONT_MONO, fontSize: 11, letterSpacing: 1.5, color: COLORS.gold, marginBottom: 4 }}>{eyebrow}</div>
+      <h2 style={{ fontFamily: FONT_DISPLAY, fontSize: 24, fontWeight: 700, margin: 0, color: COLORS.paper }}>{title}</h2>
+    </div>
+  );
+}
+
+function SearchBox({ value, onChange, placeholder }) {
+  return (
+    <div style={{ position: "relative", marginBottom: 14 }}>
+      <span style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)" }}>
+        <SearchIcon size={15} color={COLORS.muted} />
+      </span>
+      <input
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        style={{
+          width: "100%", background: "#0F1521", color: COLORS.paper, border: "1px solid " + COLORS.line,
+          borderRadius: 9, padding: "10px 12px 10px 36px", fontSize: 13.5, boxSizing: "border-box",
+        }}
+      />
+      {value && (
+        <button
+          onClick={() => onChange("")}
+          style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", background: "none", border: "none", color: COLORS.muted, cursor: "pointer", display: "flex" }}
+        >
+          <XIcon size={14} />
+        </button>
+      )}
+    </div>
+  );
+}
+
+function CollapsibleGroup({ label, count, open, onToggle, updatedLabel, children }) {
+  return (
+    <div style={{ background: COLORS.surface, borderRadius: 12, border: "1px solid " + COLORS.line, overflow: "hidden" }}>
+      <button onClick={onToggle} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "13px 16px", background: COLORS.surface2, border: "none", cursor: "pointer" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ fontFamily: FONT_DISPLAY, fontSize: 17, fontWeight: 700, color: COLORS.paper }}>{label}</span>
+          <span style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted, background: COLORS.surface3, padding: "2px 7px", borderRadius: 20 }}>{count}</span>
+          {updatedLabel && <span style={{ fontFamily: FONT_MONO, fontSize: 10.5, color: COLORS.muted }}>{updatedLabel}</span>}
+        </div>
+        {open ? <ChevronUpIcon size={18} color={COLORS.muted} /> : <ChevronDownIcon size={18} color={COLORS.muted} />}
+      </button>
+      {open && <div style={{ padding: 12 }}>{children}</div>}
+    </div>
+  );
+}
+
+function GameTicket({ game, picks, radarPicks, tailFadePicks, onAddPick, onAddRadar, onRemoveRadar, onOpenOverlay }) {
+  const [formOpen, setFormOpen] = useState(false);
+  const [market, setMarket] = useState("Spread");
+  const [side, setSide] = useState(null);
+  const [stake, setStake] = useState(1);
+  const [note, setNote] = useState("");
+
+  const myPicks = picks.filter((p) => p.user === ME.id);
+  const othersPicks = picks.filter((p) => p.user !== ME.id);
+  const myRadars = radarPicks.filter((r) => r.user === ME.id);
+  const myTailFade = tailFadePicks.length ? tailFadePicks[0] : null;
+  const isMatchingTailFade = !!(side && myTailFade && myTailFade.market === market && myTailFade.pick === side.label);
+
+  const lockedCounts = {};
+  picks.forEach((p) => { lockedCounts[p.pick] = (lockedCounts[p.pick] || 0) + 1; });
+  const tailCounts = {};
+  const fadeCounts = {};
+  tailFadePicks.forEach((t) => {
+    const bucket = t.type === "fade" ? fadeCounts : tailCounts;
+    bucket[t.pick] = (bucket[t.pick] || 0) + 1;
+  });
+  const radarCounts = {};
+  radarPicks.forEach((r) => { radarCounts[r.pick] = (radarCounts[r.pick] || 0) + 1; });
+  const sides = Array.from(new Set([
+    ...Object.keys(lockedCounts), ...Object.keys(tailCounts), ...Object.keys(fadeCounts), ...Object.keys(radarCounts),
+  ]));
+  const grandTotal = picks.length + radarPicks.length + tailFadePicks.length;
+
+  function openForm() {
+    setMarket("Spread"); setSide(null);
+    setStake(1); setNote("");
+    setFormOpen(true);
+  }
+  function openFormFromRadar(radar) {
+    setMarket(radar.market);
+    setSide({ label: radar.pick, odds: radar.odds });
+    setStake(radar.stake);
+    setNote(radar.note || "");
+    setFormOpen(true);
+  }
+  function onCancelRadarClick(radar) {
+    onRemoveRadar(radar.market, radar.pick);
+  }
+  function lockPick() {
+    if (!side) return;
+    onAddPick({ market, pick: side.label, odds: side.odds, stake, note });
+    setFormOpen(false);
+  }
+  function radarPick() {
+    if (!side) return;
+    onAddRadar({ market, pick: side.label, odds: side.odds, stake, note });
+    setFormOpen(false);
+  }
+
+  return (
+    <div style={{ background: COLORS.surface2, borderRadius: 10, border: "1px solid " + COLORS.line, overflow: "hidden" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", borderBottom: "1px dashed " + COLORS.line }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={{ fontFamily: FONT_MONO, fontSize: 12, color: COLORS.muted }}>{game.conf}</span>
+          {myRadars.length > 0 && <RadarIcon size={13} color={COLORS.gold} />}
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 5, color: COLORS.muted }}>
+          <ClockIcon size={13} />
+          <span style={{ fontFamily: FONT_MONO, fontSize: 12 }}>{game.kickoff}</span>
+        </div>
+      </div>
+
+      <div style={{ padding: "14px 14px 4px" }}>
+        <div style={{ fontFamily: FONT_DISPLAY, fontSize: 19, fontWeight: 700, color: COLORS.paper }}>
+          {game.away} <span style={{ color: COLORS.muted, fontWeight: 500 }}>at</span> {game.home}
+        </div>
+        <div style={{ fontFamily: FONT_MONO, fontSize: 12.5, color: COLORS.muted, marginTop: 2 }}>{lineSummary(game)}</div>
+      </div>
+
+      {grandTotal > 0 && (
+        <div style={{ padding: "10px 14px 0" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", fontFamily: FONT_MONO, fontSize: 10.5, color: COLORS.muted, letterSpacing: 0.8, marginBottom: 6 }}>
+            <span>{grandTotal} PICK{grandTotal !== 1 ? "S" : ""} LOGGED</span>
+            <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+              <span style={{ width: 7, height: 7, borderRadius: 2, background: COLORS.green, display: "inline-block" }} /> locked/tail
+            </span>
+            <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+              <span style={{ width: 7, height: 7, borderRadius: 2, background: COLORS.blue, display: "inline-block" }} /> fade
+            </span>
+            <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+              <span style={{ width: 7, height: 7, borderRadius: 2, background: "rgba(217,164,65,0.45)", display: "inline-block" }} /> radar
+            </span>
+          </div>
+          {sides.map((s) => {
+            const lockedCount = lockedCounts[s] || 0;
+            const tailCount = tailCounts[s] || 0;
+            const fadeCount = fadeCounts[s] || 0;
+            const radarCount = radarCounts[s] || 0;
+            const sideTotal = lockedCount + tailCount + fadeCount + radarCount;
+            return (
+              <div key={s} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 5 }}>
+                <div style={{ fontSize: 12.5, width: 145, flexShrink: 0 }}>{s}</div>
+                <div style={{ flex: 1, background: COLORS.surface3, borderRadius: 4, height: 7, overflow: "hidden", display: "flex" }}>
+                  <div style={{ width: ((lockedCount + tailCount) / grandTotal) * 100 + "%", background: COLORS.green, height: "100%" }} />
+                  <div style={{ width: (fadeCount / grandTotal) * 100 + "%", background: COLORS.blue, height: "100%" }} />
+                  <div style={{ width: (radarCount / grandTotal) * 100 + "%", background: "rgba(217,164,65,0.45)", height: "100%" }} />
+                </div>
+                <div style={{ fontFamily: FONT_MONO, fontSize: 11.5, color: COLORS.muted, width: 16, textAlign: "right" }}>{sideTotal}</div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {othersPicks.length > 0 && (
+        <div style={{ padding: "8px 14px 4px" }}>
+          {othersPicks.map((p) => {
+            const u = getUser(p.user);
+            return (
+              <button key={p.id} onClick={() => onOpenOverlay(p, game)} style={{ width: "100%", display: "flex", alignItems: "center", gap: 10, padding: "7px 4px", background: "none", border: "none", cursor: "pointer", textAlign: "left", borderRadius: 6 }}>
+                <Avatar user={u} size={22} />
+                <div style={{ flex: 1, minWidth: 0, fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ fontWeight: 600 }}>{u.name}</span>
+                  <span style={{ color: COLORS.muted }}>&middot; {p.market}</span>
+                  {p.note && <MessageIcon size={13} color={COLORS.gold} />}
+                </div>
+                <div style={{ fontFamily: FONT_MONO, textAlign: "right", fontSize: 12.5 }}>
+                  <div style={{ color: COLORS.paper }}>{p.pick}</div>
+                  <div style={{ color: COLORS.muted }}>{signed(p.odds)} &middot; {p.stake}u</div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      <div style={{ padding: 14, borderTop: "1px solid " + COLORS.line, marginTop: 4 }}>
+        {(myPicks.length > 0 || myTailFade || myRadars.length > 0) && (
+          <div style={{ display: "grid", gap: 8, marginBottom: 10 }}>
+            {myPicks.map((p) => (
+              <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, background: "rgba(76,154,106,0.12)", border: "1px solid rgba(76,154,106,0.4)", borderRadius: 8, padding: "9px 12px" }}>
+                <CheckIcon size={15} color={COLORS.green} />
+                <span>Your pick: <strong>{p.pick}</strong> &middot; {signed(p.odds)} &middot; {p.stake}u</span>
+              </div>
+            ))}
+
+            {myTailFade && (() => {
+              const srcUser = getUser(myTailFade.sourceUser);
+              const isFade = myTailFade.type === "fade";
+              return (
+                <div style={{
+                  display: "flex", alignItems: "center", gap: 8, fontSize: 13,
+                  background: isFade ? "rgba(62,124,214,0.12)" : "rgba(76,154,106,0.12)",
+                  border: "1px solid " + (isFade ? "rgba(62,124,214,0.4)" : "rgba(76,154,106,0.4)"),
+                  borderRadius: 8, padding: "9px 12px",
+                }}>
+                  {isFade ? <ShuffleIcon size={15} color={COLORS.blue} /> : <CopyIcon size={15} color={COLORS.green} />}
+                  <span>
+                    {isFade ? "Fading" : "Tailing"} <strong>{srcUser ? srcUser.name : "a friend"}</strong>: <strong>{myTailFade.pick}</strong> &middot; {signed(myTailFade.odds)} &middot; {myTailFade.stake}u
+                  </span>
+                </div>
+              );
+            })()}
+
+            {myRadars.map((r) => (
+              <div key={r.id} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "rgba(217,164,65,0.12)", border: "1px solid rgba(217,164,65,0.4)", borderRadius: 8, padding: "9px 12px", gap: 10 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, minWidth: 0 }}>
+                  <RadarIcon size={15} color={COLORS.gold} />
+                  <span>On your radar: <strong>{r.pick}</strong> &middot; {signed(r.odds)} &middot; {r.stake}u</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
+                  <button onClick={() => openFormFromRadar(r)} style={{ display: "flex", alignItems: "center", gap: 4, background: "none", border: "none", color: COLORS.gold, fontSize: 12.5, fontWeight: 600, cursor: "pointer" }}>
+                    <LockIcon size={13} /> Lock
+                  </button>
+                  <button onClick={() => onCancelRadarClick(r)} style={{ background: "none", border: "none", color: COLORS.muted, fontSize: 12.5, fontWeight: 600, cursor: "pointer" }}>
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {!formOpen && (
+          <button onClick={openForm} style={{ width: "100%", background: "transparent", border: "1px dashed " + COLORS.gold, color: COLORS.gold, borderRadius: 8, padding: "10px 0", fontSize: 13.5, fontWeight: 600, cursor: "pointer" }}>
+            + Make your pick
+          </button>
+        )}
+
+        {formOpen && (
+          <div>
+            <div style={{ display: "flex", gap: 6, marginBottom: 10 }}>
+              {["Spread", "Moneyline", "Total"].map((m) => (
+                <button key={m} onClick={() => { setMarket(m); setSide(null); }} style={{
+                  flex: 1, padding: "7px 0", borderRadius: 7, fontSize: 12.5, fontWeight: 600, cursor: "pointer",
+                  border: "1px solid " + (market === m ? COLORS.gold : COLORS.line),
+                  background: market === m ? "rgba(217,164,65,0.12)" : "transparent",
+                  color: market === m ? COLORS.gold : COLORS.muted,
+                }}>{m}</button>
+              ))}
+            </div>
+
+            <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+              {sideOptions(game, market).map((opt) => (
+                <button key={opt.label} onClick={() => setSide(opt)} style={{
+                  flex: 1, borderRadius: 8, padding: "10px 8px", cursor: "pointer", textAlign: "left",
+                  border: "1px solid " + (side && side.label === opt.label ? COLORS.gold : COLORS.line),
+                  background: side && side.label === opt.label ? "rgba(217,164,65,0.14)" : COLORS.surface3,
+                }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: COLORS.paper }}>{opt.label}</div>
+                  <div style={{ fontFamily: FONT_MONO, fontSize: 12, color: COLORS.muted }}>{signed(opt.odds)}</div>
+                </button>
+              ))}
+            </div>
+
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted, marginBottom: 6 }}>
+                STAKE &mdash; {stake} UNIT{stake !== 1 ? "S" : ""}
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <button
+                  type="button"
+                  onClick={() => setStake((s) => Math.max(0.5, Math.round((s - 0.5) * 2) / 2))}
+                  title="Decrease stake by 1"
+                  style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, lineHeight: 1, padding: 4, flexShrink: 0 }}
+                >
+                  😿
+                </button>
+                <input type="range" min="0.5" max="5" step="0.5" value={stake} onChange={(e) => setStake(Number(e.target.value))} style={{ flex: 1 }} />
+                <button
+                  type="button"
+                  onClick={() => setStake((s) => Math.min(5, Math.round((s + 0.5) * 2) / 2))}
+                  title="Increase stake by 1"
+                  style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, lineHeight: 1, padding: 4, flexShrink: 0 }}
+                >
+                  🔨
+                </button>
+              </div>
+            </div>
+
+            <div style={{ marginBottom: 10 }}>
+              <textarea
+                value={note}
+                onChange={(e) => setNote(e.target.value.slice(0, NOTE_MAX))}
+                placeholder="Note to the group (optional)"
+                maxLength={NOTE_MAX}
+                rows={4}
+                style={{ width: "100%", background: COLORS.surface3, color: COLORS.paper, border: "1px solid " + COLORS.line, borderRadius: 7, padding: "10px 12px", fontSize: 13.5, boxSizing: "border-box", resize: "vertical", lineHeight: 1.4, minHeight: 84 }}
+              />
+              <div style={{ textAlign: "right", fontFamily: FONT_MONO, fontSize: 10.5, color: COLORS.muted, marginTop: 4 }}>{note.length}/{NOTE_MAX}</div>
+            </div>
+
+            <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+              <button onClick={() => setFormOpen(false)} style={{ flex: 1, background: "none", border: "1px solid " + COLORS.line, color: COLORS.muted, borderRadius: 8, padding: "9px 0", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Cancel</button>
+              <button onClick={radarPick} disabled={!side} style={{
+                flex: 1.4, display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
+                background: "none", color: side ? COLORS.gold : COLORS.muted,
+                border: "1px solid " + (side ? COLORS.gold : COLORS.line), borderRadius: 8, padding: "9px 0", fontSize: 13, fontWeight: 600,
+                cursor: side ? "pointer" : "not-allowed",
+              }}>
+                <RadarIcon size={14} /> Add to Radar
+              </button>
+            </div>
+            <button onClick={lockPick} disabled={!side} style={{
+              width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
+              background: side ? COLORS.gold : COLORS.surface3, color: side ? "#1A1305" : COLORS.muted,
+              border: "none", borderRadius: 8, padding: "9px 0", fontSize: 13.5, fontWeight: 700,
+              cursor: side ? "pointer" : "not-allowed",
+            }}>
+              <LockIcon size={14} />
+              {isMatchingTailFade ? "Switch " + (myTailFade.type === "fade" ? "Fade" : "Tail") + " to Pick" : "Lock in pick"}
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+
+// A leaner version of GameTicket for player props — Over/Under only, no
+// tail/fade (props aren't wired into the comment overlay in this pass).
+function PropTicket({ prop, picks, radarPicks, onAddPick, onAddRadar, onRemoveRadar }) {
+  const [formOpen, setFormOpen] = useState(false);
+  const [side, setSide] = useState(null);
+  const [stake, setStake] = useState(1);
+
+  const sideOpts = [
+    { label: "Over " + prop.line, odds: prop.overOdds },
+    { label: "Under " + prop.line, odds: prop.underOdds },
+  ];
+
+  const myPicks = picks.filter((p) => p.user === ME.id);
+  const myRadars = radarPicks.filter((r) => r.user === ME.id);
+
+  const lockedCounts = {};
+  picks.forEach((p) => { lockedCounts[p.pick] = (lockedCounts[p.pick] || 0) + 1; });
+  const radarCounts = {};
+  radarPicks.forEach((r) => { radarCounts[r.pick] = (radarCounts[r.pick] || 0) + 1; });
+  const grandTotal = picks.length + radarPicks.length;
+
+  function openForm() {
+    setSide(null);
+    setStake(1);
+    setFormOpen(true);
+  }
+  function openFormFromRadar(radar) {
+    setSide({ label: radar.pick, odds: radar.odds });
+    setStake(radar.stake);
+    setFormOpen(true);
+  }
+  function lockPick() {
+    if (!side) return;
+    onAddPick({ market: "Player Prop", pick: side.label, odds: side.odds, stake, note: "" });
+    setFormOpen(false);
+  }
+  function radarPick() {
+    if (!side) return;
+    onAddRadar({ market: "Player Prop", pick: side.label, odds: side.odds, stake, note: "" });
+    setFormOpen(false);
+  }
+
+  return (
+    <div style={{ background: COLORS.surface2, borderRadius: 10, border: "1px solid " + COLORS.line, overflow: "hidden" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", borderBottom: "1px dashed " + COLORS.line }}>
+        <span style={{ fontFamily: FONT_MONO, fontSize: 12, color: COLORS.muted }}>{prop.team || "NFL"}</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 5, color: COLORS.muted }}>
+          <ClockIcon size={13} />
+          <span style={{ fontFamily: FONT_MONO, fontSize: 12 }}>{prop.kickoff}</span>
+        </div>
+      </div>
+
+      <div style={{ padding: "14px 14px 4px" }}>
+        <div style={{ fontFamily: FONT_DISPLAY, fontSize: 19, fontWeight: 700, color: COLORS.paper }}>{prop.player}</div>
+        <div style={{ fontFamily: FONT_MONO, fontSize: 12.5, color: COLORS.muted, marginTop: 2 }}>{prop.propType} &middot; {prop.line}</div>
+      </div>
+
+      {grandTotal > 0 && (
+        <div style={{ padding: "10px 14px 0" }}>
+          {sideOpts.map((s) => {
+            const lockedCount = lockedCounts[s.label] || 0;
+            const radarCount = radarCounts[s.label] || 0;
+            const sideTotal = lockedCount + radarCount;
+            if (!sideTotal) return null;
+            return (
+              <div key={s.label} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 5 }}>
+                <div style={{ fontSize: 12.5, width: 145, flexShrink: 0 }}>{s.label}</div>
+                <div style={{ flex: 1, background: COLORS.surface3, borderRadius: 4, height: 7, overflow: "hidden", display: "flex" }}>
+                  <div style={{ width: (lockedCount / grandTotal) * 100 + "%", background: COLORS.green, height: "100%" }} />
+                  <div style={{ width: (radarCount / grandTotal) * 100 + "%", background: "rgba(217,164,65,0.45)", height: "100%" }} />
+                </div>
+                <div style={{ fontFamily: FONT_MONO, fontSize: 11.5, color: COLORS.muted, width: 16, textAlign: "right" }}>{sideTotal}</div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      <div style={{ padding: 14, borderTop: "1px solid " + COLORS.line, marginTop: 4 }}>
+        {(myPicks.length > 0 || myRadars.length > 0) && (
+          <div style={{ display: "grid", gap: 8, marginBottom: 10 }}>
+            {myPicks.map((p) => (
+              <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, background: "rgba(76,154,106,0.12)", border: "1px solid rgba(76,154,106,0.4)", borderRadius: 8, padding: "9px 12px" }}>
+                <CheckIcon size={15} color={COLORS.green} />
+                <span>Your pick: <strong>{p.pick}</strong> &middot; {signed(p.odds)} &middot; {p.stake}u</span>
+              </div>
+            ))}
+            {myRadars.map((r) => (
+              <div key={r.id} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "rgba(217,164,65,0.12)", border: "1px solid rgba(217,164,65,0.4)", borderRadius: 8, padding: "9px 12px", gap: 10 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, minWidth: 0 }}>
+                  <RadarIcon size={15} color={COLORS.gold} />
+                  <span>On your radar: <strong>{r.pick}</strong> &middot; {signed(r.odds)} &middot; {r.stake}u</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
+                  <button onClick={() => openFormFromRadar(r)} style={{ display: "flex", alignItems: "center", gap: 4, background: "none", border: "none", color: COLORS.gold, fontSize: 12.5, fontWeight: 600, cursor: "pointer" }}>
+                    <LockIcon size={13} /> Lock
+                  </button>
+                  <button onClick={() => onRemoveRadar("Player Prop", r.pick)} style={{ background: "none", border: "none", color: COLORS.muted, fontSize: 12.5, fontWeight: 600, cursor: "pointer" }}>
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {!formOpen && (
+          <button onClick={openForm} style={{ width: "100%", background: "transparent", border: "1px dashed " + COLORS.gold, color: COLORS.gold, borderRadius: 8, padding: "10px 0", fontSize: 13.5, fontWeight: 600, cursor: "pointer" }}>
+            + Make your pick
+          </button>
+        )}
+
+        {formOpen && (
+          <div>
+            <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+              {sideOpts.map((opt) => (
+                <button
+                  key={opt.label}
+                  onClick={() => setSide(opt)}
+                  style={{
+                    flex: 1, borderRadius: 8, padding: "10px 8px", cursor: "pointer", textAlign: "left",
+                    border: "1px solid " + (side && side.label === opt.label ? COLORS.gold : COLORS.line),
+                    background: side && side.label === opt.label ? "rgba(217,164,65,0.14)" : COLORS.surface3,
+                  }}
+                >
+                  <div style={{ fontSize: 13, fontWeight: 600, color: COLORS.paper }}>{opt.label}</div>
+                  <div style={{ fontFamily: FONT_MONO, fontSize: 12, color: COLORS.muted }}>{signed(opt.odds)}</div>
+                </button>
+              ))}
+            </div>
+
+            <div style={{ marginBottom: 12 }}>
+              <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted, marginBottom: 6 }}>
+                STAKE &mdash; {stake} UNIT{stake !== 1 ? "S" : ""}
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <button type="button" onClick={() => setStake((s) => Math.max(0.5, Math.round((s - 0.5) * 2) / 2))} title="Decrease stake by 0.5" style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, lineHeight: 1, padding: 4, flexShrink: 0 }}>😿</button>
+                <input type="range" min="0.5" max="5" step="0.5" value={stake} onChange={(e) => setStake(Number(e.target.value))} style={{ flex: 1 }} />
+                <button type="button" onClick={() => setStake((s) => Math.min(5, Math.round((s + 0.5) * 2) / 2))} title="Increase stake by 0.5" style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, lineHeight: 1, padding: 4, flexShrink: 0 }}>🔨</button>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+              <button onClick={() => setFormOpen(false)} style={{ flex: 1, background: "none", border: "1px solid " + COLORS.line, color: COLORS.muted, borderRadius: 8, padding: "9px 0", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Cancel</button>
+              <button
+                onClick={radarPick}
+                disabled={!side}
+                style={{
+                  flex: 1.4, display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
+                  background: "none", color: side ? COLORS.gold : COLORS.muted,
+                  border: "1px solid " + (side ? COLORS.gold : COLORS.line), borderRadius: 8, padding: "9px 0", fontSize: 13, fontWeight: 600,
+                  cursor: side ? "pointer" : "not-allowed",
+                }}
+              >
+                <RadarIcon size={14} /> Add to Radar
+              </button>
+            </div>
+            <button
+              onClick={lockPick}
+              disabled={!side}
+              style={{
+                width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
+                background: side ? COLORS.gold : COLORS.surface3, color: side ? "#1A1305" : COLORS.muted,
+                border: "none", borderRadius: 8, padding: "9px 0", fontSize: 13.5, fontWeight: 700,
+                cursor: side ? "pointer" : "not-allowed",
+              }}
+            >
+              <LockIcon size={14} /> Lock in pick
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+
+function PickOverlay({ pick, game, onClose, onAddToSheet, onTail, onFade }) {
+  const u = getUser(pick.user);
+  const [stake, setStake] = useState(pick.stake);
+  return (
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(8,11,17,0.75)", display: "flex", alignItems: "flex-end", justifyContent: "center", zIndex: 60 }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ background: COLORS.surface, width: "100%", maxWidth: 480, borderRadius: "18px 18px 0 0", border: "1px solid " + COLORS.line, borderBottom: "none", padding: 22, maxHeight: "85vh", overflowY: "auto" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 16 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <Avatar user={u} size={34} />
+            <div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: COLORS.paper }}>{u.name}</div>
+              <div style={{ fontFamily: FONT_MONO, fontSize: 11.5, color: COLORS.muted }}>{game.away} at {game.home}</div>
+            </div>
+          </div>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: COLORS.muted, cursor: "pointer" }}>
+            <XIcon size={20} />
+          </button>
+        </div>
+
+        <div style={{ background: COLORS.surface2, border: "1px solid " + COLORS.line, borderRadius: 10, padding: 14, marginBottom: 16 }}>
+          <div style={{ fontFamily: FONT_MONO, fontSize: 10.5, color: COLORS.muted, letterSpacing: 0.8, marginBottom: 6 }}>{pick.market.toUpperCase()}</div>
+          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
+            <div style={{ fontFamily: FONT_DISPLAY, fontSize: 20, fontWeight: 700, color: COLORS.paper }}>{pick.pick}</div>
+            <div style={{ fontFamily: FONT_MONO, fontSize: 14, color: COLORS.muted }}>{signed(pick.odds)}</div>
+          </div>
+          <div style={{ fontFamily: FONT_MONO, fontSize: 12.5, color: COLORS.muted, marginTop: 2 }}>{u.name} bet {pick.stake} unit{pick.stake !== 1 ? "s" : ""}</div>
+        </div>
+
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ fontFamily: FONT_MONO, fontSize: 10.5, color: COLORS.muted, letterSpacing: 0.8, marginBottom: 6 }}>COMMENT</div>
+          <div style={{ fontSize: 14, lineHeight: 1.5, color: pick.note ? COLORS.paper : COLORS.muted, fontStyle: pick.note ? "normal" : "italic" }}>
+            {pick.note || "No comment left on this pick."}
+          </div>
+        </div>
+
+        <div style={{ marginBottom: 14 }}>
+          <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted, marginBottom: 6 }}>
+            YOUR STAKE &mdash; {stake} UNIT{stake !== 1 ? "S" : ""}
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <button
+              type="button"
+              onClick={() => setStake((s) => Math.max(0.5, Math.round((s - 0.5) * 2) / 2))}
+              title="Decrease stake by 1"
+              style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, lineHeight: 1, padding: 4, flexShrink: 0 }}
+            >
+              😿
+            </button>
+            <input type="range" min="0.5" max="5" step="0.5" value={stake} onChange={(e) => setStake(Number(e.target.value))} style={{ flex: 1 }} />
+            <button
+              type="button"
+              onClick={() => setStake((s) => Math.min(5, Math.round((s + 0.5) * 2) / 2))}
+              title="Increase stake by 1"
+              style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, lineHeight: 1, padding: 4, flexShrink: 0 }}
+            >
+              🔨
+            </button>
+          </div>
+        </div>
+
+        <button onClick={() => onAddToSheet(stake)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: COLORS.gold, color: "#1A1305", border: "none", borderRadius: 10, padding: "13px 0", fontSize: 14.5, fontWeight: 700, cursor: "pointer" }}>
+          <PlusIcon size={16} /> Add to sheet
+        </button>
+        <div style={{ fontFamily: FONT_MONO, fontSize: 10.5, color: COLORS.muted, textAlign: "center", marginTop: 6 }}>
+          Makes {pick.pick} your own pick at {stake}u, graded in your main record
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "16px 0" }}>
+          <div style={{ flex: 1, height: 1, background: COLORS.line }} />
+          <span style={{ fontFamily: FONT_MONO, fontSize: 10.5, color: COLORS.muted }}>OR JUST GO WITH THEIRS</span>
+          <div style={{ flex: 1, height: 1, background: COLORS.line }} />
+        </div>
+
+        <div style={{ display: "flex", gap: 8 }}>
+          <button onClick={onTail} style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, background: "none", border: "1px solid " + COLORS.line, color: COLORS.muted, borderRadius: 8, padding: "9px 0", cursor: "pointer" }}>
+            <CopyIcon size={14} /> <span style={{ fontSize: 13, fontWeight: 600 }}>Tail</span>
+          </button>
+          <button onClick={onFade} style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, background: "none", border: "1px solid " + COLORS.line, color: COLORS.muted, borderRadius: 8, padding: "9px 0", cursor: "pointer" }}>
+            <ShuffleIcon size={14} /> <span style={{ fontSize: 13, fontWeight: 600 }}>Fade</span>
+          </button>
+        </div>
+        <div style={{ fontFamily: FONT_MONO, fontSize: 10.5, color: COLORS.muted, textAlign: "center", marginTop: 8 }}>
+          No thinking required &mdash; copies {u.name}'s side or takes the other one, at their stake, tracked in a separate record.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AuthModal({ email, setEmail, password, setPassword, mode, setMode, status, errorDetail, configured, onClose, onSubmit }) {
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (status === "sending") return;
+    onSubmit();
+  }
+  const isSignup = mode === "signup";
+  return (
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(8,11,17,0.75)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 70, padding: 20 }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ background: COLORS.surface, width: "100%", maxWidth: 380, borderRadius: 16, border: "1px solid " + COLORS.line, padding: 24 }}>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 4 }}>
+          <div style={{ fontFamily: FONT_DISPLAY, fontSize: 20, fontWeight: 700, color: COLORS.paper }}>{isSignup ? "Create account" : "Log in"}</div>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: COLORS.muted, cursor: "pointer" }}>
+            <XIcon size={20} />
+          </button>
+        </div>
+
+        {!configured && (
+          <div style={{ fontSize: 12.5, color: COLORS.muted, marginBottom: 14, lineHeight: 1.5 }}>
+            Sign-in isn't wired up yet &mdash; add your Supabase project URL and key in config.js to enable it.
+          </div>
+        )}
+
+        {configured && status === "confirm" ? (
+          <div style={{ fontSize: 13.5, color: COLORS.paper, lineHeight: 1.6, marginTop: 10 }}>
+            Check <strong>{email}</strong> for a confirmation link, then come back and log in. (If you'd rather skip this step for your group, turn off "Confirm email" in Supabase &rarr; Authentication &rarr; Settings.)
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <div style={{ display: "flex", gap: 6, marginBottom: 16 }}>
+              <button
+                type="button"
+                onClick={() => setMode("login")}
+                style={{
+                  flex: 1, padding: "8px 0", borderRadius: 7, fontSize: 13, fontWeight: 600, cursor: "pointer",
+                  border: "1px solid " + (!isSignup ? COLORS.gold : COLORS.line),
+                  background: !isSignup ? "rgba(217,164,65,0.12)" : "transparent",
+                  color: !isSignup ? COLORS.gold : COLORS.muted,
+                }}
+              >
+                Log In
+              </button>
+              <button
+                type="button"
+                onClick={() => setMode("signup")}
+                style={{
+                  flex: 1, padding: "8px 0", borderRadius: 7, fontSize: 13, fontWeight: 600, cursor: "pointer",
+                  border: "1px solid " + (isSignup ? COLORS.gold : COLORS.line),
+                  background: isSignup ? "rgba(217,164,65,0.12)" : "transparent",
+                  color: isSignup ? COLORS.gold : COLORS.muted,
+                }}
+              >
+                Sign Up
+              </button>
+            </div>
+
+            <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted, marginBottom: 6 }}>EMAIL</div>
+            <input
+              type="email"
+              required
+              disabled={!configured}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@email.com"
+              style={{
+                width: "100%", background: COLORS.surface2, color: COLORS.paper, border: "1px solid " + COLORS.line,
+                borderRadius: 8, padding: "10px 12px", fontSize: 14, boxSizing: "border-box", marginBottom: 12,
+              }}
+            />
+            <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted, marginBottom: 6 }}>PASSWORD</div>
+            <input
+              type="password"
+              required
+              minLength={6}
+              disabled={!configured}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder={isSignup ? "At least 6 characters" : "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"}
+              style={{
+                width: "100%", background: COLORS.surface2, color: COLORS.paper, border: "1px solid " + COLORS.line,
+                borderRadius: 8, padding: "10px 12px", fontSize: 14, boxSizing: "border-box", marginBottom: 14,
+              }}
+            />
+            <button
+              type="submit"
+              disabled={!configured || status === "sending"}
+              style={{
+                width: "100%", background: configured ? COLORS.gold : COLORS.surface3, color: configured ? "#1A1305" : COLORS.muted,
+                border: "none", borderRadius: 8, padding: "11px 0", fontSize: 14, fontWeight: 700,
+                cursor: configured ? "pointer" : "not-allowed",
+              }}
+            >
+              {status === "sending" ? (isSignup ? "Creating account\u2026" : "Logging in\u2026") : (isSignup ? "Create account" : "Log in")}
+            </button>
+            {status === "error" && (
+              <div style={{ fontSize: 12, color: COLORS.red, marginTop: 10, lineHeight: 1.5 }}>
+                {errorDetail || "Something went wrong."}
+              </div>
+            )}
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function AccountModal({ email, name, setName, status, avatarStatus, onClose, onSave, onUploadAvatar, onSignOut }) {
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (status === "saving") return;
+    onSave();
+  }
+  function handleFileChange(e) {
+    const file = e.target.files && e.target.files[0];
+    if (file) onUploadAvatar(file);
+    e.target.value = ""; // allow re-selecting the same file later
+  }
+  return (
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(8,11,17,0.75)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 70, padding: 20 }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ background: COLORS.surface, width: "100%", maxWidth: 380, borderRadius: 16, border: "1px solid " + COLORS.line, padding: 24 }}>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 18 }}>
+          <div style={{ fontFamily: FONT_DISPLAY, fontSize: 20, fontWeight: 700, color: COLORS.paper }}>My Account</div>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: COLORS.muted, cursor: "pointer" }}>
+            <XIcon size={20} />
+          </button>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+          <Avatar user={ME} size={48} />
+          <div style={{ minWidth: 0, flex: 1 }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: COLORS.paper }}>{name || ME.name}</div>
+            <div style={{ fontFamily: FONT_MONO, fontSize: 11.5, color: COLORS.muted, overflow: "hidden", textOverflow: "ellipsis", marginBottom: 4 }}>{email}</div>
+            <label style={{ display: "inline-block", fontSize: 12, fontWeight: 600, color: COLORS.gold, cursor: avatarStatus === "uploading" ? "default" : "pointer" }}>
+              {avatarStatus === "uploading" ? "Uploading\u2026" : "Change photo"}
+              <input type="file" accept="image/*" onChange={handleFileChange} disabled={avatarStatus === "uploading"} style={{ display: "none" }} />
+            </label>
+            {avatarStatus === "error" && (
+              <div style={{ fontSize: 11, color: COLORS.red, marginTop: 2 }}>Couldn't upload that image. Try a smaller file.</div>
+            )}
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted, letterSpacing: 0.6, marginBottom: 7 }}>DISPLAY NAME</div>
+          <input
+            type="text"
+            required
+            maxLength={24}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Your name"
+            style={{
+              width: "100%", background: COLORS.surface2, color: COLORS.paper, border: "1px solid " + COLORS.line,
+              borderRadius: 8, padding: "10px 12px", fontSize: 14, boxSizing: "border-box", marginBottom: 14,
+            }}
+          />
+          <button
+            type="submit"
+            disabled={status === "saving"}
+            style={{
+              width: "100%", background: COLORS.gold, color: "#1A1305", border: "none", borderRadius: 8,
+              padding: "11px 0", fontSize: 14, fontWeight: 700, cursor: status === "saving" ? "not-allowed" : "pointer",
+            }}
+          >
+            {status === "saving" ? "Saving\u2026" : "Save"}
+          </button>
+          {status === "saved" && (
+            <div style={{ fontSize: 12, color: COLORS.green, marginTop: 10 }}>Saved &mdash; this is how you'll show up to your friends.</div>
+          )}
+          {status === "error" && (
+            <div style={{ fontSize: 12, color: COLORS.red, marginTop: 10 }}>Couldn't save that. Try again in a moment.</div>
+          )}
+        </form>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "20px 0 16px" }}>
+          <div style={{ flex: 1, height: 1, background: COLORS.line }} />
+        </div>
+
+        <button
+          onClick={onSignOut}
+          style={{ width: "100%", background: "none", color: COLORS.muted, border: "1px solid " + COLORS.line, borderRadius: 8, padding: "10px 0", fontSize: 13, fontWeight: 600, cursor: "pointer" }}
+        >
+          Log Out
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function SheetTab({ feed, tailsFades, radar, dbGraded }) {
+  const myPicks = feed.filter((p) => p.user === ME.id);
+  const [historySearch, setHistorySearch] = useState("");
+  const term = historySearch.trim().toLowerCase();
+  const allHistory = useMemo(
+    () => dbGraded.filter((r) => r.user === ME.id).sort((a, b) => a.daysAgo - b.daysAgo),
+    [dbGraded]
+  );
+  const history = useMemo(() => {
+    const filtered = term
+      ? allHistory.filter((r) => (r.teamA || "").toLowerCase().includes(term) || (r.teamB || "").toLowerCase().includes(term))
+      : allHistory;
+    return filtered.slice(0, 12);
+  }, [allHistory, term]);
+  return (
+    <div>
+      <SectionLabel eyebrow="YOUR BOARD" title="My sheet" />
+      <ChartBlock title="Your picks" subtitle="Made directly from the slate — graded in your main win %">
+        {myPicks.length === 0 && <EmptyRow text="No picks logged yet. Head to the Slate to add one." />}
+        {myPicks.map((p) => <SheetRow key={p.id} pick={p} tag={null} />)}
+      </ChartBlock>
+      <ChartBlock title="Tails &amp; fades" subtitle="Copied from a friend's pick — graded in a separate win %, kept apart from your own picks">
+        {tailsFades.length === 0 && <EmptyRow text="Tail or fade a friend's pick from the Slate to see it here." />}
+        {tailsFades.map((p) => <SheetRow key={p.id} pick={p} tag={p.type} />)}
+      </ChartBlock>
+      <ChartBlock title="Radar" subtitle="Still looking into these — not locked in, doesn't count toward any record yet">
+        {radar.length === 0 && <EmptyRow text="Add a pick to your radar from the Slate to see it here." />}
+        {radar.map((r) => <SheetRow key={r.id} pick={r} tag="radar" />)}
+      </ChartBlock>
+      <ChartBlock title="History" subtitle="Settled picks — grading isn't automatic yet, so this fills in once results are being tracked">
+        <SearchBox value={historySearch} onChange={setHistorySearch} placeholder="Search by team" />
+        {history.length === 0 && <EmptyRow text={term ? "No settled picks match \u201c" + historySearch + "\u201d." : "Nothing graded yet."} />}
+        {history.map((r) => <HistoryRow key={r.id} row={r} />)}
+      </ChartBlock>
+    </div>
+  );
+}
+
+function EmptyRow({ text }) {
+  return <div style={{ fontSize: 13, color: COLORS.muted, padding: "10px 2px" }}>{text}</div>;
+}
+
+function SheetRow({ pick, tag }) {
+  const game = GAMES.find((g) => g.id === pick.game);
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 2px", borderBottom: "1px solid " + COLORS.line }}>
+      {tag && (
+        <span style={{ fontFamily: FONT_MONO, fontSize: 10.5, fontWeight: 700, borderRadius: 5, padding: "2px 7px", flexShrink: 0, color: tag === "tail" ? COLORS.green : tag === "fade" ? COLORS.red : COLORS.gold, background: tag === "tail" ? "rgba(76,154,106,0.14)" : tag === "fade" ? "rgba(194,75,63,0.14)" : "rgba(217,164,65,0.14)" }}>
+          {tag.toUpperCase()}
+        </span>
+      )}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 13, fontWeight: 600 }}>{game ? game.away + " @ " + game.home : pick.game}</div>
+        <div style={{ fontFamily: FONT_MONO, fontSize: 11.5, color: COLORS.muted }}>{pick.market}</div>
+      </div>
+      <div style={{ fontFamily: FONT_MONO, textAlign: "right", fontSize: 12.5 }}>
+        <div style={{ color: COLORS.paper }}>{pick.pick}</div>
+        <div style={{ color: COLORS.muted }}>{signed(pick.odds)} &middot; {pick.stake}u</div>
+      </div>
+    </div>
+  );
+}
+
+function historyPickLabel(row) {
+  if (row.market === "Total") return row.overUnder + " (total)";
+  return row.pickedTeam + (row.market === "Spread" ? " (spread)" : " (ML)");
+}
+
+function HistoryRow({ row }) {
+  const resultColor = row.result === "win" ? COLORS.green : row.result === "loss" ? COLORS.red : COLORS.muted;
+  const resultLabel = row.result === "win" ? "W" : row.result === "loss" ? "L" : "P";
+  const units = payoutUnits(row.stake, row.result);
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 2px", borderBottom: "1px solid " + COLORS.line }}>
+      <span style={{
+        fontFamily: FONT_MONO, fontSize: 11, fontWeight: 700, width: 22, height: 22, borderRadius: "50%",
+        display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+        color: resultColor, background: "rgba(255,255,255,0.06)",
+      }}>
+        {resultLabel}
+      </span>
+      {row.source !== "own" && (
+        <span style={{
+          fontFamily: FONT_MONO, fontSize: 10, fontWeight: 700, borderRadius: 5, padding: "2px 6px", flexShrink: 0,
+          color: row.source === "tail" ? COLORS.green : COLORS.red,
+          background: row.source === "tail" ? "rgba(76,154,106,0.14)" : "rgba(194,75,63,0.14)",
+        }}>
+          {row.source.toUpperCase()}
+        </span>
+      )}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 13, fontWeight: 600 }}>{row.teamA} @ {row.teamB}</div>
+        <div style={{ fontFamily: FONT_MONO, fontSize: 11.5, color: COLORS.muted }}>{row.sport} &middot; {row.daysAgo}d ago</div>
+      </div>
+      <div style={{ fontFamily: FONT_MONO, textAlign: "right", fontSize: 12.5 }}>
+        <div style={{ color: COLORS.paper }}>{historyPickLabel(row)}</div>
+        <div style={{ color: units >= 0 ? COLORS.green : COLORS.red }}>{units >= 0 ? "+" : ""}{Math.round(units * 10) / 10}u</div>
+      </div>
+    </div>
+  );
+}
+
+function WhosHotTab({ dbGraded, dbRoster }) {
+  const byUser = {};
+  dbGraded.forEach((r) => {
+    if (!byUser[r.user]) byUser[r.user] = [];
+    byUser[r.user].push(r);
+  });
+  const roster = dbRoster && dbRoster.length ? dbRoster : Object.keys(byUser);
+
+  const onFire = [], heating = [], iceCold = [];
+  roster.forEach((id) => {
+    const rows = byUser[id] || [];
+    const status = classifyHotStatus(rows);
+    if (!status) return;
+    const last10 = rows.slice().sort((a, b) => a.daysAgo - b.daysAgo).slice(0, 10);
+    const entry = { id, user: getUser(id), rows: last10 };
+    if (status === "fire") onFire.push(entry);
+    else if (status === "ice") iceCold.push(entry);
+    else if (status === "heating") heating.push(entry);
+  });
+
+  return (
+    <div>
+      <SectionLabel eyebrow="THE BOARD" title="Who's hot?" />
+
+      <ChartBlock title="On Fire">
+        {onFire.length === 0 && <EmptyRow text="Nobody's on a heater right now." />}
+        {onFire.map((e) => <HotUserGroup key={e.id} entry={e} />)}
+      </ChartBlock>
+
+      <ChartBlock title="Heeeee's Heating Up">
+        {heating.length === 0 && <EmptyRow text="Nobody's heating up right now." />}
+        {heating.map((e) => <HotUserGroup key={e.id} entry={e} />)}
+      </ChartBlock>
+
+      <ChartBlock title="Ice Cold">
+        {iceCold.length === 0 && <EmptyRow text="Nobody's ice cold right now." />}
+        {iceCold.map((e) => <HotUserGroup key={e.id} entry={e} />)}
+      </ChartBlock>
+    </div>
+  );
+}
+
+function HotUserGroup({ entry }) {
+  const { user, rows } = entry;
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ marginBottom: 14, background: COLORS.surface2, borderRadius: 10, border: "1px solid " + COLORS.line, overflow: "hidden" }}>
+      <button
+        onClick={() => setOpen((o) => !o)}
+        style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "10px 12px", background: COLORS.surface3, border: "none", cursor: "pointer" }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <Avatar user={user} size={28} />
+          <span style={{ fontSize: 14, fontWeight: 700, color: COLORS.paper }}>{user.name}</span>
+        </div>
+        {open ? <ChevronUpIcon size={16} color={COLORS.muted} /> : <ChevronDownIcon size={16} color={COLORS.muted} />}
+      </button>
+      {open && (
+        <div style={{ padding: "0 12px" }}>
+          {rows.map((r) => <HistoryRow key={r.id} row={r} />)}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function AnalyticsTab({ analyticsUser, setAnalyticsUser, dbGraded, dbRoster }) {
+  const rows = useMemo(() => dbGraded.filter((r) => r.user === analyticsUser), [dbGraded, analyticsUser]);
+  const ownRows = useMemo(() => rows.filter((r) => r.source === "own"), [rows]);
+  const tfRows = useMemo(() => rows.filter((r) => r.source !== "own"), [rows]);
+
+  const bySport = useMemo(() => {
+    const g = groupBy(rows, "sport");
+    return Object.keys(g).map((k) => ({ name: k, ...aggregate(g[k]) }));
+  }, [rows]);
+  const byConf = useMemo(() => {
+    const g = groupBy(rows, "conf");
+    return Object.keys(g)
+      .map((k) => ({ name: k, sport: g[k][0] ? g[k][0].sport : null, ...aggregate(g[k]) }))
+      .sort((a, b) => b.units - a.units);
+  }, [rows]);
+  const byConfNFL = byConf.filter((c) => c.sport === "NFL");
+  const byConfNCAAFB = byConf.filter((c) => c.sport === "NCAAFB");
+  const byConfEPL = byConf.filter((c) => c.sport === "EPL");
+  const byConfSerieA = byConf.filter((c) => c.sport === "SERIEA");
+  const byConfBundesliga = byConf.filter((c) => c.sport === "BUNDESLIGA");
+  const byTeam = useMemo(() => teamStats(rows), [rows]);
+  const byMarket = useMemo(() => {
+    const g = groupBy(rows, "market");
+    return Object.keys(g).map((k) => ({ name: k, ...aggregate(g[k]) }));
+  }, [rows]);
+  const trend = useMemo(() => {
+    const sorted = [...rows].sort((a, b) => b.daysAgo - a.daysAgo); // oldest first
+    let cum = 0;
+    return sorted.map((r) => {
+      cum += payoutUnits(r.stake, r.result);
+      return { label: r.dateLabel || "\u2014", value: Math.round(cum * 10) / 10 };
+    });
+  }, [rows]);
+
+  const overall = aggregate(rows);
+  const own = aggregate(ownRows);
+  const tf = aggregate(tfRows);
+  const last7 = aggregate(rows.filter((r) => r.daysAgo <= 7));
+  const last30 = aggregate(rows.filter((r) => r.daysAgo <= 30));
+  const maxUnitAbs = Math.max(1, ...byMarket.map((m) => Math.abs(m.units)));
+  const rosterUsers = (dbRoster && dbRoster.length ? dbRoster.map((id) => getUser(id)) : [ME]);
+  const hasData = rows.length > 0;
+
+  return (
+    <div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+        <SectionLabel eyebrow="PICK ANALYTICS" title="How everyone actually picks" />
+        <UserPicker users={rosterUsers} value={analyticsUser} onChange={setAnalyticsUser} />
+      </div>
+
+      {!hasData && (
+        <div style={{ background: COLORS.surface, border: "1px solid " + COLORS.line, borderRadius: 12, padding: 20, marginTop: 20, fontSize: 13, color: COLORS.muted, lineHeight: 1.6 }}>
+          No graded picks yet for this user. Analytics fills in automatically once picks start getting settled &mdash; grading is coming soon.
+        </div>
+      )}
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12, marginTop: 20 }}>
+        <StatCard label="Record" value={overall.wins + "-" + overall.losses + "-" + overall.pushes} />
+        <StatCard label="Win %" value={overall.winPct + "%"} />
+        <StatCard label="Net units" value={(overall.units >= 0 ? "+" : "") + overall.units} tone={overall.units >= 0 ? "up" : "down"} />
+      </div>
+
+      <ChartBlock title="Win % over time" subtitle="Success rate across three windows">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+          <TimeWindowStat label="LAST 7 DAYS" stat={last7} />
+          <TimeWindowStat label="LAST 30 DAYS" stat={last30} />
+          <TimeWindowStat label="ALL TIME" stat={overall} />
+        </div>
+      </ChartBlock>
+
+      <ChartBlock title="Own picks vs. tails &amp; fades" subtitle="Kept as two separate records, same as on My Sheet">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+          <div style={{ background: COLORS.surface2, borderRadius: 10, padding: 14 }}>
+            <div style={{ fontFamily: FONT_MONO, fontSize: 10.5, color: COLORS.muted, marginBottom: 8 }}>OWN PICKS &middot; N={own.n}</div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div>
+                <div style={{ fontFamily: FONT_DISPLAY, fontSize: 22, fontWeight: 700 }}>{own.winPct}%</div>
+                <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted }}>win rate</div>
+              </div>
+              <div style={{ textAlign: "right" }}>
+                <div style={{ fontFamily: FONT_DISPLAY, fontSize: 22, fontWeight: 700, color: own.units >= 0 ? COLORS.green : COLORS.red }}>{own.units >= 0 ? "+" : ""}{own.units}</div>
+                <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted }}>units</div>
+              </div>
+            </div>
+          </div>
+          <div style={{ background: COLORS.surface2, borderRadius: 10, padding: 14 }}>
+            <div style={{ fontFamily: FONT_MONO, fontSize: 10.5, color: COLORS.muted, marginBottom: 8 }}>TAILS &amp; FADES &middot; N={tf.n}</div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div>
+                <div style={{ fontFamily: FONT_DISPLAY, fontSize: 22, fontWeight: 700 }}>{tf.winPct}%</div>
+                <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted }}>win rate</div>
+              </div>
+              <div style={{ textAlign: "right" }}>
+                <div style={{ fontFamily: FONT_DISPLAY, fontSize: 22, fontWeight: 700, color: tf.units >= 0 ? COLORS.green : COLORS.red }}>{tf.units >= 0 ? "+" : ""}{tf.units}</div>
+                <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: COLORS.muted }}>units</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ChartBlock>
+
+      <ChartBlock title="This user's units over time">
+        <MiniLineChart data={trend} height={200} />
+      </ChartBlock>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, marginTop: 20 }}>
+        <ChartBlock title="Win % by sport">
+          <HBarList
+            rows={bySport.map((s) => ({ label: s.name, value: s.winPct, display: s.winPct + "%", color: COLORS.gold, max: 100 }))}
+          />
+        </ChartBlock>
+        <ChartBlock title="Net units by bet type">
+          <HBarList
+            rows={byMarket.map((m) => ({ label: m.name, value: Math.abs(m.units), display: (m.units >= 0 ? "+" : "") + m.units, color: m.units >= 0 ? COLORS.green : COLORS.red, max: maxUnitAbs }))}
+          />
+        </ChartBlock>
+      </div>
+
+      <ChartBlock title="By conference" subtitle="Smallest samples first — check the count before you trust the trend">
+        <ConfStatsTable label="NFL" rows={byConfNFL} />
+        <ConfStatsTable label="NCAAFB" rows={byConfNCAAFB} />
+        <ConfStatsTable label="EPL" rows={byConfEPL} />
+        <ConfStatsTable label="Serie A" rows={byConfSerieA} />
+        <ConfStatsTable label="Bundesliga" rows={byConfBundesliga} />
+      </ChartBlock>
+
+      <ChartBlock title="By team" subtitle="Win % betting for, against, on overs and unders for each team you've picked">
+        <TeamStatsTable label="NFL" teams={byTeam.filter((t) => t.sport === "NFL")} />
+        <TeamStatsTable label="NCAAFB" teams={byTeam.filter((t) => t.sport === "NCAAFB")} />
+        <TeamStatsTable label="EPL" teams={byTeam.filter((t) => t.sport === "EPL")} />
+        <TeamStatsTable label="Serie A" teams={byTeam.filter((t) => t.sport === "SERIEA")} />
+        <TeamStatsTable label="Bundesliga" teams={byTeam.filter((t) => t.sport === "BUNDESLIGA")} />
+        <div style={{ fontSize: 11, color: COLORS.muted, marginTop: 4 }}>
+          &ldquo;For&rdquo; and &ldquo;against&rdquo; cover spread and moneyline picks on that team; &ldquo;over&rdquo; and &ldquo;under&rdquo; cover total bets on their games; &ldquo;combined&rdquo; is every graded pick touching that team. &mdash; is shown where there's no decided pick yet.
+        </div>
+      </ChartBlock>
+    </div>
+  );
+}
+function HBarList({ rows }) {
+  return (
+    <div>
+      {rows.map((r) => (
+        <div key={r.label} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+          <div style={{ width: 90, fontSize: 12.5, flexShrink: 0 }}>{r.label}</div>
+          <div style={{ flex: 1, background: COLORS.surface3, borderRadius: 5, height: 16, overflow: "hidden" }}>
+            <div style={{ width: Math.min(100, (r.value / (r.max || 1)) * 100) + "%", background: r.color, height: "100%" }} />
+          </div>
+          <div style={{ fontFamily: FONT_MONO, fontSize: 12, width: 46, textAlign: "right", color: COLORS.muted }}>{r.display}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* simple SVG line chart — no chart library required */
+function MiniLineChart({ data, height }) {
+  if (!data.length) return <div style={{ fontSize: 13, color: COLORS.muted }}>Not enough graded picks yet.</div>;
+  const W = 600, H = height || 200, PAD = 24;
+  const values = data.map((d) => d.value);
+  const minV = Math.min(0, ...values);
+  const maxV = Math.max(0, ...values, 1);
+  const range = (maxV - minV) || 1;
+  const points = data.map((d, i) => {
+    const x = data.length > 1 ? PAD + (i / (data.length - 1)) * (W - 2 * PAD) : W / 2;
+    const y = H - PAD - ((d.value - minV) / range) * (H - 2 * PAD);
+    return { x, y, label: d.label, value: d.value };
+  });
+  const zeroY = H - PAD - ((0 - minV) / range) * (H - 2 * PAD);
+  const polyPoints = points.map((p) => p.x + "," + p.y).join(" ");
+
+  return (
+    <div>
+      <svg viewBox={"0 0 " + W + " " + H} width="100%" height={H} style={{ display: "block" }}>
+        <line x1={PAD} y1={zeroY} x2={W - PAD} y2={zeroY} stroke={COLORS.line} strokeWidth="1" strokeDasharray="4 4" />
+        <polyline points={polyPoints} fill="none" stroke={COLORS.gold} strokeWidth="2.5" />
+        {points.map((p, i) => <circle key={i} cx={p.x} cy={p.y} r="3.5" fill={COLORS.gold} />)}
+      </svg>
+      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
+        {points.map((p, i) => (
+          <span key={i} style={{ fontFamily: FONT_MONO, fontSize: 10, color: COLORS.muted }}>{p.label}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TimeWindowStat({ label, stat }) {
+  return (
+    <div style={{ background: COLORS.surface2, borderRadius: 10, padding: "14px 12px", textAlign: "center" }}>
+      <div style={{ fontFamily: FONT_MONO, fontSize: 10, color: COLORS.muted, marginBottom: 8, letterSpacing: 0.6 }}>{label}</div>
+      <div style={{ fontFamily: FONT_DISPLAY, fontSize: 28, fontWeight: 700, color: COLORS.paper }}>{stat.winPct}%</div>
+      <div style={{ fontFamily: FONT_MONO, fontSize: 11.5, color: COLORS.muted, marginTop: 4 }}>{stat.wins}-{stat.losses}-{stat.pushes} &middot; n={stat.n}</div>
+    </div>
+  );
+}
+
+function ConfStatsTable({ label, rows }) {
+  return (
+    <div style={{ marginBottom: 18 }}>
+      <div style={{ fontFamily: FONT_MONO, fontSize: 11, fontWeight: 700, color: COLORS.gold, letterSpacing: 0.6, marginBottom: 6 }}>{label}</div>
+      <div style={{ fontFamily: FONT_MONO, display: "grid", gridTemplateColumns: "1.4fr 0.7fr 0.7fr 0.8fr", gap: 8, fontSize: 11, color: COLORS.muted, padding: "6px 4px", borderBottom: "1px solid " + COLORS.line }}>
+        <span>CONFERENCE</span><span>N</span><span>WIN%</span><span style={{ textAlign: "right" }}>UNITS</span>
+      </div>
+      {rows.length === 0 && <div style={{ fontSize: 13, color: COLORS.muted, padding: "10px 4px" }}>No graded picks yet.</div>}
+      {rows.map((c, i) => (
+        <div key={c.name} style={{ fontFamily: FONT_MONO, display: "grid", gridTemplateColumns: "1.4fr 0.7fr 0.7fr 0.8fr", gap: 8, fontSize: 13, padding: "8px 4px", borderBottom: i < rows.length - 1 ? "1px solid " + COLORS.line : "none" }}>
+          <span>{c.name}</span>
+          <span style={{ color: COLORS.muted }}>{c.n}</span>
+          <span>{c.winPct}%</span>
+          <span style={{ textAlign: "right", color: c.units >= 0 ? COLORS.green : COLORS.red }}>{c.units >= 0 ? "+" : ""}{c.units}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function TeamStatsTable({ label, teams }) {
+  return (
+    <div style={{ marginBottom: 18 }}>
+      <div style={{ fontFamily: FONT_MONO, fontSize: 11, fontWeight: 700, color: COLORS.gold, letterSpacing: 0.6, marginBottom: 6 }}>{label}</div>
+      <div style={{ fontFamily: FONT_MONO, display: "grid", gridTemplateColumns: "1.3fr 0.75fr 0.75fr 0.75fr 0.75fr 0.85fr", gap: 6, fontSize: 10.5, color: COLORS.muted, padding: "6px 4px", borderBottom: "1px solid " + COLORS.line }}>
+        <span>TEAM</span><span>FOR</span><span>AGAINST</span><span>OVER</span><span>UNDER</span><span style={{ textAlign: "right" }}>COMBINED</span>
+      </div>
+      {teams.length === 0 && <div style={{ fontSize: 13, color: COLORS.muted, padding: "10px 4px" }}>No graded picks yet.</div>}
+      {teams.map((t, i) => (
+        <div key={t.team} style={{ fontFamily: FONT_MONO, display: "grid", gridTemplateColumns: "1.3fr 0.75fr 0.75fr 0.75fr 0.75fr 0.85fr", gap: 6, fontSize: 12.5, padding: "8px 4px", borderBottom: i < teams.length - 1 ? "1px solid " + COLORS.line : "none" }}>
+          <span style={{ fontWeight: 600 }}>{t.team}</span>
+          <span>{pct(t.for)}</span>
+          <span>{pct(t.against)}</span>
+          <span>{pct(t.overs)}</span>
+          <span>{pct(t.unders)}</span>
+          <span style={{ textAlign: "right", fontWeight: 600, color: COLORS.paper }}>{pct(t.combined)}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function UserPicker({ users, value, onChange }) {
+  return (
+    <div style={{ position: "relative" }}>
+      <select value={value} onChange={(e) => onChange(e.target.value)} style={{
+        appearance: "none", background: COLORS.surface2, color: COLORS.paper,
+        border: "1px solid " + COLORS.line, borderRadius: 8, padding: "8px 32px 8px 12px",
+        fontSize: 13.5, fontWeight: 500, cursor: "pointer",
+      }}>
+        {users.map((u) => <option key={u.id} value={u.id}>{u.name}</option>)}
+      </select>
+      <span style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
+        <ChevronDownIcon size={14} color={COLORS.muted} />
+      </span>
+    </div>
+  );
+}
+
+function StatCard({ label, value, tone }) {
+  const color = tone === "up" ? COLORS.green : tone === "down" ? COLORS.red : COLORS.paper;
+  return (
+    <div style={{ background: COLORS.surface, border: "1px solid " + COLORS.line, borderRadius: 10, padding: "14px 16px" }}>
+      <div style={{ fontFamily: FONT_MONO, fontSize: 10.5, color: COLORS.muted, letterSpacing: 0.8, marginBottom: 6 }}>{label.toUpperCase()}</div>
+      <div style={{ fontFamily: FONT_DISPLAY, fontSize: 26, fontWeight: 700, color }}>{value}</div>
+    </div>
+  );
+}
+
+function ChartBlock({ title, subtitle, children }) {
+  return (
+    <div style={{ background: COLORS.surface, border: "1px solid " + COLORS.line, borderRadius: 12, padding: "16px 18px", marginTop: 20 }}>
+      <div style={{ marginBottom: 8 }}>
+        <div style={{ fontSize: 14.5, fontWeight: 600, color: COLORS.paper }}>{title}</div>
+        {subtitle && <div style={{ fontSize: 12, color: COLORS.muted, marginTop: 2 }}>{subtitle}</div>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
