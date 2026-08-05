@@ -10,16 +10,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-130"
+      "odds": "-118"
     },
     "moneyline": {
-      "home": "-105",
-      "away": "-115"
+      "home": "+105",
+      "away": "-125"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
+      "overOdds": "-112",
+      "underOdds": "-108"
     }
   },
   {
@@ -28,6 +28,29 @@
     "conf": "NFL",
     "away": "Green Bay Packers",
     "home": "Pittsburgh Steelers",
+    "kickoff": "Thu, 8/13, 11:00 PM UTC",
+    "startsAt": "2026-08-13T23:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "tGBA8dsJhMhZ0HMZ0Xgo",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Detroit Lions",
+    "home": "Cincinnati Bengals",
     "kickoff": "Thu, 8/13, 11:00 PM UTC",
     "startsAt": "2026-08-13T23:00:00.000Z",
     "spread": {
@@ -161,11 +184,11 @@
     }
   },
   {
-    "id": "o7eY2rvMLMv8WuP7adpy",
+    "id": "WduJ84OWBKZpqEl9TDsQ",
     "sport": "NFL",
     "conf": "NFL",
-    "away": "Tampa Bay Buccaneers",
-    "home": "New York Jets",
+    "away": "Miami Dolphins",
+    "home": "Washington Commanders",
     "kickoff": "Fri, 8/14, 11:00 PM UTC",
     "startsAt": "2026-08-14T23:00:00.000Z",
     "spread": {
@@ -184,36 +207,13 @@
     }
   },
   {
-    "id": "bPk3shiJ9sZ60eX0EssT",
+    "id": "o7eY2rvMLMv8WuP7adpy",
     "sport": "NFL",
     "conf": "NFL",
-    "away": "Minnesota Vikings",
-    "home": "New York Giants",
-    "kickoff": "Sat, 8/15, 5:00 PM UTC",
-    "startsAt": "2026-08-15T17:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "Z5sPtNTVO2YnNMt7Y7NR",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Jacksonville Jaguars",
-    "home": "New Orleans Saints",
-    "kickoff": "Sat, 8/15, 8:00 PM UTC",
-    "startsAt": "2026-08-15T20:00:00.000Z",
+    "away": "Tampa Bay Buccaneers",
+    "home": "New York Jets",
+    "kickoff": "Fri, 8/14, 11:00 PM UTC",
+    "startsAt": "2026-08-14T23:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
