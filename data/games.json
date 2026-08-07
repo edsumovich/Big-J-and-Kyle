@@ -1,28 +1,5 @@
 [
   {
-    "id": "jKMtR4ROY9i9y3qbZfT3",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Carolina Panthers",
-    "home": "Arizona Cardinals",
-    "kickoff": "Fri, 8/7, 12:00 AM UTC",
-    "startsAt": "2026-08-07T00:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "+105"
-    },
-    "moneyline": {
-      "home": "-115",
-      "away": "-115"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-120",
-      "underOdds": "-110"
-    }
-  },
-  {
     "id": "ZnBbdC8yFPY0bdbeOKlt",
     "sport": "NFL",
     "conf": "NFL",
@@ -214,6 +191,29 @@
     "home": "New York Jets",
     "kickoff": "Fri, 8/14, 11:00 PM UTC",
     "startsAt": "2026-08-14T23:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "bPk3shiJ9sZ60eX0EssT",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Minnesota Vikings",
+    "home": "New York Giants",
+    "kickoff": "Sat, 8/15, 5:00 PM UTC",
+    "startsAt": "2026-08-15T17:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
