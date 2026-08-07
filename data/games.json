@@ -10,16 +10,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-118"
+      "odds": "+105"
     },
     "moneyline": {
-      "home": "-102",
-      "away": "-118"
+      "home": "-115",
+      "away": "-115"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-112",
-      "underOdds": "-108"
+      "overOdds": "-120",
+      "underOdds": "-110"
     }
   },
   {
@@ -184,11 +184,11 @@
     }
   },
   {
-    "id": "o7eY2rvMLMv8WuP7adpy",
+    "id": "WduJ84OWBKZpqEl9TDsQ",
     "sport": "NFL",
     "conf": "NFL",
-    "away": "Tampa Bay Buccaneers",
-    "home": "New York Jets",
+    "away": "Miami Dolphins",
+    "home": "Washington Commanders",
     "kickoff": "Fri, 8/14, 11:00 PM UTC",
     "startsAt": "2026-08-14T23:00:00.000Z",
     "spread": {
@@ -207,13 +207,13 @@
     }
   },
   {
-    "id": "bPk3shiJ9sZ60eX0EssT",
+    "id": "o7eY2rvMLMv8WuP7adpy",
     "sport": "NFL",
     "conf": "NFL",
-    "away": "Minnesota Vikings",
-    "home": "New York Giants",
-    "kickoff": "Sat, 8/15, 5:00 PM UTC",
-    "startsAt": "2026-08-15T17:00:00.000Z",
+    "away": "Tampa Bay Buccaneers",
+    "home": "New York Jets",
+    "kickoff": "Fri, 8/14, 11:00 PM UTC",
+    "startsAt": "2026-08-14T23:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -240,11 +240,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-105"
+      "odds": "-110"
     },
     "moneyline": {
-      "home": "-295",
-      "away": "+235"
+      "home": "-310",
+      "away": "+245"
     },
     "total": {
       "line": 44.5,
