@@ -10,11 +10,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-105"
+      "odds": "+100"
     },
     "moneyline": {
-      "home": "+126",
-      "away": "-148"
+      "home": "+136",
+      "away": "-162"
     },
     "total": {
       "line": 44.5,
@@ -33,16 +33,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-110"
+      "odds": "-120"
     },
     "moneyline": {
-      "home": "-275",
-      "away": "+225"
+      "home": "-300",
+      "away": "+245"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-118",
-      "underOdds": "-104"
+      "overOdds": "-110",
+      "underOdds": "-110"
     }
   },
   {
@@ -59,13 +59,13 @@
       "odds": "-105"
     },
     "moneyline": {
-      "home": "+134",
+      "home": "+132",
       "away": "-158"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-120",
-      "underOdds": "-102"
+      "overOdds": "-115",
+      "underOdds": "-105"
     }
   },
   {
@@ -79,11 +79,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-110"
+      "odds": "-114"
     },
     "moneyline": {
-      "home": "-134",
-      "away": "+114"
+      "home": "-136",
+      "away": "+116"
     },
     "total": {
       "line": 44.5,
@@ -102,16 +102,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-105"
+      "odds": "-115"
     },
     "moneyline": {
-      "home": "-118",
-      "away": "+100"
+      "home": "-104",
+      "away": "-112"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
+      "overOdds": "-115",
+      "underOdds": "-105"
     }
   },
   {
@@ -125,16 +125,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-108"
+      "odds": "-102"
     },
     "moneyline": {
-      "home": "+194",
-      "away": "-235"
+      "home": "+200",
+      "away": "-245"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-112",
-      "underOdds": "-108"
+      "overOdds": "-118",
+      "underOdds": "-104"
     }
   },
   {
@@ -156,8 +156,8 @@
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-105",
-      "underOdds": "-115"
+      "overOdds": "-115",
+      "underOdds": "-105"
     }
   },
   {
