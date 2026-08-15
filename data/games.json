@@ -1,74 +1,5 @@
 [
   {
-    "id": "1JPYwV8HIdEzPmTKTBT2",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Denver Broncos",
-    "home": "Atlanta Falcons",
-    "kickoff": "Fri, 8/14, 11:00 PM UTC",
-    "startsAt": "2026-08-14T23:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-114"
-    },
-    "moneyline": {
-      "home": "+390",
-      "away": "-590"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-108",
-      "underOdds": "-122"
-    }
-  },
-  {
-    "id": "WduJ84OWBKZpqEl9TDsQ",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Miami Dolphins",
-    "home": "Washington Commanders",
-    "kickoff": "Fri, 8/14, 11:00 PM UTC",
-    "startsAt": "2026-08-14T23:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-108"
-    },
-    "moneyline": {
-      "home": "+235",
-      "away": "-320"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-118",
-      "underOdds": "-112"
-    }
-  },
-  {
-    "id": "o7eY2rvMLMv8WuP7adpy",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Tampa Bay Buccaneers",
-    "home": "New York Jets",
-    "kickoff": "Fri, 8/14, 11:00 PM UTC",
-    "startsAt": "2026-08-14T23:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-118"
-    },
-    "moneyline": {
-      "home": "-950",
-      "away": "+540"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-114",
-      "underOdds": "-114"
-    }
-  },
-  {
     "id": "bPk3shiJ9sZ60eX0EssT",
     "sport": "NFL",
     "conf": "NFL",
@@ -102,11 +33,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-122"
+      "odds": "-118"
     },
     "moneyline": {
-      "home": "+138",
-      "away": "-164"
+      "home": "+142",
+      "away": "-168"
     },
     "total": {
       "line": 44.5,
@@ -128,8 +59,8 @@
       "odds": "-105"
     },
     "moneyline": {
-      "home": "-154",
-      "away": "+130"
+      "home": "-152",
+      "away": "+128"
     },
     "total": {
       "line": 44.5,
@@ -148,16 +79,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-110"
+      "odds": "-105"
     },
     "moneyline": {
-      "home": "-136",
-      "away": "+116"
+      "home": "-130",
+      "away": "+110"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-120",
-      "underOdds": "-102"
+      "overOdds": "-105",
+      "underOdds": "-115"
     }
   },
   {
@@ -227,6 +158,75 @@
       "line": 44.5,
       "overOdds": "-115",
       "underOdds": "-105"
+    }
+  },
+  {
+    "id": "z95b2JMJVRm8HrjOKHFS",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "New England Patriots",
+    "home": "Seattle Seahawks",
+    "kickoff": "Thu, 9/10, 12:20 AM UTC",
+    "startsAt": "2026-09-10T00:20:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "-185",
+      "away": "+154"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "gwEhZ84eQ2kK6Qo2UkXa",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "San Francisco 49ers",
+    "home": "Los Angeles Rams",
+    "kickoff": "Fri, 9/11, 12:35 AM UTC",
+    "startsAt": "2026-09-11T00:35:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "-192",
+      "away": "+160"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "0xRBT9Dxwxwnptx7dnV4",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "New York Jets",
+    "home": "Tennessee Titans",
+    "kickoff": "Sun, 9/13, 5:00 PM UTC",
+    "startsAt": "2026-09-13T17:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "-148",
+      "away": "+124"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
     }
   },
   {
@@ -335,13 +335,13 @@
       "odds": "-105"
     },
     "moneyline": {
-      "home": "-320",
-      "away": "+255"
+      "home": "-330",
+      "away": "+260"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
+      "overOdds": "-114",
+      "underOdds": "-106"
     }
   },
   {
