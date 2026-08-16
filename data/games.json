@@ -1,51 +1,5 @@
 [
   {
-    "id": "ljKKhq7DXz6qQ1IzgEyg",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Philadelphia Eagles",
-    "home": "Baltimore Ravens",
-    "kickoff": "Sat, 8/15, 11:00 PM UTC",
-    "startsAt": "2026-08-15T23:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-112"
-    },
-    "moneyline": {
-      "home": "+102",
-      "away": "-130"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-128",
-      "underOdds": "-104"
-    }
-  },
-  {
-    "id": "qzQTryeldZ1aj8mi0GgY",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Dallas Cowboys",
-    "home": "Seattle Seahawks",
-    "kickoff": "Sun, 8/16, 12:00 AM UTC",
-    "startsAt": "2026-08-16T00:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-105"
-    },
-    "moneyline": {
-      "home": "-130",
-      "away": "+110"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-118",
-      "underOdds": "-104"
-    }
-  },
-  {
     "id": "XQy5cmTBdqDjImj5nQh4",
     "sport": "NFL",
     "conf": "NFL",
@@ -53,6 +7,52 @@
     "home": "Houston Texans",
     "kickoff": "Fri, 8/21, 12:00 AM UTC",
     "startsAt": "2026-08-21T00:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "bZFhirXIeWZcGXvdyspI",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "San Francisco 49ers",
+    "home": "Los Angeles Chargers",
+    "kickoff": "Fri, 8/21, 2:00 AM UTC",
+    "startsAt": "2026-08-21T02:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "8t5SPysPVitPXRN9slwQ",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "New York Jets",
+    "home": "Pittsburgh Steelers",
+    "kickoff": "Fri, 8/21, 11:00 PM UTC",
+    "startsAt": "2026-08-21T23:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -110,8 +110,8 @@
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
+      "overOdds": "-108",
+      "underOdds": "-112"
     }
   },
   {
@@ -309,7 +309,7 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-120"
+      "odds": "-115"
     },
     "moneyline": {
       "home": "-255",
