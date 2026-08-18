@@ -33,11 +33,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "+100"
+      "odds": "-110"
     },
     "moneyline": {
-      "home": "-110",
-      "away": "-106"
+      "home": "+104",
+      "away": "-122"
     },
     "total": {
       "line": 44.5,
@@ -148,11 +148,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-120"
+      "odds": "-124"
     },
     "moneyline": {
-      "home": "-146",
-      "away": "+124"
+      "home": "-154",
+      "away": "+130"
     },
     "total": {
       "line": 44.5,
