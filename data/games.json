@@ -10,108 +10,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-110"
+      "odds": "-106"
     },
     "moneyline": {
-      "home": "-200",
-      "away": "+168"
+      "home": "-186",
+      "away": "+156"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-105",
-      "underOdds": "-115"
-    }
-  },
-  {
-    "id": "bWsJxY5gp4oEJPAD1buF",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Pittsburgh Steelers",
-    "home": "Buffalo Bills",
-    "kickoff": "Thu, 8/27, 11:00 PM UTC",
-    "startsAt": "2026-08-27T23:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "RIkstLNKq6BSMOFJR1N1",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "New England Patriots",
-    "home": "Cleveland Browns",
-    "kickoff": "Fri, 8/28, 12:00 AM UTC",
-    "startsAt": "2026-08-28T00:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "rTyqmVpWipQ1FAs4jPvh",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "San Francisco 49ers",
-    "home": "Las Vegas Raiders",
-    "kickoff": "Fri, 8/28, 12:00 AM UTC",
-    "startsAt": "2026-08-28T00:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "OK2LFATY4UTXSa1SEWuS",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Los Angeles Rams",
-    "home": "Los Angeles Chargers",
-    "kickoff": "Fri, 8/28, 2:00 AM UTC",
-    "startsAt": "2026-08-28T02:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "overOdds": "-114",
+      "underOdds": "-106"
     }
   },
   {
@@ -184,13 +92,13 @@
     }
   },
   {
-    "id": "IDNBXxJDH4E2z9VMMmpS",
+    "id": "LYIlDsDhcBp4oUXrib5h",
     "sport": "NFL",
     "conf": "NFL",
-    "away": "New Orleans Saints",
-    "home": "Dallas Cowboys",
-    "kickoff": "Sat, 8/29, 12:00 AM UTC",
-    "startsAt": "2026-08-29T00:00:00.000Z",
+    "away": "Minnesota Vikings",
+    "home": "Denver Broncos",
+    "kickoff": "Sat, 8/29, 1:00 AM UTC",
+    "startsAt": "2026-08-29T01:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -207,13 +115,13 @@
     }
   },
   {
-    "id": "Ka1cXIh5r3hBg5J8Qfmn",
+    "id": "Gw4jtO4AaZadWSWxcVGZ",
     "sport": "NFL",
     "conf": "NFL",
-    "away": "Seattle Seahawks",
-    "home": "Kansas City Chiefs",
-    "kickoff": "Sat, 8/29, 12:00 AM UTC",
-    "startsAt": "2026-08-29T00:00:00.000Z",
+    "away": "Detroit Lions",
+    "home": "Indianapolis Colts",
+    "kickoff": "Sat, 8/29, 5:00 PM UTC",
+    "startsAt": "2026-08-29T17:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
@@ -227,6 +135,98 @@
       "line": 44.5,
       "overOdds": -110,
       "underOdds": -110
+    }
+  },
+  {
+    "id": "BruwQG3bdmlrTH3mm5gX",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Chicago Bears",
+    "home": "Tennessee Titans",
+    "kickoff": "Sat, 8/29, 10:00 PM UTC",
+    "startsAt": "2026-08-29T22:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "z95b2JMJVRm8HrjOKHFS",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "New England Patriots",
+    "home": "Seattle Seahawks",
+    "kickoff": "Thu, 9/10, 12:20 AM UTC",
+    "startsAt": "2026-09-10T00:20:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "-180",
+      "away": "+150"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "gwEhZ84eQ2kK6Qo2UkXa",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "San Francisco 49ers",
+    "home": "Los Angeles Rams",
+    "kickoff": "Fri, 9/11, 12:35 AM UTC",
+    "startsAt": "2026-09-11T00:35:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "-185",
+      "away": "+154"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-108",
+      "underOdds": "-112"
+    }
+  },
+  {
+    "id": "0xRBT9Dxwxwnptx7dnV4",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "New York Jets",
+    "home": "Tennessee Titans",
+    "kickoff": "Sun, 9/13, 5:00 PM UTC",
+    "startsAt": "2026-09-13T17:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "-148",
+      "away": "+124"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-115",
+      "underOdds": "-105"
     }
   },
   {
@@ -381,8 +381,8 @@
       "odds": "-118"
     },
     "moneyline": {
-      "home": "-215",
-      "away": "+176"
+      "home": "-220",
+      "away": "+180"
     },
     "total": {
       "line": 44.5,
