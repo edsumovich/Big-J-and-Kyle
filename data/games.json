@@ -1,28 +1,5 @@
 [
   {
-    "id": "pvSiqOlSvu5JflCW6RtV",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Seattle Seahawks",
-    "home": "Tennessee Titans",
-    "kickoff": "Mon, 8/24, 12:00 AM UTC",
-    "startsAt": "2026-08-24T00:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "+102"
-    },
-    "moneyline": {
-      "home": "-154",
-      "away": "+130"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-112",
-      "underOdds": "-108"
-    }
-  },
-  {
     "id": "bWsJxY5gp4oEJPAD1buF",
     "sport": "NFL",
     "conf": "NFL",
@@ -230,6 +207,29 @@
     }
   },
   {
+    "id": "Ka1cXIh5r3hBg5J8Qfmn",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Seattle Seahawks",
+    "home": "Kansas City Chiefs",
+    "kickoff": "Sat, 8/29, 12:00 AM UTC",
+    "startsAt": "2026-08-29T00:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
     "id": "q2Sm8u4f8eKOgLKeY1m9",
     "sport": "NCAAFB",
     "conf": "NCAAF",
@@ -243,8 +243,8 @@
       "odds": "-112"
     },
     "moneyline": {
-      "home": "-330",
-      "away": "+260"
+      "home": "-320",
+      "away": "+255"
     },
     "total": {
       "line": 44.5,
@@ -381,8 +381,8 @@
       "odds": "-118"
     },
     "moneyline": {
-      "home": "-220",
-      "away": "+180"
+      "home": "-215",
+      "away": "+176"
     },
     "total": {
       "line": 44.5,
@@ -401,11 +401,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-122"
+      "odds": "-115"
     },
     "moneyline": {
-      "home": "-235",
-      "away": "+190"
+      "home": "-220",
+      "away": "+180"
     },
     "total": {
       "line": 44.5,
