@@ -125,11 +125,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-102"
+      "odds": "-118"
     },
     "moneyline": {
-      "home": "+114",
-      "away": "-134"
+      "home": "-106",
+      "away": "-110"
     },
     "total": {
       "line": 44.5,
@@ -148,11 +148,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-105"
+      "odds": "-106"
     },
     "moneyline": {
-      "home": "+176",
-      "away": "-210"
+      "home": "+152",
+      "away": "-180"
     },
     "total": {
       "line": 44.5,
@@ -230,6 +230,29 @@
     }
   },
   {
+    "id": "sLbdPPMqEFtrGPq6OHPO",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Anderson Trojans",
+    "home": "Furman Paladins",
+    "kickoff": "Thu, 8/27, 11:00 PM UTC",
+    "startsAt": "2026-08-27T23:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
     "id": "q2Sm8u4f8eKOgLKeY1m9",
     "sport": "NCAAFB",
     "conf": "NCAAF",
@@ -240,11 +263,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-112"
+      "odds": "-110"
     },
     "moneyline": {
-      "home": "-320",
-      "away": "+255"
+      "home": "-350",
+      "away": "+280"
     },
     "total": {
       "line": 44.5,
@@ -263,11 +286,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-105"
+      "odds": "-115"
     },
     "moneyline": {
       "home": "-25000",
-      "away": "+5500"
+      "away": "+5000"
     },
     "total": {
       "line": 44.5,
@@ -286,16 +309,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-115"
+      "odds": "-110"
     },
     "moneyline": {
-      "home": "-220",
-      "away": "+180"
+      "home": "-192",
+      "away": "+158"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-102",
-      "underOdds": "-120"
+      "overOdds": "-106",
+      "underOdds": "-114"
     }
   },
   {
@@ -332,11 +355,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-115"
+      "odds": "-105"
     },
     "moneyline": {
-      "home": "-400",
-      "away": "+310"
+      "home": "-420",
+      "away": "+320"
     },
     "total": {
       "line": 44.5,
@@ -355,11 +378,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-115"
+      "odds": "-105"
     },
     "moneyline": {
-      "home": "-10000",
-      "away": "+3000"
+      "home": "-20000",
+      "away": "+3500"
     },
     "total": {
       "line": 44.5,
@@ -386,8 +409,8 @@
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
+      "overOdds": "-118",
+      "underOdds": "-104"
     }
   },
   {
@@ -409,8 +432,8 @@
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-105",
-      "underOdds": "-115"
+      "overOdds": "-110",
+      "underOdds": "-110"
     }
   },
   {
@@ -424,30 +447,7 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-115"
-    },
-    "moneyline": {
-      "home": "-10000",
-      "away": "+2400"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
-    }
-  },
-  {
-    "id": "Bv0MBaHETfZPdzFbrBf2",
-    "sport": "NCAAFB",
-    "conf": "NCAAF",
-    "away": "Merrimack",
-    "home": "Delaware",
-    "kickoff": "Thu, 9/3, 11:00 PM UTC",
-    "startsAt": "2026-09-03T23:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-115"
+      "odds": "-110"
     },
     "moneyline": {
       "home": "-10000",
