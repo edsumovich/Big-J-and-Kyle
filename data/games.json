@@ -10,16 +10,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-104"
+      "odds": "-122"
     },
     "moneyline": {
-      "home": "-158",
-      "away": "+134"
+      "home": "-156",
+      "away": "+132"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-105",
-      "underOdds": "-115"
+      "overOdds": "-112",
+      "underOdds": "-108"
     }
   },
   {
@@ -33,11 +33,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-110"
+      "odds": "-105"
     },
     "moneyline": {
-      "home": "+120",
-      "away": "-142"
+      "home": "+122",
+      "away": "-144"
     },
     "total": {
       "line": 44.5,
@@ -64,8 +64,8 @@
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-105",
-      "underOdds": "-115"
+      "overOdds": "-104",
+      "underOdds": "-118"
     }
   },
   {
@@ -79,16 +79,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-115"
+      "odds": "-110"
     },
     "moneyline": {
-      "home": "-184",
-      "away": "+154"
+      "home": "-168",
+      "away": "+142"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-105",
-      "underOdds": "-115"
+      "overOdds": "-102",
+      "underOdds": "-120"
     }
   },
   {
@@ -105,8 +105,8 @@
       "odds": "-102"
     },
     "moneyline": {
-      "home": "-158",
-      "away": "+134"
+      "home": "-154",
+      "away": "+130"
     },
     "total": {
       "line": 44.5,
@@ -151,13 +151,13 @@
       "odds": "-106"
     },
     "moneyline": {
-      "home": "+152",
-      "away": "-180"
+      "home": "+150",
+      "away": "-178"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
+      "overOdds": "-105",
+      "underOdds": "-115"
     }
   },
   {
@@ -266,13 +266,13 @@
       "odds": "-115"
     },
     "moneyline": {
-      "home": "-370",
-      "away": "+295"
+      "home": "-375",
+      "away": "+300"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-115",
-      "underOdds": "-105"
+      "overOdds": "-110",
+      "underOdds": "-110"
     }
   },
   {
@@ -294,8 +294,8 @@
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
+      "overOdds": "-106",
+      "underOdds": "-114"
     }
   },
   {
@@ -317,8 +317,8 @@
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-106",
-      "underOdds": "-114"
+      "overOdds": "-110",
+      "underOdds": "-110"
     }
   },
   {
@@ -332,11 +332,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "+100"
+      "odds": "-128"
     },
     "moneyline": {
-      "home": "-295",
-      "away": "+235"
+      "home": "-280",
+      "away": "+225"
     },
     "total": {
       "line": 44.5,
@@ -355,16 +355,39 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-104"
+      "odds": "-118"
     },
     "moneyline": {
-      "home": "-400",
-      "away": "+310"
+      "home": "-385",
+      "away": "+300"
     },
     "total": {
       "line": 44.5,
       "overOdds": "-115",
       "underOdds": "-105"
+    }
+  },
+  {
+    "id": "UeHxIuLl1m2mSW82KqZy",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Albany State Golden Rams",
+    "home": "Florida A&M Rattlers",
+    "kickoff": "Sat, 8/29, 11:00 PM UTC",
+    "startsAt": "2026-08-29T23:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -401,11 +424,11 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-115"
+      "odds": "-122"
     },
     "moneyline": {
-      "home": "-178",
-      "away": "+146"
+      "home": "-194",
+      "away": "+160"
     },
     "total": {
       "line": 44.5,
@@ -427,31 +450,8 @@
       "odds": "-105"
     },
     "moneyline": {
-      "home": "-188",
-      "away": "+155"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
-    }
-  },
-  {
-    "id": "znRjCUMuw52Bx8RpEBh2",
-    "sport": "NCAAFB",
-    "conf": "NCAAF",
-    "away": "UMass",
-    "home": "Rutgers",
-    "kickoff": "Thu, 9/3, 10:00 PM UTC",
-    "startsAt": "2026-09-03T22:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-110"
-    },
-    "moneyline": {
-      "home": "-10000",
-      "away": "+2400"
+      "home": "-184",
+      "away": "+152"
     },
     "total": {
       "line": 44.5,
