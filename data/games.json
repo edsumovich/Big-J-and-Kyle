@@ -10,16 +10,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-122"
+      "odds": "-188"
     },
     "moneyline": {
-      "home": "-156",
-      "away": "+132"
+      "home": "+265",
+      "away": "-370"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-112",
-      "underOdds": "-108"
+      "overOdds": "-148",
+      "underOdds": "+114"
     }
   },
   {
@@ -33,15 +33,15 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-105"
+      "odds": "-122"
     },
     "moneyline": {
-      "home": "+122",
-      "away": "-144"
+      "home": "-1600",
+      "away": "+750"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-106",
+      "overOdds": "-114",
       "underOdds": "-114"
     }
   },
@@ -56,16 +56,16 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-105"
+      "odds": "-102"
     },
     "moneyline": {
-      "home": "-166",
-      "away": "+140"
+      "home": "-115",
+      "away": "-111"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-104",
-      "underOdds": "-118"
+      "overOdds": "-108",
+      "underOdds": "-122"
     }
   },
   {
@@ -230,6 +230,167 @@
     }
   },
   {
+    "id": "2CW4b3OHWaQP0JA0dpod",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Stony Brook",
+    "home": "Delaware State Hornets",
+    "kickoff": "Thu, 8/27, 10:00 PM UTC",
+    "startsAt": "2026-08-27T22:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-110"
+    },
+    "moneyline": {
+      "home": "+147",
+      "away": "-209"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-122",
+      "underOdds": "-106"
+    }
+  },
+  {
+    "id": "itIwjBMl5CRp7VzzbPVB",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Maine",
+    "home": "Towson",
+    "kickoff": "Thu, 8/27, 10:00 PM UTC",
+    "startsAt": "2026-08-27T22:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-116"
+    },
+    "moneyline": {
+      "home": "-139",
+      "away": "+111"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "+100",
+      "underOdds": "-130"
+    }
+  },
+  {
+    "id": "1Aj9NGyNscOVrCIVSOSj",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Eastern Illinois",
+    "home": "Murray State",
+    "kickoff": "Thu, 8/27, 11:00 PM UTC",
+    "startsAt": "2026-08-27T23:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-105"
+    },
+    "moneyline": {
+      "home": "-175",
+      "away": "+150"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "RDvAzhuY6p8V6L0grqPx",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Lafayette",
+    "home": "Georgetown",
+    "kickoff": "Thu, 8/27, 11:00 PM UTC",
+    "startsAt": "2026-08-27T23:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-108"
+    },
+    "moneyline": {
+      "home": "+280",
+      "away": "-380"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-120",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "jyHt8MnepFLyWYHDbczZ",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "UVA Wise",
+    "home": "Presbyterian Blue Hose",
+    "kickoff": "Thu, 8/27, 11:00 PM UTC",
+    "startsAt": "2026-08-27T23:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "l6c3fz2TJw01Oizcqghw",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Gardner-Webb",
+    "home": "Austin Peay",
+    "kickoff": "Thu, 8/27, 11:00 PM UTC",
+    "startsAt": "2026-08-27T23:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-120"
+    },
+    "moneyline": {
+      "home": "-2000",
+      "away": "+650"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-110",
+      "underOdds": "-110"
+    }
+  },
+  {
+    "id": "ozFRBtkSENJ0AyynFE9k",
+    "sport": "NCAAFB",
+    "conf": "NCAAF",
+    "away": "Houston Christian",
+    "home": "SE Louisiana",
+    "kickoff": "Thu, 8/27, 11:00 PM UTC",
+    "startsAt": "2026-08-27T23:00:00.000Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": "-106"
+    },
+    "moneyline": {
+      "home": "-10000",
+      "away": "+1620"
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": "-103",
+      "underOdds": "-120"
+    }
+  },
+  {
     "id": "sLbdPPMqEFtrGPq6OHPO",
     "sport": "NCAAFB",
     "conf": "NCAAF",
@@ -253,209 +414,48 @@
     }
   },
   {
-    "id": "q2Sm8u4f8eKOgLKeY1m9",
+    "id": "shmD17ime2DilTGoTv29",
     "sport": "NCAAFB",
     "conf": "NCAAF",
-    "away": "North Carolina",
-    "home": "TCU",
-    "kickoff": "Sat, 8/29, 4:00 PM UTC",
-    "startsAt": "2026-08-29T16:00:00.000Z",
+    "away": "Mississippi Valley State Delta Devils",
+    "home": "Nicholls",
+    "kickoff": "Thu, 8/27, 11:00 PM UTC",
+    "startsAt": "2026-08-27T23:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": "-115"
+      "odds": "-135"
     },
     "moneyline": {
-      "home": "-375",
-      "away": "+300"
+      "home": "-8000",
+      "away": "+11000"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
+      "overOdds": "-105",
+      "underOdds": "-125"
     }
   },
   {
-    "id": "djp3nmDjGDvoFC2jyllO",
+    "id": "yDM9TaIZx3nN7tFhVqG8",
     "sport": "NCAAFB",
     "conf": "NCAAF",
-    "away": "San José State",
-    "home": "USC",
-    "kickoff": "Sat, 8/29, 7:00 PM UTC",
-    "startsAt": "2026-08-29T19:00:00.000Z",
+    "away": "Charleston Southern",
+    "home": "Lindenwood",
+    "kickoff": "Thu, 8/27, 11:00 PM UTC",
+    "startsAt": "2026-08-27T23:00:00.000Z",
     "spread": {
       "favorite": "away",
       "line": 3,
       "odds": "-118"
     },
     "moneyline": {
-      "home": "-25000",
-      "away": "+5000"
+      "home": "-2000",
+      "away": "+850"
     },
     "total": {
       "line": 44.5,
-      "overOdds": "-106",
-      "underOdds": "-114"
-    }
-  },
-  {
-    "id": "0AfOFu3Y3jrU8Z2wTd2A",
-    "sport": "NCAAFB",
-    "conf": "NCAAF",
-    "away": "NC State",
-    "home": "Virginia",
-    "kickoff": "Sat, 8/29, 7:30 PM UTC",
-    "startsAt": "2026-08-29T19:30:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-110"
-    },
-    "moneyline": {
-      "home": "-192",
-      "away": "+158"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
-    }
-  },
-  {
-    "id": "mizoRBpOw5LCzrDg0sl1",
-    "sport": "NCAAFB",
-    "conf": "NCAAF",
-    "away": "Jacksonville State",
-    "home": "North Dakota State",
-    "kickoff": "Sat, 8/29, 9:30 PM UTC",
-    "startsAt": "2026-08-29T21:30:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-128"
-    },
-    "moneyline": {
-      "home": "-280",
-      "away": "+225"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-110",
-      "underOdds": "-110"
-    }
-  },
-  {
-    "id": "xbCOjReBdyGPLVxh74Gh",
-    "sport": "NCAAFB",
-    "conf": "NCAAF",
-    "away": "Sacramento State",
-    "home": "Eastern Michigan",
-    "kickoff": "Sat, 8/29, 10:30 PM UTC",
-    "startsAt": "2026-08-29T22:30:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-118"
-    },
-    "moneyline": {
-      "home": "-385",
-      "away": "+300"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-115",
-      "underOdds": "-105"
-    }
-  },
-  {
-    "id": "UeHxIuLl1m2mSW82KqZy",
-    "sport": "NCAAFB",
-    "conf": "NCAAF",
-    "away": "Albany State Golden Rams",
-    "home": "Florida A&M Rattlers",
-    "kickoff": "Sat, 8/29, 11:00 PM UTC",
-    "startsAt": "2026-08-29T23:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "krkdz1iBG7AWaaq1Jyqz",
-    "sport": "NCAAFB",
-    "conf": "NCAAF",
-    "away": "New Mexico State",
-    "home": "Florida State",
-    "kickoff": "Sat, 8/29, 11:00 PM UTC",
-    "startsAt": "2026-08-29T23:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-105"
-    },
-    "moneyline": {
-      "home": "-20000",
-      "away": "+3500"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-115",
-      "underOdds": "-105"
-    }
-  },
-  {
-    "id": "ubS25mURM5WPDHV73jCJ",
-    "sport": "NCAAFB",
-    "conf": "NCAAF",
-    "away": "Hawai'i",
-    "home": "Stanford",
-    "kickoff": "Sat, 8/29, 11:00 PM UTC",
-    "startsAt": "2026-08-29T23:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-122"
-    },
-    "moneyline": {
-      "home": "-194",
-      "away": "+160"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-118",
-      "underOdds": "-104"
-    }
-  },
-  {
-    "id": "VTgTcNSLLTwRNGD4Opib",
-    "sport": "NCAAFB",
-    "conf": "NCAAF",
-    "away": "Memphis",
-    "home": "UNLV",
-    "kickoff": "Sun, 8/30, 2:00 AM UTC",
-    "startsAt": "2026-08-30T02:00:00.000Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": "-105"
-    },
-    "moneyline": {
-      "home": "-184",
-      "away": "+152"
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": "-110",
+      "overOdds": "-120",
       "underOdds": "-110"
     }
   }
