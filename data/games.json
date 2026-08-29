@@ -13,8 +13,8 @@
       "odds": -110
     },
     "moneyline": {
-      "home": 260,
-      "away": -360
+      "home": -110,
+      "away": -110
     },
     "total": {
       "line": 44.5,
@@ -38,6 +38,29 @@
     "moneyline": {
       "home": -110,
       "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_ncstatewolfpack_virginiacavaliers_2026-08-29_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "NC State",
+    "home": "Virginia",
+    "kickoff": "Sat, 8/29, 7:30 PM UTC",
+    "startsAt": "2026-08-29T19:30Z",
+    "spread": {
+      "favorite": "home",
+      "line": 4,
+      "odds": -115
+    },
+    "moneyline": {
+      "home": -198,
+      "away": 164
     },
     "total": {
       "line": 44.5,
