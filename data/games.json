@@ -1,1 +1,71 @@
-[]
+[
+  {
+    "id": "-nfl-specials",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "",
+    "home": "NFL Specials",
+    "kickoff": "TBD",
+    "startsAt": null,
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "north-carolina-tcu",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "North Carolina",
+    "home": "TCU",
+    "kickoff": "TBD",
+    "startsAt": null,
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -166,
+      "away": 130
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "san-jose-state-usc",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "San Jose State",
+    "home": "USC",
+    "kickoff": "TBD",
+    "startsAt": null,
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  }
+]
