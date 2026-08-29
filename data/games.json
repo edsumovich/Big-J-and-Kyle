@@ -1,43 +1,20 @@
 [
   {
-    "id": "-nfl-specials",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "",
-    "home": "NFL Specials",
-    "kickoff": "TBD",
-    "startsAt": null,
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "north-carolina-tcu",
+    "id": "ncaaf_northcarolinatarheels_tcuhornedfrogs_2026-08-29_b2",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
     "away": "North Carolina",
     "home": "TCU",
-    "kickoff": "TBD",
-    "startsAt": null,
+    "kickoff": "Sat, 8/29, 4:00 PM UTC",
+    "startsAt": "2026-08-29T16:00Z",
     "spread": {
       "favorite": "away",
       "line": 3,
       "odds": -110
     },
     "moneyline": {
-      "home": -166,
-      "away": 130
+      "home": 260,
+      "away": -360
     },
     "total": {
       "line": 44.5,
@@ -46,13 +23,13 @@
     }
   },
   {
-    "id": "san-jose-state-usc",
+    "id": "ncaaf_sanjosestatespartans_usctrojans_2026-08-29_b2",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
     "away": "San Jose State",
     "home": "USC",
-    "kickoff": "TBD",
-    "startsAt": null,
+    "kickoff": "Sat, 8/29, 7:00 PM UTC",
+    "startsAt": "2026-08-29T19:00Z",
     "spread": {
       "favorite": "away",
       "line": 3,
