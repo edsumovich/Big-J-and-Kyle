@@ -1,28 +1,5 @@
 [
   {
-    "id": "ncaaf_northcarolinatarheels_tcuhornedfrogs_2026-08-29_b2",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "North Carolina",
-    "home": "TCU",
-    "kickoff": "Sat, 8/29, 4:00 PM UTC",
-    "startsAt": "2026-08-29T16:00Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
     "id": "ncaaf_sanjosestatespartans_usctrojans_2026-08-29_b2",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
@@ -31,13 +8,13 @@
     "kickoff": "Sat, 8/29, 7:00 PM UTC",
     "startsAt": "2026-08-29T19:00Z",
     "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
+      "favorite": "home",
+      "line": 38.5,
+      "odds": -125
     },
     "moneyline": {
       "home": -110,
-      "away": -110
+      "away": 3500
     },
     "total": {
       "line": 44.5,
@@ -54,13 +31,36 @@
     "kickoff": "Sat, 8/29, 7:30 PM UTC",
     "startsAt": "2026-08-29T19:30Z",
     "spread": {
-      "favorite": "home",
-      "line": 4,
-      "odds": -115
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
     },
     "moneyline": {
-      "home": -198,
-      "away": 164
+      "home": -185,
+      "away": 154
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_jacksonvillestategam_northdakotastatebiso_2026-08-29_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Jacksonville State",
+    "home": "North Dakota State",
+    "kickoff": "Sat, 8/29, 9:30 PM UTC",
+    "startsAt": "2026-08-29T21:30Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -265,
+      "away": 215
     },
     "total": {
       "line": 44.5,
