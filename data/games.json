@@ -31,9 +31,9 @@
     "kickoff": "Thu, 9/3, 11:00 PM UTC",
     "startsAt": "2026-09-03T23:00Z",
     "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
+      "favorite": "home",
+      "line": 24.5,
+      "odds": -105
     },
     "moneyline": {
       "home": -4000,
@@ -124,8 +124,8 @@
     "startsAt": "2026-09-03T23:00Z",
     "spread": {
       "favorite": "home",
-      "line": 24.5,
-      "odds": -105
+      "line": 23.5,
+      "odds": -120
     },
     "moneyline": {
       "home": -4000,
@@ -266,8 +266,8 @@
       "odds": -110
     },
     "moneyline": {
-      "home": -178,
-      "away": 146
+      "home": -182,
+      "away": 150
     },
     "total": {
       "line": 44.5,
@@ -529,29 +529,6 @@
     }
   },
   {
-    "id": "ncaaf_coastalcarolinachant_westvirginiamountaineers_2026-09-05_b2",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "Coastal Carolina",
-    "home": "West Virginia",
-    "kickoff": "Sat, 9/5, 4:00 PM UTC",
-    "startsAt": "2026-09-05T16:00Z",
-    "spread": {
-      "favorite": "home",
-      "line": 21.5,
-      "odds": -108
-    },
-    "moneyline": {
-      "home": -1650,
-      "away": 950
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
     "id": "ncaaf_houstoncougars_oregonstatebeavers_2026-09-05_b2",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
@@ -611,8 +588,8 @@
       "odds": -110
     },
     "moneyline": {
-      "home": -245,
-      "away": 200
+      "home": -260,
+      "away": 210
     },
     "total": {
       "line": 44.5,
@@ -629,9 +606,9 @@
     "kickoff": "Sat, 9/5, 4:00 PM UTC",
     "startsAt": "2026-09-05T16:00Z",
     "spread": {
-      "favorite": "home",
-      "line": 18.5,
-      "odds": -105
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
     },
     "moneyline": {
       "home": -1450,
@@ -698,9 +675,9 @@
     "kickoff": "Sat, 9/5, 4:00 PM UTC",
     "startsAt": "2026-09-05T16:00Z",
     "spread": {
-      "favorite": "home",
-      "line": 33.5,
-      "odds": -108
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
     },
     "moneyline": {
       "home": -110,
@@ -843,6 +820,75 @@
     "moneyline": {
       "home": -465,
       "away": 350
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_georgiabulldogs_tennesseestatetigers_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Tennessee State",
+    "home": "Georgia",
+    "kickoff": "Sat, 9/5, 7:00 PM UTC",
+    "startsAt": "2026-09-05T19:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 45.5,
+      "odds": -105
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_appalachianstate_maine_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Maine",
+    "home": "Appalachian State",
+    "kickoff": "Sat, 9/5, 7:30 PM UTC",
+    "startsAt": "2026-09-05T19:30Z",
+    "spread": {
+      "favorite": "home",
+      "line": 17.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -1250,
+      "away": 740
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_auburntigers_baylorbears_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Baylor",
+    "home": "Auburn",
+    "kickoff": "Sat, 9/5, 7:30 PM UTC",
+    "startsAt": "2026-09-05T19:30Z",
+    "spread": {
+      "favorite": "home",
+      "line": 7.5,
+      "odds": -104
+    },
+    "moneyline": {
+      "home": -280,
+      "away": 225
     },
     "total": {
       "line": 44.5,
