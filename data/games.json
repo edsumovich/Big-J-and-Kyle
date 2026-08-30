@@ -1,20 +1,20 @@
 [
   {
-    "id": "ncaaf_sanjosestatespartans_usctrojans_2026-08-29_b2",
+    "id": "ncaaf_easternmichiganeagles_sacramentostatehorne_2026-08-29_b3",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
-    "away": "San Jose State",
-    "home": "USC",
-    "kickoff": "Sat, 8/29, 7:00 PM UTC",
-    "startsAt": "2026-08-29T19:00Z",
+    "away": "Sacramento State",
+    "home": "Eastern Michigan",
+    "kickoff": "Sat, 8/29, 10:30 PM UTC",
+    "startsAt": "2026-08-29T22:30Z",
     "spread": {
-      "favorite": "home",
-      "line": 38.5,
-      "odds": -125
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
     },
     "moneyline": {
       "home": -110,
-      "away": 3500
+      "away": -110
     },
     "total": {
       "line": 44.5,
@@ -23,21 +23,21 @@
     }
   },
   {
-    "id": "ncaaf_ncstatewolfpack_virginiacavaliers_2026-08-29_b2",
+    "id": "ncaaf_floridastateseminoles_newmexicostateaggies_2026-08-29_b3",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
-    "away": "NC State",
-    "home": "Virginia",
-    "kickoff": "Sat, 8/29, 7:30 PM UTC",
-    "startsAt": "2026-08-29T19:30Z",
+    "away": "New Mexico State",
+    "home": "Florida State",
+    "kickoff": "Sat, 8/29, 11:00 PM UTC",
+    "startsAt": "2026-08-29T23:00Z",
     "spread": {
       "favorite": "away",
       "line": 3,
       "odds": -110
     },
     "moneyline": {
-      "home": -185,
-      "away": 154
+      "home": -110,
+      "away": -110
     },
     "total": {
       "line": 44.5,
@@ -46,21 +46,44 @@
     }
   },
   {
-    "id": "ncaaf_jacksonvillestategam_northdakotastatebiso_2026-08-29_b2",
+    "id": "ncaaf_hawaii_stanfordcardinal_2026-08-29_b3",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
-    "away": "Jacksonville State",
-    "home": "North Dakota State",
-    "kickoff": "Sat, 8/29, 9:30 PM UTC",
-    "startsAt": "2026-08-29T21:30Z",
+    "away": "Hawaii",
+    "home": "Stanford",
+    "kickoff": "Sat, 8/29, 11:00 PM UTC",
+    "startsAt": "2026-08-29T23:00Z",
     "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
+      "favorite": "home",
+      "line": 19.5,
+      "odds": -120
     },
     "moneyline": {
-      "home": -265,
-      "away": 215
+      "home": -110,
+      "away": 4000
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_memphistigers_unlvrebels_2026-08-29_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Memphis",
+    "home": "UNLV",
+    "kickoff": "Sun, 8/30, 2:00 AM UTC",
+    "startsAt": "2026-08-30T02:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 4.5,
+      "odds": -115
+    },
+    "moneyline": {
+      "home": -192,
+      "away": 160
     },
     "total": {
       "line": 44.5,
