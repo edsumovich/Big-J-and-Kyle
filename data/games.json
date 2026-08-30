@@ -1,62 +1,706 @@
 [
   {
-    "id": "ncaaf_easternmichiganeagles_sacramentostatehorne_2026-08-29_b3",
+    "id": "ncaaf_massachusettsminutem_rutgersscarletknights_2026-09-03_b3",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
-    "away": "Sacramento State",
-    "home": "Eastern Michigan",
-    "kickoff": "Sat, 8/29, 10:30 PM UTC",
-    "startsAt": "2026-08-29T22:30Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "ncaaf_floridastateseminoles_newmexicostateaggies_2026-08-29_b3",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "New Mexico State",
-    "home": "Florida State",
-    "kickoff": "Sat, 8/29, 11:00 PM UTC",
-    "startsAt": "2026-08-29T23:00Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "ncaaf_hawaii_stanfordcardinal_2026-08-29_b3",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "Hawaii",
-    "home": "Stanford",
-    "kickoff": "Sat, 8/29, 11:00 PM UTC",
-    "startsAt": "2026-08-29T23:00Z",
+    "away": "Massachusetts",
+    "home": "Rutgers",
+    "kickoff": "Thu, 9/3, 10:00 PM UTC",
+    "startsAt": "2026-09-03T22:00Z",
     "spread": {
       "favorite": "home",
-      "line": 19.5,
+      "line": 29.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": 2500
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_akronzips_wakeforestdemondeacons_2026-09-03_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Akron",
+    "home": "Wake Forest",
+    "kickoff": "Thu, 9/3, 11:00 PM UTC",
+    "startsAt": "2026-09-03T23:00Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -4000,
+      "away": 1400
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_albany_buffalo_2026-09-03_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Albany",
+    "home": "Buffalo",
+    "kickoff": "Thu, 9/3, 11:00 PM UTC",
+    "startsAt": "2026-09-03T23:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 22.5,
+      "odds": -115
+    },
+    "moneyline": {
+      "home": -4000,
+      "away": 1400
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_bethunecookmanwildca_ucfknights_2026-09-03_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Bethune Cookman",
+    "home": "UCF",
+    "kickoff": "Thu, 9/3, 11:00 PM UTC",
+    "startsAt": "2026-09-03T23:00Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_delawarebluehens_merrimackwarriors_2026-09-03_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Merrimack",
+    "home": "Delaware",
+    "kickoff": "Thu, 9/3, 11:00 PM UTC",
+    "startsAt": "2026-09-03T23:00Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": 2400
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_kennesawstateowls_westgeorgiawolves_2026-09-03_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "West Georgia",
+    "home": "Kennesaw State",
+    "kickoff": "Thu, 9/3, 11:00 PM UTC",
+    "startsAt": "2026-09-03T23:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 24.5,
+      "odds": -105
+    },
+    "moneyline": {
+      "home": -4000,
+      "away": 1400
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_arkansaspinebluffgol_missouritigers_2026-09-03_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Arkansas Pine Bluff",
+    "home": "Missouri",
+    "kickoff": "Fri, 9/4, 12:00 AM UTC",
+    "startsAt": "2026-09-04T00:00Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_coloradobuffaloes_georgiatechyellowjac_2026-09-03_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Colorado",
+    "home": "Georgia Tech",
+    "kickoff": "Fri, 9/4, 12:00 AM UTC",
+    "startsAt": "2026-09-04T00:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 6.5,
+      "odds": -112
+    },
+    "moneyline": {
+      "home": -255,
+      "away": 205
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_easternillinoispanth_minnesotagoldengophers_2026-09-03_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Eastern Illinois",
+    "home": "Minnesota",
+    "kickoff": "Fri, 9/4, 12:00 AM UTC",
+    "startsAt": "2026-09-04T00:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 42.5,
+      "odds": -108
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_idahovandals_utahutes_2026-09-03_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Idaho",
+    "home": "Utah",
+    "kickoff": "Fri, 9/4, 1:00 AM UTC",
+    "startsAt": "2026-09-04T01:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 34.5,
+      "odds": -105
+    },
+    "moneyline": {
+      "home": -110,
+      "away": 5000
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_illinoisfightingillini_uabblazers_2026-09-03_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "UAB",
+    "home": "Illinois",
+    "kickoff": "Fri, 9/4, 1:00 AM UTC",
+    "startsAt": "2026-09-04T01:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 28.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": 2400
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_easternmichiganeagles_sanjosestatespartans_2026-09-04_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "San Jose State",
+    "home": "Eastern Michigan",
+    "kickoff": "Fri, 9/4, 10:30 PM UTC",
+    "startsAt": "2026-09-04T22:30Z",
+    "spread": {
+      "favorite": "home",
+      "line": 3.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -178,
+      "away": 146
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_georgiastatepanthers_northcarolinaataggie_2026-09-04_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "North Carolina A&T",
+    "home": "Georgia State",
+    "kickoff": "Fri, 9/4, 11:00 PM UTC",
+    "startsAt": "2026-09-04T23:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 28.5,
+      "odds": -114
+    },
+    "moneyline": {
+      "home": -110,
+      "away": 2400
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_indianastatesycamore_purdueboilermakers_2026-09-04_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Indiana State",
+    "home": "Purdue",
+    "kickoff": "Fri, 9/4, 11:00 PM UTC",
+    "startsAt": "2026-09-04T23:00Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_kansasjayhawks_longislanduniversity_2026-09-04_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Long Island",
+    "home": "Kansas",
+    "kickoff": "Sat, 9/5, 12:00 AM UTC",
+    "startsAt": "2026-09-05T00:00Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_michiganstatespartans_toledorockets_2026-09-04_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Toledo",
+    "home": "Michigan State",
+    "kickoff": "Sat, 9/5, 12:00 AM UTC",
+    "startsAt": "2026-09-05T00:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 10.5,
+      "odds": -105
+    },
+    "moneyline": {
+      "home": -430,
+      "away": 330
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_oklahomasooners_utepminers_2026-09-04_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "UTEP",
+    "home": "Oklahoma",
+    "kickoff": "Sat, 9/5, 12:00 AM UTC",
+    "startsAt": "2026-09-05T00:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 41.5,
+      "odds": -115
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_fresnostatebulldogs_usctrojans_2026-09-04_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Fresno State",
+    "home": "USC",
+    "kickoff": "Sat, 9/5, 1:00 AM UTC",
+    "startsAt": "2026-09-05T01:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 22.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -3000,
+      "away": 1200
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_miamiflorida_stanfordcardinal_2026-09-04_b3",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Miami Florida",
+    "home": "Stanford",
+    "kickoff": "Sat, 9/5, 1:00 AM UTC",
+    "startsAt": "2026-09-05T01:00Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": 1400,
+      "away": -4000
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_alabamacrimsontide_eastcarolinapirates_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "East Carolina",
+    "home": "Alabama",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 28.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": 2200
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_armyblackknights_bryantbulldogs_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Bryant",
+    "home": "Army",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 37.5,
+      "odds": -115
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_bowlinggreenfalcons_tarletonstatetexans_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Tarleton State",
+    "home": "Bowling Green",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 2.5,
       "odds": -120
+    },
+    "moneyline": {
+      "home": -142,
+      "away": 118
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_coastalcarolina_wvmountaineers_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Coastal Carolina",
+    "home": "WV Mountaineers",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -2100,
+      "away": 1000
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_coastalcarolinachant_westvirginiamountaineers_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Coastal Carolina",
+    "home": "West Virginia",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 21.5,
+      "odds": -108
+    },
+    "moneyline": {
+      "home": -1650,
+      "away": 950
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_houstoncougars_oregonstatebeavers_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Oregon State",
+    "home": "Houston",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 20.5,
+      "odds": -118
+    },
+    "moneyline": {
+      "home": -2100,
+      "away": 1000
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_indianahoosiers_northtexasmeangreen_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "North Texas",
+    "home": "Indiana",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 40.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_jamesmadisondukes_libertyflames_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "New York Liberty",
+    "home": "James Madison",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 6.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -245,
+      "away": 200
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_lafayetteleopards_uconnhuskies_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Lafayette",
+    "home": "Connecticut",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 18.5,
+      "odds": -105
+    },
+    "moneyline": {
+      "home": -1450,
+      "away": 810
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_miamiohio_pittsburgh_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Miami Ohio",
+    "home": "Pittsburgh",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 16.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -820,
+      "away": 550
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_nebraskacornhuskers_ohiobobcats_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Ohio",
+    "home": "Nebraska",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 23.5,
+      "odds": -115
+    },
+    "moneyline": {
+      "home": -4000,
+      "away": 1400
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_newhampshirewildcats_syracuseorange_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "New Hampshire",
+    "home": "Syracuse",
+    "kickoff": "Sat, 9/5, 4:00 PM UTC",
+    "startsAt": "2026-09-05T16:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 33.5,
+      "odds": -108
     },
     "moneyline": {
       "home": -110,
@@ -69,21 +713,136 @@
     }
   },
   {
-    "id": "ncaaf_memphistigers_unlvrebels_2026-08-29_b3",
+    "id": "ncaaf_ballstatecardinals_ohiostatebuckeyes_2026-09-05_b2",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
-    "away": "Memphis",
-    "home": "UNLV",
-    "kickoff": "Sun, 8/30, 2:00 AM UTC",
-    "startsAt": "2026-08-30T02:00Z",
+    "away": "Ball State",
+    "home": "Ohio State",
+    "kickoff": "Sat, 9/5, 4:30 PM UTC",
+    "startsAt": "2026-09-05T16:30Z",
     "spread": {
       "favorite": "home",
-      "line": 4.5,
-      "odds": -115
+      "line": 50.5,
+      "odds": -110
     },
     "moneyline": {
-      "home": -192,
-      "away": 160
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_kentstategoldenflash_southcarolinagamecocks_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Kent State",
+    "home": "South Carolina",
+    "kickoff": "Sat, 9/5, 4:45 PM UTC",
+    "startsAt": "2026-09-05T16:45Z",
+    "spread": {
+      "favorite": "home",
+      "line": 36.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -110,
+      "away": -110
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_airforcefalcons_duquesnedukes_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Duquesne",
+    "home": "Air Force",
+    "kickoff": "Sat, 9/5, 5:00 PM UTC",
+    "startsAt": "2026-09-05T17:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 28.5,
+      "odds": -105
+    },
+    "moneyline": {
+      "home": -110,
+      "away": 2200
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_iowastatecyclones_southeastmissourista_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Southeast Missouri State",
+    "home": "Iowa State",
+    "kickoff": "Sat, 9/5, 5:00 PM UTC",
+    "startsAt": "2026-09-05T17:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 30.5,
+      "odds": -105
+    },
+    "moneyline": {
+      "home": -110,
+      "away": 2400
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_kentuckywildcats_youngstownstatepengu_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Youngstown State",
+    "home": "Kentucky",
+    "kickoff": "Sat, 9/5, 5:00 PM UTC",
+    "startsAt": "2026-09-05T17:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 23.5,
+      "odds": -106
+    },
+    "moneyline": {
+      "home": -3000,
+      "away": 1200
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -110,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "ncaaf_rhodeislandrams_templeowls_2026-09-05_b2",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Rhode Island",
+    "home": "Temple",
+    "kickoff": "Sat, 9/5, 6:00 PM UTC",
+    "startsAt": "2026-09-05T18:00Z",
+    "spread": {
+      "favorite": "home",
+      "line": 10.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": -465,
+      "away": 350
     },
     "total": {
       "line": 44.5,
