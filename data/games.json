@@ -1,28 +1,5 @@
 [
   {
-    "id": "nfl_patriots_seahawks_2026-09-09_b3",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "New England Patriots",
-    "home": "Seattle Seahawks",
-    "kickoff": "Thu, 9/10, 12:15 AM UTC",
-    "startsAt": "2026-09-10T00:15Z",
-    "spread": {
-      "favorite": "home",
-      "line": 3.5,
-      "odds": -105
-    },
-    "moneyline": {
-      "home": -180,
-      "away": 150
-    },
-    "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
-    }
-  },
-  {
     "id": "ncaaf_massachusettsminutem_rutgersscarletknights_2026-09-03_b3",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
@@ -33,7 +10,7 @@
     "spread": {
       "favorite": "home",
       "line": 29.5,
-      "odds": -105
+      "odds": -110
     },
     "moneyline": {
       "home": null,
@@ -55,8 +32,8 @@
     "startsAt": "2026-09-03T23:00Z",
     "spread": {
       "favorite": "home",
-      "line": null,
-      "odds": null
+      "line": 24.5,
+      "odds": -105
     },
     "moneyline": {
       "home": -3200,
