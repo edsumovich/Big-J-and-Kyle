@@ -1,25 +1,48 @@
 [
   {
+    "id": "nfl_patriots_seahawks_2026-09-09_b3",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "New England Patriots",
+    "home": "Seattle Seahawks",
+    "kickoff": "Thu, 9/10, 12:15 AM UTC",
+    "startsAt": "2026-09-10T00:15Z",
+    "spread": {
+      "favorite": "home",
+      "line": 3.5,
+      "odds": -105
+    },
+    "moneyline": {
+      "home": -180,
+      "away": 150
+    },
+    "total": {
+      "line": null,
+      "overOdds": null,
+      "underOdds": null
+    }
+  },
+  {
     "id": "ncaaf_massachusettsminutem_rutgersscarletknights_2026-09-03_b3",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
-    "away": "Massachusetts",
+    "away": "UMass",
     "home": "Rutgers",
     "kickoff": "Thu, 9/3, 10:00 PM UTC",
     "startsAt": "2026-09-03T22:00Z",
     "spread": {
       "favorite": "home",
       "line": 29.5,
-      "odds": -110
+      "odds": -105
     },
     "moneyline": {
-      "home": -110,
-      "away": 2500
+      "home": null,
+      "away": 2200
     },
     "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "line": null,
+      "overOdds": null,
+      "underOdds": null
     }
   },
   {
@@ -32,155 +55,17 @@
     "startsAt": "2026-09-03T23:00Z",
     "spread": {
       "favorite": "home",
-      "line": 24.5,
-      "odds": -105
+      "line": null,
+      "odds": null
     },
     "moneyline": {
-      "home": -3600,
-      "away": 1500
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "ncaaf_albany_buffalo_2026-09-03_b3",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "Albany",
-    "home": "Buffalo",
-    "kickoff": "Thu, 9/3, 11:00 PM UTC",
-    "startsAt": "2026-09-03T23:00Z",
-    "spread": {
-      "favorite": "home",
-      "line": 22.5,
-      "odds": -115
-    },
-    "moneyline": {
-      "home": -4000,
+      "home": -3200,
       "away": 1400
     },
     "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "ncaaf_bethunecookmanwildca_ucfknights_2026-09-03_b3",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "Bethune Cookman",
-    "home": "UCF",
-    "kickoff": "Thu, 9/3, 11:00 PM UTC",
-    "startsAt": "2026-09-03T23:00Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "ncaaf_delawarebluehens_merrimackwarriors_2026-09-03_b3",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "Merrimack",
-    "home": "Delaware",
-    "kickoff": "Thu, 9/3, 11:00 PM UTC",
-    "startsAt": "2026-09-03T23:00Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": 2400
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "ncaaf_kennesawstateowls_westgeorgiawolves_2026-09-03_b3",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "West Georgia",
-    "home": "Kennesaw State",
-    "kickoff": "Thu, 9/3, 11:00 PM UTC",
-    "startsAt": "2026-09-03T23:00Z",
-    "spread": {
-      "favorite": "home",
-      "line": 23.5,
-      "odds": -114
-    },
-    "moneyline": {
-      "home": -3500,
-      "away": 1280
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "ncaaf_arkansaspinebluffgol_missouritigers_2026-09-03_b3",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "Arkansas Pine Bluff",
-    "home": "Missouri",
-    "kickoff": "Fri, 9/4, 12:00 AM UTC",
-    "startsAt": "2026-09-04T00:00Z",
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -110,
-      "away": -110
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
-    }
-  },
-  {
-    "id": "ncaaf_coloradobuffaloes_georgiatechyellowjac_2026-09-03_b3",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "Colorado",
-    "home": "Georgia Tech",
-    "kickoff": "Fri, 9/4, 12:00 AM UTC",
-    "startsAt": "2026-09-04T00:00Z",
-    "spread": {
-      "favorite": "home",
-      "line": 6.5,
-      "odds": -110
-    },
-    "moneyline": {
-      "home": -238,
-      "away": 195
-    },
-    "total": {
-      "line": 44.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "line": null,
+      "overOdds": null,
+      "underOdds": null
     }
   }
 ]
