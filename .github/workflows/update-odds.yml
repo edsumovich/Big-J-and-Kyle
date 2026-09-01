@@ -1,0 +1,63 @@
+name: Update odds
+
+on:
+  schedule:
+    # 7am US Central. GitHub Actions cron is UTC-only and doesn't shift for
+    # daylight saving, so this is pinned to Central Daylight Time (UTC-5),
+    # which covers nearly the whole football season (mid-March to early
+    # November). Once clocks fall back to Central Standard Time (UTC-6) in
+    # November, this will effectively run at 8am Central instead of 7am —
+    # change "0 12" to "0 13" then if you want it exact through the winter.
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: "Log a raw sample event per league (for debugging parsing issues)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  update-odds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch latest odds
+        run: node scripts/fetch-odds.js
+        env:
+          LOG_RAW: ${{ inputs.debug && '1' || '' }}
+
+      - name: Commit updated odds
+        run: |
+          git config user.name "odds-bot"
+          git config user.email "odds-bot@users.noreply.github.com"
+          git add data/games.json data/last-updated.json data/player-props.json
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Update odds ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+
+          # Another run may have pushed in the meantime — pull+rebase and
+          # retry a few times instead of failing outright on a race.
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "Pushed successfully."
+              exit 0
+            fi
+            echo "Push rejected (attempt $i/5) — pulling latest and retrying..."
+            git pull --rebase origin main
+            sleep 3
+          done
+
+          echo "::error::Failed to push odds update after 5 attempts."
+          exit 1
