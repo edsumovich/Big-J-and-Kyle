@@ -1,0 +1,30 @@
+name: Grade picks
+
+on:
+  schedule:
+    # 9am US Eastern — after most games from the day/night before have
+    # finished and been finalized. Adjust if you want it more/less frequent.
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: "Log the raw results object for one finalized event per league (for debugging score parsing)"
+        type: boolean
+        default: false
+
+jobs:
+  grade-picks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Grade finished games
+        run: node scripts/grade-picks.js
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          GRADE_LOG_RAW: ${{ inputs.debug && '1' || '' }}
