@@ -1,0 +1,37 @@
+name: Grade picks
+
+on:
+  schedule:
+    # Sat/Sun: every hour, since that's when most games are actually being
+    # played and finishing. Other days: once daily at midnight US Central.
+    # GitHub Actions cron is UTC-only and doesn't shift for daylight saving,
+    # so the midnight run is pinned to Central Daylight Time (UTC-5),
+    # covering nearly the whole season. Once clocks fall back to Central
+    # Standard Time (UTC-6) in November, that run will land at 1am Central
+    # instead — change "0 5" to "0 6" below then if you want it exact
+    # through the winter.
+    - cron: "0 * * * 6,0"
+    - cron: "0 5 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: "Log the raw results object for one finalized event per league (for debugging score parsing)"
+        type: boolean
+        default: false
+
+jobs:
+  grade-picks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Grade finished games
+        run: node scripts/grade-picks.js
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          GRADE_LOG_RAW: ${{ inputs.debug && '1' || '' }}
