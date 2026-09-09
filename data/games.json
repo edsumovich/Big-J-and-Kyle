@@ -11,7 +11,7 @@
     "spread": {
       "favorite": "home",
       "line": 3,
-      "odds": -118
+      "odds": -120
     },
     "moneyline": {
       "home": -170,
@@ -35,7 +35,7 @@
     "spread": {
       "favorite": "home",
       "line": 3.5,
-      "odds": -112
+      "odds": -118
     },
     "moneyline": {
       "home": -198,
@@ -62,8 +62,8 @@
       "odds": -112
     },
     "moneyline": {
-      "home": -198,
-      "away": 164
+      "home": -205,
+      "away": 170
     },
     "total": {
       "line": 50.5,
@@ -83,11 +83,11 @@
     "spread": {
       "favorite": "home",
       "line": 7,
-      "odds": -105
+      "odds": -108
     },
     "moneyline": {
-      "home": -305,
-      "away": 245
+      "home": -310,
+      "away": 250
     },
     "total": {
       "line": 49.5,
@@ -110,13 +110,13 @@
       "odds": -110
     },
     "moneyline": {
-      "home": -125,
-      "away": 105
+      "home": -122,
+      "away": 102
     },
     "total": {
-      "line": 39.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "line": 38.5,
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -155,7 +155,7 @@
     "spread": {
       "favorite": "home",
       "line": 3.5,
-      "odds": -110
+      "odds": -112
     },
     "moneyline": {
       "home": -185,
@@ -179,14 +179,14 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": -102
+      "odds": -118
     },
     "moneyline": {
-      "home": 130,
-      "away": -155
+      "home": 136,
+      "away": -162
     },
     "total": {
-      "line": 47.5,
+      "line": 46.5,
       "overOdds": -115,
       "underOdds": -105
     }
@@ -206,8 +206,8 @@
       "odds": -110
     },
     "moneyline": {
-      "home": -455,
-      "away": 350
+      "home": -470,
+      "away": 360
     },
     "total": {
       "line": 40.5,
@@ -230,8 +230,8 @@
       "odds": -102
     },
     "moneyline": {
-      "home": -105,
-      "away": -115
+      "home": -102,
+      "away": -118
     },
     "total": {
       "line": 44.5,
@@ -258,9 +258,9 @@
       "away": 154
     },
     "total": {
-      "line": 41.5,
-      "overOdds": -102,
-      "underOdds": -118
+      "line": 40.5,
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -323,16 +323,16 @@
     "spread": {
       "favorite": "home",
       "line": 9.5,
-      "odds": -112
+      "odds": -115
     },
     "moneyline": {
-      "home": -485,
-      "away": 370
+      "home": -520,
+      "away": 390
     },
     "total": {
       "line": 47.5,
-      "overOdds": -105,
-      "underOdds": -115
+      "overOdds": -102,
+      "underOdds": -118
     }
   },
   {
@@ -347,7 +347,7 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": -108
+      "odds": -105
     },
     "moneyline": {
       "home": 136,
@@ -370,17 +370,17 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": 3,
-      "odds": 100
+      "line": 2.5,
+      "odds": -120
     },
     "moneyline": {
-      "home": -148,
-      "away": 124
+      "home": -155,
+      "away": 130
     },
     "total": {
       "line": 43.5,
-      "overOdds": -105,
-      "underOdds": -115
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -394,15 +394,15 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": 55.5,
-      "odds": -108
+      "line": 56.5,
+      "odds": -112
     },
     "moneyline": {
       "home": null,
       "away": null
     },
     "total": {
-      "line": 61.5,
+      "line": 62.5,
       "overOdds": -108,
       "underOdds": -112
     }
@@ -419,7 +419,7 @@
     "spread": {
       "favorite": "home",
       "line": 36.5,
-      "odds": -108
+      "odds": -115
     },
     "moneyline": {
       "home": null,
@@ -443,7 +443,7 @@
     "spread": {
       "favorite": "home",
       "line": 44.5,
-      "odds": -110
+      "odds": -115
     },
     "moneyline": {
       "home": null,
@@ -467,7 +467,7 @@
     "spread": {
       "favorite": "home",
       "line": 30.5,
-      "odds": -112
+      "odds": -105
     },
     "moneyline": {
       "home": -8000,
@@ -475,8 +475,8 @@
     },
     "total": {
       "line": 48.5,
-      "overOdds": -115,
-      "underOdds": -105
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -491,7 +491,7 @@
     "spread": {
       "favorite": "home",
       "line": 3,
-      "odds": -120
+      "odds": -115
     },
     "moneyline": {
       "home": -162,
@@ -499,8 +499,8 @@
     },
     "total": {
       "line": 54.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -105,
+      "underOdds": -115
     }
   },
   {
@@ -518,13 +518,37 @@
       "odds": -108
     },
     "moneyline": {
-      "home": 170,
-      "away": -205
+      "home": 180,
+      "away": -218
     },
     "total": {
       "line": 50.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "overOdds": -115,
+      "underOdds": -105
+    }
+  },
+  {
+    "id": "401858439",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Howard Bison",
+    "home": "Indiana Hoosiers",
+    "kickoff": "Sat, 9/12, 11:00 AM CDT",
+    "startsAt": "2026-09-12T16:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 56.5,
+      "odds": -112
+    },
+    "moneyline": {
+      "home": null,
+      "away": null
+    },
+    "total": {
+      "line": 64.5,
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -539,40 +563,16 @@
     "spread": {
       "favorite": "away",
       "line": 22.5,
-      "odds": -112
+      "odds": -110
     },
     "moneyline": {
-      "home": 1100,
-      "away": -2100
+      "home": 1000,
+      "away": -1800
     },
     "total": {
       "line": 57.5,
-      "overOdds": -112,
-      "underOdds": -108
-    }
-  },
-  {
-    "id": "401858439",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "Howard Bison",
-    "home": "Indiana Hoosiers",
-    "kickoff": "Sat, 9/12, 11:00 AM CDT",
-    "startsAt": "2026-09-12T16:00Z",
-    "completed": false,
-    "spread": {
-      "favorite": "home",
-      "line": null,
-      "odds": null
-    },
-    "moneyline": {
-      "home": null,
-      "away": null
-    },
-    "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "overOdds": -108,
+      "underOdds": -112
     }
   },
   {
@@ -590,8 +590,8 @@
       "odds": -105
     },
     "moneyline": {
-      "home": -625,
-      "away": 455
+      "home": -650,
+      "away": 470
     },
     "total": {
       "line": 50.5,
@@ -611,7 +611,7 @@
     "spread": {
       "favorite": "away",
       "line": 5.5,
-      "odds": -108
+      "odds": -110
     },
     "moneyline": {
       "home": 190,
@@ -619,8 +619,8 @@
     },
     "total": {
       "line": 43.5,
-      "overOdds": -112,
-      "underOdds": -108
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -634,8 +634,8 @@
     "completed": false,
     "spread": {
       "favorite": "away",
-      "line": 23.5,
-      "odds": -115
+      "line": 24.5,
+      "odds": -102
     },
     "moneyline": {
       "home": 1400,
@@ -658,8 +658,8 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": 18.5,
-      "odds": -115
+      "line": 19.5,
+      "odds": -108
     },
     "moneyline": {
       "home": -1100,
@@ -707,16 +707,16 @@
     "spread": {
       "favorite": "home",
       "line": 19.5,
-      "odds": -102
+      "odds": -112
     },
     "moneyline": {
-      "home": -1200,
-      "away": 750
+      "home": -1350,
+      "away": 800
     },
     "total": {
-      "line": 50.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "line": 49.5,
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -731,7 +731,7 @@
     "spread": {
       "favorite": "away",
       "line": 3,
-      "odds": -110
+      "odds": -108
     },
     "moneyline": {
       "home": 124,
@@ -758,8 +758,8 @@
       "odds": -110
     },
     "moneyline": {
-      "home": -185,
-      "away": 154
+      "home": -180,
+      "away": 150
     },
     "total": {
       "line": 46.5,
@@ -778,12 +778,12 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": 7.5,
-      "odds": -108
+      "line": 7,
+      "odds": -115
     },
     "moneyline": {
-      "home": -310,
-      "away": 250
+      "home": -278,
+      "away": 225
     },
     "total": {
       "line": 56.5,
@@ -827,7 +827,7 @@
     "spread": {
       "favorite": "home",
       "line": 40.5,
-      "odds": -112
+      "odds": -118
     },
     "moneyline": {
       "home": null,
@@ -947,7 +947,7 @@
     "spread": {
       "favorite": "home",
       "line": 44.5,
-      "odds": -105
+      "odds": -112
     },
     "moneyline": {
       "home": null,
@@ -955,8 +955,8 @@
     },
     "total": {
       "line": 55.5,
-      "overOdds": -112,
-      "underOdds": -108
+      "overOdds": -105,
+      "underOdds": -115
     }
   },
   {
@@ -995,16 +995,16 @@
     "spread": {
       "favorite": "home",
       "line": 7.5,
-      "odds": -112
+      "odds": -108
     },
     "moneyline": {
-      "home": -290,
-      "away": 235
+      "home": -298,
+      "away": 240
     },
     "total": {
-      "line": 47.5,
-      "overOdds": -115,
-      "underOdds": -105
+      "line": 48.5,
+      "overOdds": -102,
+      "underOdds": -118
     }
   },
   {
@@ -1019,11 +1019,11 @@
     "spread": {
       "favorite": "home",
       "line": 26.5,
-      "odds": -115
+      "odds": -110
     },
     "moneyline": {
       "home": -4500,
-      "away": 1600
+      "away": 1700
     },
     "total": {
       "line": 55.5,
@@ -1043,16 +1043,16 @@
     "spread": {
       "favorite": "away",
       "line": 1.5,
-      "odds": -108
+      "odds": -102
     },
     "moneyline": {
-      "home": -105,
-      "away": -115
+      "home": -108,
+      "away": -112
     },
     "total": {
       "line": 55.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "overOdds": 100,
+      "underOdds": -120
     }
   },
   {
@@ -1091,16 +1091,16 @@
     "spread": {
       "favorite": "home",
       "line": 7,
-      "odds": -112
+      "odds": -108
     },
     "moneyline": {
-      "home": -270,
-      "away": 220
+      "home": -265,
+      "away": 215
     },
     "total": {
-      "line": 57.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "line": 56.5,
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -1139,16 +1139,16 @@
     "spread": {
       "favorite": "home",
       "line": 6,
-      "odds": -110
+      "odds": -108
     },
     "moneyline": {
-      "home": -230,
-      "away": 190
+      "home": -218,
+      "away": 180
     },
     "total": {
       "line": 51.5,
-      "overOdds": -115,
-      "underOdds": -105
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -1166,13 +1166,13 @@
       "odds": -105
     },
     "moneyline": {
-      "home": -850,
-      "away": 575
+      "home": -900,
+      "away": 600
     },
     "total": {
       "line": 49.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -1190,13 +1190,13 @@
       "odds": -108
     },
     "moneyline": {
-      "home": 360,
-      "away": -470
+      "home": 350,
+      "away": -455
     },
     "total": {
       "line": 52.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "overOdds": -105,
+      "underOdds": -115
     }
   },
   {
@@ -1219,8 +1219,8 @@
     },
     "total": {
       "line": 66.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "overOdds": -105,
+      "underOdds": -115
     }
   },
   {
@@ -1235,16 +1235,16 @@
     "spread": {
       "favorite": "home",
       "line": 10,
-      "odds": -108
+      "odds": -112
     },
     "moneyline": {
-      "home": -375,
-      "away": 295
+      "home": -395,
+      "away": 310
     },
     "total": {
       "line": 55.5,
-      "overOdds": -112,
-      "underOdds": -108
+      "overOdds": -108,
+      "underOdds": -112
     }
   },
   {
@@ -1355,11 +1355,11 @@
     "spread": {
       "favorite": "away",
       "line": 3.5,
-      "odds": -112
+      "odds": -105
     },
     "moneyline": {
-      "home": 154,
-      "away": -185
+      "home": 145,
+      "away": -175
     },
     "total": {
       "line": 56.5,
@@ -1378,17 +1378,17 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": null,
-      "odds": null
+      "line": 25.5,
+      "odds": -105
     },
     "moneyline": {
-      "home": null,
-      "away": null
+      "home": -2800,
+      "away": 1300
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 58.5,
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -1475,7 +1475,7 @@
     "spread": {
       "favorite": "home",
       "line": 20.5,
-      "odds": -110
+      "odds": -115
     },
     "moneyline": {
       "home": -1450,
@@ -1483,8 +1483,8 @@
     },
     "total": {
       "line": 54.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -1523,7 +1523,7 @@
     "spread": {
       "favorite": "home",
       "line": 8.5,
-      "odds": -110
+      "odds": -115
     },
     "moneyline": {
       "home": -355,
@@ -1547,7 +1547,7 @@
     "spread": {
       "favorite": "home",
       "line": 10.5,
-      "odds": 100
+      "odds": -105
     },
     "moneyline": {
       "home": -440,
@@ -1570,8 +1570,8 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": 3,
-      "odds": -108
+      "line": 2.5,
+      "odds": -122
     },
     "moneyline": {
       "home": -142,
@@ -1579,8 +1579,8 @@
     },
     "total": {
       "line": 50.5,
-      "overOdds": -118,
-      "underOdds": -102
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -1643,16 +1643,16 @@
     "spread": {
       "favorite": "away",
       "line": 12.5,
-      "odds": -108
+      "odds": -112
     },
     "moneyline": {
-      "home": 380,
-      "away": -500
+      "home": 390,
+      "away": -520
     },
     "total": {
       "line": 55.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -105,
+      "underOdds": -115
     }
   },
   {
@@ -1666,17 +1666,17 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": null,
-      "odds": null
+      "line": 51.5,
+      "odds": -112
     },
     "moneyline": {
       "home": null,
       "away": null
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 60.5,
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -1714,17 +1714,17 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": null,
-      "odds": null
+      "line": 36.5,
+      "odds": -108
     },
     "moneyline": {
       "home": null,
       "away": null
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 60.5,
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -1739,7 +1739,7 @@
     "spread": {
       "favorite": "home",
       "line": 28.5,
-      "odds": -108
+      "odds": -112
     },
     "moneyline": {
       "home": -8000,
@@ -1786,17 +1786,17 @@
     "completed": false,
     "spread": {
       "favorite": "away",
-      "line": 13.5,
-      "odds": -115
+      "line": 14,
+      "odds": -110
     },
     "moneyline": {
-      "home": 410,
-      "away": -550
+      "home": 440,
+      "away": -600
     },
     "total": {
       "line": 51.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -102,
+      "underOdds": -118
     }
   },
   {
@@ -1835,11 +1835,11 @@
     "spread": {
       "favorite": "home",
       "line": 9.5,
-      "odds": -112
+      "odds": -105
     },
     "moneyline": {
-      "home": -375,
-      "away": 295
+      "home": -345,
+      "away": 275
     },
     "total": {
       "line": 49.5,
@@ -1891,8 +1891,8 @@
     },
     "total": {
       "line": 54.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -1955,11 +1955,11 @@
     "spread": {
       "favorite": "home",
       "line": 11.5,
-      "odds": -112
+      "odds": -118
     },
     "moneyline": {
-      "home": -470,
-      "away": 360
+      "home": -500,
+      "away": 380
     },
     "total": {
       "line": 54.5,
@@ -2010,9 +2010,9 @@
       "away": 102
     },
     "total": {
-      "line": 48.5,
-      "overOdds": -115,
-      "underOdds": -105
+      "line": 49.5,
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -2051,7 +2051,7 @@
     "spread": {
       "favorite": "away",
       "line": 26.5,
-      "odds": -115
+      "odds": -110
     },
     "moneyline": {
       "home": 1700,
@@ -2059,8 +2059,8 @@
     },
     "total": {
       "line": 53.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -2075,16 +2075,16 @@
     "spread": {
       "favorite": "home",
       "line": 14,
-      "odds": -105
+      "odds": -108
     },
     "moneyline": {
-      "home": -600,
-      "away": 440
+      "home": -650,
+      "away": 470
     },
     "total": {
       "line": 40.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -2107,8 +2107,8 @@
     },
     "total": {
       "line": 55.5,
-      "overOdds": -112,
-      "underOdds": -108
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -2126,13 +2126,13 @@
       "odds": -115
     },
     "moneyline": {
-      "home": 180,
-      "away": -218
+      "home": 170,
+      "away": -205
     },
     "total": {
-      "line": 59.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "line": 58.5,
+      "overOdds": -105,
+      "underOdds": -115
     }
   },
   {
@@ -2171,16 +2171,16 @@
     "spread": {
       "favorite": "home",
       "line": 47.5,
-      "odds": -112
+      "odds": -108
     },
     "moneyline": {
       "home": null,
       "away": null
     },
     "total": {
-      "line": 61.5,
-      "overOdds": -112,
-      "underOdds": -108
+      "line": 60.5,
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -2195,7 +2195,7 @@
     "spread": {
       "favorite": "home",
       "line": 33.5,
-      "odds": -115
+      "odds": -108
     },
     "moneyline": {
       "home": -9000,
@@ -2203,8 +2203,8 @@
     },
     "total": {
       "line": 56.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -2342,13 +2342,13 @@
       "odds": -110
     },
     "moneyline": {
-      "home": -485,
-      "away": 370
+      "home": -520,
+      "away": 390
     },
     "total": {
       "line": 54.5,
-      "overOdds": -120,
-      "underOdds": 100
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -2385,18 +2385,18 @@
     "startsAt": "2026-09-13T02:30Z",
     "completed": false,
     "spread": {
-      "favorite": "home",
-      "line": null,
-      "odds": null
+      "favorite": "away",
+      "line": 4.5,
+      "odds": -108
     },
     "moneyline": {
-      "home": null,
-      "away": null
+      "home": 164,
+      "away": -198
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 49.5,
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -2419,8 +2419,8 @@
     },
     "total": {
       "line": 59.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -2434,65 +2434,192 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": 8.5,
+      "line": 7.5,
       "odds": -108
     },
     "moneyline": {
-      "home": -340,
-      "away": 270
+      "home": -290,
+      "away": 235
     },
     "total": {
-      "line": 50.5,
-      "overOdds": -112,
-      "underOdds": -108
+      "line": 49.5,
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
-    "id": "401879291",
+    "id": "401879285",
     "sport": "EPL",
     "conf": "EPL",
-    "away": "Manchester United",
-    "home": "Everton",
-    "kickoff": "Sun, 9/6, 8:00 AM CDT",
-    "startsAt": "2026-09-06T13:00Z",
-    "completed": true,
+    "away": "Brentford",
+    "home": "AFC Bournemouth",
+    "kickoff": "Sat, 9/12, 9:00 AM CDT",
+    "startsAt": "2026-09-12T14:00Z",
+    "completed": false,
     "spread": {
       "favorite": "home",
-      "line": null,
-      "odds": null
+      "line": 0.5,
+      "odds": 135
     },
     "moneyline": {
-      "home": null,
-      "away": null
+      "home": 150,
+      "away": 170,
+      "draw": 260
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 2.5,
+      "overOdds": -165,
+      "underOdds": 135
     }
   },
   {
-    "id": "401879292",
+    "id": "401879284",
     "sport": "EPL",
     "conf": "EPL",
-    "away": "Chelsea",
-    "home": "Arsenal",
-    "kickoff": "Sun, 9/6, 10:30 AM CDT",
-    "startsAt": "2026-09-06T15:30Z",
-    "completed": true,
+    "away": "Nottingham Forest",
+    "home": "Aston Villa",
+    "kickoff": "Sat, 9/12, 9:00 AM CDT",
+    "startsAt": "2026-09-12T14:00Z",
+    "completed": false,
     "spread": {
       "favorite": "home",
-      "line": null,
-      "odds": null
+      "line": 0.5,
+      "odds": 110
     },
     "moneyline": {
-      "home": null,
-      "away": null
+      "home": 120,
+      "away": 225,
+      "draw": 245
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 2.5,
+      "overOdds": -105,
+      "underOdds": -120
+    }
+  },
+  {
+    "id": "401879283",
+    "sport": "EPL",
+    "conf": "EPL",
+    "away": "Hull City",
+    "home": "Chelsea",
+    "kickoff": "Sat, 9/12, 9:00 AM CDT",
+    "startsAt": "2026-09-12T14:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 1.5,
+      "odds": -160
+    },
+    "moneyline": {
+      "home": -425,
+      "away": 1200,
+      "draw": 550
+    },
+    "total": {
+      "line": 3.5,
+      "overOdds": 105,
+      "underOdds": -130
+    }
+  },
+  {
+    "id": "401879281",
+    "sport": "EPL",
+    "conf": "EPL",
+    "away": "Ipswich Town",
+    "home": "Crystal Palace",
+    "kickoff": "Sat, 9/12, 9:00 AM CDT",
+    "startsAt": "2026-09-12T14:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 0.5,
+      "odds": -125
+    },
+    "moneyline": {
+      "home": -110,
+      "away": 285,
+      "draw": 280
+    },
+    "total": {
+      "line": 2.5,
+      "overOdds": -125,
+      "underOdds": 100
+    }
+  },
+  {
+    "id": "401879279",
+    "sport": "EPL",
+    "conf": "EPL",
+    "away": "Fulham",
+    "home": "Liverpool",
+    "kickoff": "Sat, 9/12, 9:00 AM CDT",
+    "startsAt": "2026-09-12T14:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 1.5,
+      "odds": 110
+    },
+    "moneyline": {
+      "home": -220,
+      "away": 550,
+      "draw": 390
+    },
+    "total": {
+      "line": 3.5,
+      "overOdds": 115,
+      "underOdds": -145
+    }
+  },
+  {
+    "id": "401879277",
+    "sport": "EPL",
+    "conf": "EPL",
+    "away": "Everton",
+    "home": "Tottenham Hotspur",
+    "kickoff": "Sat, 9/12, 11:30 AM CDT",
+    "startsAt": "2026-09-12T16:30Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 0.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": 100,
+      "away": 255,
+      "draw": 260
+    },
+    "total": {
+      "line": 2.5,
+      "overOdds": -115,
+      "underOdds": -115
+    }
+  },
+  {
+    "id": "401878779",
+    "sport": "EPL",
+    "conf": "EPL",
+    "away": "Arsenal",
+    "home": "Sunderland",
+    "kickoff": "Sat, 9/12, 2:00 PM CDT",
+    "startsAt": "2026-09-12T19:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "away",
+      "line": 1.5,
+      "odds": 135
+    },
+    "moneyline": {
+      "home": 600,
+      "away": -210,
+      "draw": 330
+    },
+    "total": {
+      "line": 2.5,
+      "overOdds": 100,
+      "underOdds": -130
     }
   },
   {
@@ -2507,16 +2634,16 @@
     "spread": {
       "favorite": "away",
       "line": 0.5,
-      "odds": 115
+      "odds": 125
     },
     "moneyline": {
-      "home": 185,
-      "away": 125,
-      "draw": 230
+      "home": 195,
+      "away": 130,
+      "draw": 225
     },
     "total": {
       "line": 2.5,
-      "overOdds": -135,
+      "overOdds": -125,
       "underOdds": 100
     }
   },
@@ -2535,14 +2662,14 @@
       "odds": 115
     },
     "moneyline": {
-      "home": 120,
-      "away": 190,
+      "home": 125,
+      "away": 185,
       "draw": 250
     },
     "total": {
       "line": 2.5,
-      "overOdds": -170,
-      "underOdds": 135
+      "overOdds": -165,
+      "underOdds": 130
     }
   }
 ]
