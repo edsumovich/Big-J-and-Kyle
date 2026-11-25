@@ -1,314 +1,386 @@
 [
   {
-    "id": "401873066",
+    "id": "401873079",
     "sport": "NFL",
     "conf": "NFL",
-    "away": "Indianapolis Colts",
-    "home": "Houston Texans",
-    "kickoff": "Thu, 11/19, 7:15 PM CST",
-    "startsAt": "2026-11-20T01:15Z",
-    "completed": true,
+    "away": "Green Bay Packers",
+    "home": "Los Angeles Rams",
+    "kickoff": "Wed, 11/25, 7:00 PM CST",
+    "startsAt": "2026-11-26T01:00Z",
+    "completed": false,
     "spread": {
       "favorite": "home",
-      "line": null,
-      "odds": null
+      "line": 2.5,
+      "odds": -115
     },
     "moneyline": {
-      "home": null,
-      "away": null
+      "home": -142,
+      "away": 120
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 43.5,
+      "overOdds": -112,
+      "underOdds": -107
     }
   },
   {
-    "id": "401873070",
+    "id": "401873081",
     "sport": "NFL",
     "conf": "NFL",
-    "away": "Miami Dolphins",
+    "away": "Chicago Bears",
+    "home": "Detroit Lions",
+    "kickoff": "Thu, 11/26, 12:00 PM CST",
+    "startsAt": "2026-11-26T18:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "away",
+      "line": 1.5,
+      "odds": -110
+    },
+    "moneyline": {
+      "home": 103,
+      "away": -122
+    },
+    "total": {
+      "line": 55.5,
+      "overOdds": -104,
+      "underOdds": -115
+    }
+  },
+  {
+    "id": "401873080",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Philadelphia Eagles",
+    "home": "Dallas Cowboys",
+    "kickoff": "Thu, 11/26, 3:30 PM CST",
+    "startsAt": "2026-11-26T21:30Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 8.5,
+      "odds": -111
+    },
+    "moneyline": {
+      "home": -480,
+      "away": 370
+    },
+    "total": {
+      "line": 47.5,
+      "overOdds": -116,
+      "underOdds": -103
+    }
+  },
+  {
+    "id": "401873082",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Kansas City Chiefs",
     "home": "Buffalo Bills",
-    "kickoff": "Sun, 11/22, 12:00 PM CST",
-    "startsAt": "2026-11-22T18:00Z",
-    "completed": true,
+    "kickoff": "Thu, 11/26, 7:20 PM CST",
+    "startsAt": "2026-11-27T01:20Z",
+    "completed": false,
     "spread": {
       "favorite": "home",
-      "line": null,
-      "odds": null
+      "line": 3,
+      "odds": 100
     },
     "moneyline": {
-      "home": null,
-      "away": null
+      "home": -148,
+      "away": 125
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 46.5,
+      "overOdds": -108,
+      "underOdds": -111
     }
   },
   {
-    "id": "401873071",
+    "id": "401873083",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Denver Broncos",
+    "home": "Pittsburgh Steelers",
+    "kickoff": "Fri, 11/27, 2:00 PM CST",
+    "startsAt": "2026-11-27T20:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "away",
+      "line": 3.5,
+      "odds": -113
+    },
+    "moneyline": {
+      "home": 169,
+      "away": -202
+    },
+    "total": {
+      "line": 36.5,
+      "overOdds": -114,
+      "underOdds": -105
+    }
+  },
+  {
+    "id": "401873087",
     "sport": "NFL",
     "conf": "NFL",
     "away": "New Orleans Saints",
-    "home": "Chicago Bears",
-    "kickoff": "Sun, 11/22, 12:00 PM CST",
-    "startsAt": "2026-11-22T18:00Z",
-    "completed": true,
+    "home": "Cincinnati Bengals",
+    "kickoff": "Sun, 11/29, 12:00 PM CST",
+    "startsAt": "2026-11-29T18:00Z",
+    "completed": false,
     "spread": {
       "favorite": "home",
-      "line": null,
-      "odds": null
+      "line": 10,
+      "odds": -107
     },
     "moneyline": {
-      "home": null,
-      "away": null
+      "home": -538,
+      "away": 408
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 49.5,
+      "overOdds": -111,
+      "underOdds": -108
     }
   },
   {
-    "id": "401873073",
+    "id": "401873088",
     "sport": "NFL",
     "conf": "NFL",
-    "away": "Tennessee Titans",
-    "home": "Dallas Cowboys",
-    "kickoff": "Sun, 11/22, 12:00 PM CST",
-    "startsAt": "2026-11-22T18:00Z",
-    "completed": true,
+    "away": "New York Giants",
+    "home": "Indianapolis Colts",
+    "kickoff": "Sun, 11/29, 12:00 PM CST",
+    "startsAt": "2026-11-29T18:00Z",
+    "completed": false,
     "spread": {
-      "favorite": "home",
-      "line": null,
-      "odds": null
+      "favorite": "away",
+      "line": 6.5,
+      "odds": -114
     },
     "moneyline": {
-      "home": null,
-      "away": null
+      "home": 261,
+      "away": -322
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 41.5,
+      "overOdds": -111,
+      "underOdds": -108
     }
   },
   {
-    "id": "401873072",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Tampa Bay Buccaneers",
-    "home": "Detroit Lions",
-    "kickoff": "Sun, 11/22, 12:00 PM CST",
-    "startsAt": "2026-11-22T18:00Z",
-    "completed": true,
-    "spread": {
-      "favorite": "home",
-      "line": null,
-      "odds": null
-    },
-    "moneyline": {
-      "home": null,
-      "away": null
-    },
-    "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
-    }
-  },
-  {
-    "id": "401873067",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Arizona Cardinals",
-    "home": "Kansas City Chiefs",
-    "kickoff": "Sun, 11/22, 12:00 PM CST",
-    "startsAt": "2026-11-22T18:00Z",
-    "completed": true,
-    "spread": {
-      "favorite": "home",
-      "line": null,
-      "odds": null
-    },
-    "moneyline": {
-      "home": null,
-      "away": null
-    },
-    "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
-    }
-  },
-  {
-    "id": "401873076",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Pittsburgh Steelers",
-    "home": "Philadelphia Eagles",
-    "kickoff": "Sun, 11/22, 12:00 PM CST",
-    "startsAt": "2026-11-22T18:00Z",
-    "completed": true,
-    "spread": {
-      "favorite": "home",
-      "line": null,
-      "odds": null
-    },
-    "moneyline": {
-      "home": null,
-      "away": null
-    },
-    "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
-    }
-  },
-  {
-    "id": "401873068",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Baltimore Ravens",
-    "home": "Carolina Panthers",
-    "kickoff": "Sun, 11/22, 12:00 PM CST",
-    "startsAt": "2026-11-22T18:00Z",
-    "completed": true,
-    "spread": {
-      "favorite": "home",
-      "line": null,
-      "odds": null
-    },
-    "moneyline": {
-      "home": null,
-      "away": null
-    },
-    "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
-    }
-  },
-  {
-    "id": "401873074",
+    "id": "401873089",
     "sport": "NFL",
     "conf": "NFL",
     "away": "New York Jets",
-    "home": "Los Angeles Chargers",
-    "kickoff": "Sun, 11/22, 3:05 PM CST",
-    "startsAt": "2026-11-22T21:05Z",
-    "completed": true,
+    "home": "Miami Dolphins",
+    "kickoff": "Sun, 11/29, 12:00 PM CST",
+    "startsAt": "2026-11-29T18:00Z",
+    "completed": false,
     "spread": {
-      "favorite": "home",
-      "line": null,
-      "odds": null
+      "favorite": "away",
+      "line": 3.5,
+      "odds": -115
     },
     "moneyline": {
-      "home": null,
-      "away": null
+      "home": 169,
+      "away": -202
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 40.5,
+      "overOdds": -104,
+      "underOdds": -115
     }
   },
   {
-    "id": "401873075",
+    "id": "401873084",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Atlanta Falcons",
+    "home": "Minnesota Vikings",
+    "kickoff": "Sun, 11/29, 12:00 PM CST",
+    "startsAt": "2026-11-29T18:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 7,
+      "odds": 100
+    },
+    "moneyline": {
+      "home": -309,
+      "away": 252
+    },
+    "total": {
+      "line": 41.5,
+      "overOdds": -113,
+      "underOdds": -107
+    }
+  },
+  {
+    "id": "401873090",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Tennessee Titans",
+    "home": "Jacksonville Jaguars",
+    "kickoff": "Sun, 11/29, 12:00 PM CST",
+    "startsAt": "2026-11-29T18:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 14.5,
+      "odds": -104
+    },
+    "moneyline": {
+      "home": -1100,
+      "away": 700
+    },
+    "total": {
+      "line": 48.5,
+      "overOdds": -109,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "401873085",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Baltimore Ravens",
+    "home": "Houston Texans",
+    "kickoff": "Sun, 11/29, 12:00 PM CST",
+    "startsAt": "2026-11-29T18:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 7,
+      "odds": -105
+    },
+    "moneyline": {
+      "home": -322,
+      "away": 260
+    },
+    "total": {
+      "line": 47.5,
+      "overOdds": -103,
+      "underOdds": -117
+    }
+  },
+  {
+    "id": "401873093",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "New England Patriots",
+    "home": "Los Angeles Chargers",
+    "kickoff": "Sun, 11/29, 3:05 PM CST",
+    "startsAt": "2026-11-29T21:05Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 1.5,
+      "odds": 106
+    },
+    "moneyline": {
+      "home": -109,
+      "away": -108
+    },
+    "total": {
+      "line": 35.5,
+      "overOdds": -109,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "401873092",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Washington Commanders",
+    "home": "Arizona Cardinals",
+    "kickoff": "Sun, 11/29, 3:25 PM CST",
+    "startsAt": "2026-11-29T21:25Z",
+    "completed": false,
+    "spread": {
+      "favorite": "away",
+      "line": 7,
+      "odds": -106
+    },
+    "moneyline": {
+      "home": 264,
+      "away": -326
+    },
+    "total": {
+      "line": 41.5,
+      "overOdds": -111,
+      "underOdds": -108
+    }
+  },
+  {
+    "id": "401873091",
+    "sport": "NFL",
+    "conf": "NFL",
+    "away": "Seattle Seahawks",
+    "home": "San Francisco 49ers",
+    "kickoff": "Sun, 11/29, 3:25 PM CST",
+    "startsAt": "2026-11-29T21:25Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 2.5,
+      "odds": -121
+    },
+    "moneyline": {
+      "home": -147,
+      "away": 124
+    },
+    "total": {
+      "line": 44.5,
+      "overOdds": -109,
+      "underOdds": -110
+    }
+  },
+  {
+    "id": "401873086",
     "sport": "NFL",
     "conf": "NFL",
     "away": "Las Vegas Raiders",
-    "home": "Denver Broncos",
-    "kickoff": "Sun, 11/22, 3:25 PM CST",
-    "startsAt": "2026-11-22T21:25Z",
-    "completed": true,
+    "home": "Cleveland Browns",
+    "kickoff": "Sun, 11/29, 7:20 PM CST",
+    "startsAt": "2026-11-30T01:20Z",
+    "completed": false,
     "spread": {
       "favorite": "home",
-      "line": null,
-      "odds": null
+      "line": 4.5,
+      "odds": -105
     },
     "moneyline": {
-      "home": null,
-      "away": null
+      "home": -240,
+      "away": 198
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 39.5,
+      "overOdds": -116,
+      "underOdds": -103
     }
   },
   {
-    "id": "401873069",
+    "id": "401873094",
     "sport": "NFL",
     "conf": "NFL",
-    "away": "Jacksonville Jaguars",
-    "home": "New York Giants",
-    "kickoff": "Sun, 11/22, 3:25 PM CST",
-    "startsAt": "2026-11-22T21:25Z",
-    "completed": true,
+    "away": "Carolina Panthers",
+    "home": "Tampa Bay Buccaneers",
+    "kickoff": "Mon, 11/30, 7:15 PM CST",
+    "startsAt": "2026-12-01T01:15Z",
+    "completed": false,
     "spread": {
       "favorite": "home",
-      "line": null,
-      "odds": null
+      "line": 3,
+      "odds": -105
     },
     "moneyline": {
-      "home": null,
-      "away": null
+      "home": -155,
+      "away": 131
     },
     "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
-    }
-  },
-  {
-    "id": "401873077",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Minnesota Vikings",
-    "home": "San Francisco 49ers",
-    "kickoff": "Sun, 11/22, 7:20 PM CST",
-    "startsAt": "2026-11-23T01:20Z",
-    "completed": true,
-    "spread": {
-      "favorite": "home",
-      "line": null,
-      "odds": null
-    },
-    "moneyline": {
-      "home": null,
-      "away": null
-    },
-    "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
-    }
-  },
-  {
-    "id": "401873078",
-    "sport": "NFL",
-    "conf": "NFL",
-    "away": "Cincinnati Bengals",
-    "home": "Washington Commanders",
-    "kickoff": "Mon, 11/23, 7:15 PM CST",
-    "startsAt": "2026-11-24T01:15Z",
-    "completed": true,
-    "spread": {
-      "favorite": "home",
-      "line": null,
-      "odds": null
-    },
-    "moneyline": {
-      "home": null,
-      "away": null
-    },
-    "total": {
-      "line": null,
-      "overOdds": null,
-      "underOdds": null
+      "line": 43.5,
+      "overOdds": -110,
+      "underOdds": -109
     }
   },
   {
@@ -319,20 +391,20 @@
     "home": "Eastern Michigan Eagles",
     "kickoff": "Tue, 11/24, 6:00 PM CST",
     "startsAt": "2026-11-25T00:00Z",
-    "completed": false,
+    "completed": true,
     "spread": {
       "favorite": "home",
-      "line": 6.5,
-      "odds": -115
+      "line": null,
+      "odds": null
     },
     "moneyline": {
-      "home": -245,
-      "away": 200
+      "home": null,
+      "away": null
     },
     "total": {
-      "line": 46.5,
-      "overOdds": -112,
-      "underOdds": -108
+      "line": null,
+      "overOdds": null,
+      "underOdds": null
     }
   },
   {
@@ -343,20 +415,20 @@
     "home": "Western Michigan Broncos",
     "kickoff": "Tue, 11/24, 6:00 PM CST",
     "startsAt": "2026-11-25T00:00Z",
-    "completed": false,
+    "completed": true,
     "spread": {
       "favorite": "home",
-      "line": 4.5,
-      "odds": -115
+      "line": null,
+      "odds": null
     },
     "moneyline": {
-      "home": -230,
-      "away": 190
+      "home": null,
+      "away": null
     },
     "total": {
-      "line": 45.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "line": null,
+      "overOdds": null,
+      "underOdds": null
     }
   },
   {
@@ -370,17 +442,17 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": 14,
-      "odds": -112
+      "line": 15.5,
+      "odds": -110
     },
     "moneyline": {
-      "home": -650,
-      "away": 470
+      "home": -700,
+      "away": 500
     },
     "total": {
-      "line": 47.5,
-      "overOdds": -105,
-      "underOdds": -115
+      "line": 46.5,
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -403,8 +475,8 @@
     },
     "total": {
       "line": 40.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -419,7 +491,7 @@
     "spread": {
       "favorite": "home",
       "line": 18.5,
-      "odds": -115
+      "odds": -112
     },
     "moneyline": {
       "home": -1050,
@@ -450,9 +522,9 @@
       "away": -105
     },
     "total": {
-      "line": 57.5,
-      "overOdds": -118,
-      "underOdds": -102
+      "line": 58.5,
+      "overOdds": -102,
+      "underOdds": -118
     }
   },
   {
@@ -475,8 +547,8 @@
     },
     "total": {
       "line": 48.5,
-      "overOdds": -112,
-      "underOdds": -108
+      "overOdds": -105,
+      "underOdds": -115
     }
   },
   {
@@ -590,8 +662,8 @@
       "odds": -108
     },
     "moneyline": {
-      "home": 285,
-      "away": -360
+      "home": 275,
+      "away": -345
     },
     "total": {
       "line": 40.5,
@@ -618,9 +690,9 @@
       "away": 210
     },
     "total": {
-      "line": 41.5,
-      "overOdds": -112,
-      "underOdds": -108
+      "line": 42.5,
+      "overOdds": -105,
+      "underOdds": -115
     }
   },
   {
@@ -659,11 +731,11 @@
     "spread": {
       "favorite": "home",
       "line": 7.5,
-      "odds": -108
+      "odds": -112
     },
     "moneyline": {
-      "home": -290,
-      "away": 235
+      "home": -305,
+      "away": 245
     },
     "total": {
       "line": 37.5,
@@ -682,17 +754,17 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": 24.5,
+      "line": 25.5,
       "odds": -112
     },
     "moneyline": {
-      "home": -2400,
-      "away": 1200
+      "home": -2800,
+      "away": 1300
     },
     "total": {
-      "line": 68.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "line": 66.5,
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -706,17 +778,17 @@
     "completed": false,
     "spread": {
       "favorite": "away",
-      "line": 24.5,
-      "odds": -115
+      "line": 25.5,
+      "odds": -108
     },
     "moneyline": {
       "home": 1300,
       "away": -2800
     },
     "total": {
-      "line": 52.5,
-      "overOdds": -112,
-      "underOdds": -108
+      "line": 53.5,
+      "overOdds": -108,
+      "underOdds": -112
     }
   },
   {
@@ -744,6 +816,30 @@
     }
   },
   {
+    "id": "401856761",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Louisville Cardinals",
+    "home": "Kentucky Wildcats",
+    "kickoff": "Sat, 11/28, 11:00 AM CST",
+    "startsAt": "2026-11-28T17:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "away",
+      "line": 3,
+      "odds": -102
+    },
+    "moneyline": {
+      "home": 120,
+      "away": -142
+    },
+    "total": {
+      "line": 54.5,
+      "overOdds": -115,
+      "underOdds": -105
+    }
+  },
+  {
     "id": "401858540",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
@@ -758,37 +854,13 @@
       "odds": -108
     },
     "moneyline": {
-      "home": -395,
-      "away": 310
+      "home": -425,
+      "away": 330
     },
     "total": {
-      "line": 38.5,
-      "overOdds": -105,
-      "underOdds": -115
-    }
-  },
-  {
-    "id": "401856761",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "Louisville Cardinals",
-    "home": "Kentucky Wildcats",
-    "kickoff": "Sat, 11/28, 11:00 AM CST",
-    "startsAt": "2026-11-28T17:00Z",
-    "completed": false,
-    "spread": {
-      "favorite": "away",
-      "line": 3,
-      "odds": -105
-    },
-    "moneyline": {
-      "home": 120,
-      "away": -142
-    },
-    "total": {
-      "line": 54.5,
-      "overOdds": -115,
-      "underOdds": -105
+      "line": 37.5,
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -834,9 +906,9 @@
       "away": -155
     },
     "total": {
-      "line": 45.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "line": 44.5,
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -859,8 +931,8 @@
     },
     "total": {
       "line": 54.5,
-      "overOdds": -120,
-      "underOdds": 100
+      "overOdds": -118,
+      "underOdds": -102
     }
   },
   {
@@ -875,16 +947,16 @@
     "spread": {
       "favorite": "away",
       "line": 4,
-      "odds": -108
+      "odds": -110
     },
     "moneyline": {
       "home": 160,
       "away": -192
     },
     "total": {
-      "line": 49.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "line": 50.5,
+      "overOdds": -118,
+      "underOdds": -102
     }
   },
   {
@@ -907,8 +979,8 @@
     },
     "total": {
       "line": 54.5,
-      "overOdds": -105,
-      "underOdds": -115
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -923,16 +995,16 @@
     "spread": {
       "favorite": "home",
       "line": 3,
-      "odds": -108
+      "odds": -110
     },
     "moneyline": {
-      "home": -148,
-      "away": 124
+      "home": -155,
+      "away": 130
     },
     "total": {
       "line": 50.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -978,9 +1050,9 @@
       "away": -102
     },
     "total": {
-      "line": 56.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "line": 57.5,
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -1022,8 +1094,8 @@
       "odds": -105
     },
     "moneyline": {
-      "home": 164,
-      "away": -198
+      "home": 170,
+      "away": -205
     },
     "total": {
       "line": 51.5,
@@ -1042,8 +1114,8 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": 5.5,
-      "odds": -115
+      "line": 6,
+      "odds": -112
     },
     "moneyline": {
       "home": -230,
@@ -1074,9 +1146,9 @@
       "away": 105
     },
     "total": {
-      "line": 50.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "line": 49.5,
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -1094,8 +1166,8 @@
       "odds": -110
     },
     "moneyline": {
-      "home": -180,
-      "away": 150
+      "home": -185,
+      "away": 154
     },
     "total": {
       "line": 53.5,
@@ -1115,7 +1187,7 @@
     "spread": {
       "favorite": "away",
       "line": 6,
-      "odds": -110
+      "odds": -108
     },
     "moneyline": {
       "home": 170,
@@ -1163,7 +1235,7 @@
     "spread": {
       "favorite": "away",
       "line": 5.5,
-      "odds": -110
+      "odds": -105
     },
     "moneyline": {
       "home": 170,
@@ -1186,17 +1258,17 @@
     "completed": false,
     "spread": {
       "favorite": "away",
-      "line": 16.5,
-      "odds": -115
+      "line": 17.5,
+      "odds": -110
     },
     "moneyline": {
-      "home": 550,
-      "away": -800
+      "home": 600,
+      "away": -900
     },
     "total": {
-      "line": 52.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "line": 53.5,
+      "overOdds": -105,
+      "underOdds": -115
     }
   },
   {
@@ -1219,8 +1291,8 @@
     },
     "total": {
       "line": 41.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "overOdds": 100,
+      "underOdds": -120
     }
   },
   {
@@ -1235,16 +1307,16 @@
     "spread": {
       "favorite": "home",
       "line": 3,
-      "odds": -115
+      "odds": -118
     },
     "moneyline": {
-      "home": -155,
-      "away": 130
+      "home": -162,
+      "away": 136
     },
     "total": {
       "line": 51.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -102,
+      "underOdds": -118
     }
   },
   {
@@ -1258,12 +1330,12 @@
     "completed": false,
     "spread": {
       "favorite": "away",
-      "line": 5.5,
+      "line": 6,
       "odds": -110
     },
     "moneyline": {
-      "home": 180,
-      "away": -218
+      "home": 190,
+      "away": -230
     },
     "total": {
       "line": 41.5,
@@ -1290,9 +1362,9 @@
       "away": 130
     },
     "total": {
-      "line": 51.5,
-      "overOdds": -102,
-      "underOdds": -118
+      "line": 50.5,
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -1344,6 +1416,30 @@
     }
   },
   {
+    "id": "401858312",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Duke Blue Devils",
+    "home": "Wake Forest Demon Deacons",
+    "kickoff": "Sat, 11/28, 2:30 PM CST",
+    "startsAt": "2026-11-28T20:30Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 14.5,
+      "odds": -108
+    },
+    "moneyline": {
+      "home": -650,
+      "away": 470
+    },
+    "total": {
+      "line": 55.5,
+      "overOdds": -105,
+      "underOdds": -115
+    }
+  },
+  {
     "id": "401858543",
     "sport": "NCAAFB",
     "conf": "NCAAFB",
@@ -1355,11 +1451,11 @@
     "spread": {
       "favorite": "away",
       "line": 7,
-      "odds": -108
+      "odds": -102
     },
     "moneyline": {
-      "home": 215,
-      "away": -265
+      "home": 205,
+      "away": -250
     },
     "total": {
       "line": 45.5,
@@ -1382,37 +1478,13 @@
       "odds": -108
     },
     "moneyline": {
-      "home": -700,
-      "away": 500
+      "home": -675,
+      "away": 490
     },
     "total": {
       "line": 56.5,
       "overOdds": -105,
       "underOdds": -115
-    }
-  },
-  {
-    "id": "401858312",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "Duke Blue Devils",
-    "home": "Wake Forest Demon Deacons",
-    "kickoff": "Sat, 11/28, 2:30 PM CST",
-    "startsAt": "2026-11-28T20:30Z",
-    "completed": false,
-    "spread": {
-      "favorite": "home",
-      "line": 14.5,
-      "odds": -108
-    },
-    "moneyline": {
-      "home": -625,
-      "away": 455
-    },
-    "total": {
-      "line": 55.5,
-      "overOdds": -110,
-      "underOdds": -110
     }
   },
   {
@@ -1430,13 +1502,13 @@
       "odds": -108
     },
     "moneyline": {
-      "home": 250,
-      "away": -310
+      "home": 240,
+      "away": -298
     },
     "total": {
-      "line": 60.5,
-      "overOdds": null,
-      "underOdds": null
+      "line": 61.5,
+      "overOdds": -105,
+      "underOdds": -115
     }
   },
   {
@@ -1451,14 +1523,14 @@
     "spread": {
       "favorite": "away",
       "line": 7,
-      "odds": -112
+      "odds": -110
     },
     "moneyline": {
       "home": 225,
       "away": -278
     },
     "total": {
-      "line": 49.5,
+      "line": 48.5,
       "overOdds": -112,
       "underOdds": -108
     }
@@ -1498,8 +1570,8 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": 4.5,
-      "odds": -105
+      "line": 4,
+      "odds": -110
     },
     "moneyline": {
       "home": -192,
@@ -1507,8 +1579,8 @@
     },
     "total": {
       "line": 50.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -1526,13 +1598,13 @@
       "odds": -115
     },
     "moneyline": {
-      "home": -155,
-      "away": 130
+      "home": -162,
+      "away": 136
     },
     "total": {
-      "line": 43.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "line": 42.5,
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -1570,17 +1642,17 @@
     "completed": false,
     "spread": {
       "favorite": "home",
-      "line": 3.5,
-      "odds": -108
+      "line": 3,
+      "odds": -112
     },
     "moneyline": {
-      "home": -180,
-      "away": 150
+      "home": -155,
+      "away": 130
     },
     "total": {
-      "line": 46.5,
-      "overOdds": -110,
-      "underOdds": -110
+      "line": 45.5,
+      "overOdds": -108,
+      "underOdds": -112
     }
   },
   {
@@ -1619,16 +1691,16 @@
     "spread": {
       "favorite": "away",
       "line": 3.5,
-      "odds": -105
+      "odds": -102
     },
     "moneyline": {
       "home": 142,
       "away": -170
     },
     "total": {
-      "line": 47.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "line": 46.5,
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -1667,16 +1739,16 @@
     "spread": {
       "favorite": "home",
       "line": 6.5,
-      "odds": -115
+      "odds": -108
     },
     "moneyline": {
-      "home": -238,
-      "away": 195
+      "home": -230,
+      "away": 190
     },
     "total": {
-      "line": 65.5,
-      "overOdds": -102,
-      "underOdds": -118
+      "line": 64.5,
+      "overOdds": -115,
+      "underOdds": -105
     }
   },
   {
@@ -1699,32 +1771,8 @@
     },
     "total": {
       "line": 46.5,
-      "overOdds": -112,
-      "underOdds": -108
-    }
-  },
-  {
-    "id": "401858538",
-    "sport": "NCAAFB",
-    "conf": "NCAAFB",
-    "away": "Purdue Boilermakers",
-    "home": "Indiana Hoosiers",
-    "kickoff": "Sat, 11/28, 6:00 PM CST",
-    "startsAt": "2026-11-29T00:00Z",
-    "completed": false,
-    "spread": {
-      "favorite": "home",
-      "line": 22.5,
-      "odds": -112
-    },
-    "moneyline": {
-      "home": -2100,
-      "away": 1100
-    },
-    "total": {
-      "line": 52.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -118,
+      "underOdds": -102
     }
   },
   {
@@ -1739,16 +1787,40 @@
     "spread": {
       "favorite": "away",
       "line": 13.5,
-      "odds": -115
+      "odds": -110
     },
     "moneyline": {
       "home": 410,
       "away": -550
     },
     "total": {
-      "line": 43.5,
-      "overOdds": -105,
-      "underOdds": -115
+      "line": 42.5,
+      "overOdds": -115,
+      "underOdds": -105
+    }
+  },
+  {
+    "id": "401858538",
+    "sport": "NCAAFB",
+    "conf": "NCAAFB",
+    "away": "Purdue Boilermakers",
+    "home": "Indiana Hoosiers",
+    "kickoff": "Sat, 11/28, 6:00 PM CST",
+    "startsAt": "2026-11-29T00:00Z",
+    "completed": false,
+    "spread": {
+      "favorite": "home",
+      "line": 22.5,
+      "odds": -115
+    },
+    "moneyline": {
+      "home": -2100,
+      "away": 1100
+    },
+    "total": {
+      "line": 52.5,
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -1795,8 +1867,8 @@
     },
     "total": {
       "line": 50.5,
-      "overOdds": -108,
-      "underOdds": -112
+      "overOdds": -112,
+      "underOdds": -108
     }
   },
   {
@@ -1867,8 +1939,8 @@
     },
     "total": {
       "line": 44.5,
-      "overOdds": -105,
-      "underOdds": -115
+      "overOdds": -110,
+      "underOdds": -110
     }
   },
   {
@@ -1938,9 +2010,9 @@
       "away": 130
     },
     "total": {
-      "line": 56.5,
-      "overOdds": -115,
-      "underOdds": -105
+      "line": 58.5,
+      "overOdds": -105,
+      "underOdds": -115
     }
   },
   {
@@ -1955,7 +2027,7 @@
     "spread": {
       "favorite": "home",
       "line": 13.5,
-      "odds": -115
+      "odds": -112
     },
     "moneyline": {
       "home": -575,
@@ -1979,16 +2051,16 @@
     "spread": {
       "favorite": "home",
       "line": 0.5,
-      "odds": 145
+      "odds": 140
     },
     "moneyline": {
-      "home": 160,
-      "away": 175,
+      "home": 155,
+      "away": 180,
       "draw": 240
     },
     "total": {
       "line": 2.5,
-      "overOdds": -130,
+      "overOdds": -135,
       "underOdds": 105
     }
   },
@@ -2004,12 +2076,12 @@
     "spread": {
       "favorite": "away",
       "line": 0.5,
-      "odds": 110
+      "odds": 105
     },
     "moneyline": {
-      "home": 235,
+      "home": 230,
       "away": 115,
-      "draw": 220
+      "draw": 225
     },
     "total": {
       "line": 2.5,
